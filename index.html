@@ -2,9 +2,32 @@
 <html>
     <head>
         <title>Fotoksiazka</title>
-    </head>
+        <meta name=description content="Niezastąpione narzędzie w tworzeniu kozackich fotoksiążek" />
+        <meta name="viewport" content="width=device-width initial-scale=1 minimum-scale=1" />
+        <link rel="stylesheet" type="text/css" href="./styles/styles.css" /> 
+        
+        <!-- Material icons -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+
+       </head>
 
     <body>
+        <div id="main-container" class="flex-container flex-h-center">
+            <div class="page-container size-fill-parent">     
+                                
+                <div class="image-wrapper">
+                    <div class="manipulator-move flex-container size-fill-parent flex-v-h-center">
+                        <button class="add-image-button circle-button material-icons">add</button>
+                    </div>
+                    <div class="hook-resize manipulator manipulator-resize material-icons">code</div>
+                    <div class="hook-rotate manipulator manipulator-rotate material-icons">rotate_left</div>
+                </div> 
 
+            </div>
+        </div>
+
+        <script src="./scripts/move.js"></script>
+        <script src="./scripts/script.js"></script>
     </body>
 </html>
