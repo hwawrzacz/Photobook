@@ -1,6 +1,6 @@
 //rotate
 const rotateElement = (element, hook) => {
-    const rotateStarter = (e) => {
+    const initializeRotating = (e) => {
         e.stopPropagation();
         e.preventDefault();
         window.addEventListener('mousemove', rotate);
@@ -25,5 +25,5 @@ const rotateElement = (element, hook) => {
         window.removeEventListener('mouseup', endRotate);
     };
     
-    hook.addEventListener('mousedown', rotateStarter);
+    hook.addEventListener('mousedown', initializeRotating);
 };

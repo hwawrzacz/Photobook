@@ -1,6 +1,8 @@
 //resize
 const resize = (image, handler) => {
-    const initializeResize = (event) => {
+    var resizeEvenly = false;
+
+    const initializeResizing = (event) => {
         event.stopPropagation();
         event.preventDefault();
         getStartingMouseCoordinates(event);
@@ -13,8 +15,17 @@ const resize = (image, handler) => {
 
     const resizeElement = (event) => {
         getMouseCoordinates(event);
-        image.style.setProperty("width",  mouseX - mouseX0 + imageWidth + "px");
-        image.style.setProperty("height", mouseY - mouseY0 + imageHeight + "px");
+
+        if (event.shiftKey) {
+            const newWidth = mouseX - mouseX0 + imageWidth;
+            resizeRatio = newWidth/imageWidth;
+            image.style.setProperty("width",  imageWidth*resizeRatio + "px");
+            image.style.setProperty("height", imageHeight*resizeRatio + "px");
+        }
+        else {
+            image.style.setProperty("width",  mouseX - mouseX0 + imageWidth + "px");
+            image.style.setProperty("height", mouseY - mouseY0 + imageHeight + "px");
+        }
     }
 
     const stopResize = () => {
@@ -22,8 +33,11 @@ const resize = (image, handler) => {
         page.removeEventListener("mouseup", stopResize);
     }
 
-    //for some shitty reason, this must be at the end of the function
-    handler.addEventListener("mousedown", initializeResize); 
+    const handleKeypress = (event) => {
+        console.log(event.shiftKey);
+    }
+
+    handler.addEventListener("mousedown", initializeResizing);
 }
 
 function getMouseCoordinates(event) {
