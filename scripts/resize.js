@@ -1,13 +1,14 @@
 //resize
 const resize = (image, handler) => {
     const initializeResize = (event) => {
-        getImageSize();
         event.stopPropagation();
         event.preventDefault();
-        
-        image.removeEventListener("mousemove", move);
+        getStartingMouseCoordinates(event);
+
+        getImageSize();
         page.addEventListener("mousemove", resizeElement);
         page.addEventListener("mouseup", stopResize);
+        handler.addEventListener("mouseup", stopResize);
     }
 
     const resizeElement = (event) => {
@@ -17,12 +18,12 @@ const resize = (image, handler) => {
     }
 
     const stopResize = () => {
-        handler.removeEventListener("mousemove", resizeElement);
-        handler.removeEventListener("mouseup", stopResize);
+        page.removeEventListener("mousemove", resizeElement);
+        page.removeEventListener("mouseup", stopResize);
     }
 
     //for some shitty reason, this must be at the end of the function
-    page.addEventListener("mousedown", initializeResize); 
+    handler.addEventListener("mousedown", initializeResize); 
 }
 
 function getMouseCoordinates(event) {

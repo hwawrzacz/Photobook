@@ -16,9 +16,7 @@ const rotateElement = (element, hook) => {
         let mouseX = parseFloat(e.pageX);
         let mouseY = parseFloat(e.pageY);
         let radians = Math.atan2(mouseX - centerX, mouseY - centerY);
-        console.log(radians);
         let degree = (radians * (180 / Math.PI) * -1);
-        console.log(degree);
         element.style.setProperty('transform', `rotate(${degree}deg)`);
     };
 

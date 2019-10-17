@@ -101,7 +101,7 @@ body {
   border: 1px solid black; }
 
 /* Image container */
-.image-wrapper {
+.image {
   position: relative;
   top: 0;
   left: 0;
@@ -111,7 +111,7 @@ body {
   background-position: center;
   background-size: 100% 100%;
   border: 1px solid black; }
-  .image-wrapper button {
+  .image button {
     width: 40px;
     height: 40px;
     border-radius: 20px;
@@ -122,5 +122,14 @@ body {
     cursor: pointer;
     -webkit-transition: 200ms;
     transition: 200ms; }
-    .image-wrapper button:hover {
+    .image button:hover {
       background-color: #ddd; }
+
+.test {
+  background-color: red; }
+  .test .test-content {
+    background-color: green;
+    width: 100px;
+    height: 50px;
+    -webkit-transform: rotate(20deg);
+            transform: rotate(20deg); }

@@ -13,13 +13,16 @@ const move = (image) => {
     const pageWidth = parseInt(getComputedStyle(page).getPropertyValue("width")); 
     const pageHeight = parseInt(getComputedStyle(page).getPropertyValue("height"));  
     
-   const initializeMoving = (event) => {
+   const initializeMoving = (event) => { 
+        event.stopPropagation();
+        event.preventDefault();
+        
         getImagePosition();
         getImageSize();
         getStartingMouseCoordinates(event);
 
         image.addEventListener("mousemove", moveElement);
-        image.addEventListener("mouseup", stopMoving);
+        page.addEventListener("mouseup", stopMoving);
     }
 
     const moveElement = (event) => {
@@ -41,7 +44,7 @@ const move = (image) => {
 
     const stopMoving = () => {
         image.removeEventListener("mousemove", moveElement);
-        image.removeEventListener("mouseup", stopMoving);
+        page.removeEventListener("mouseup", stopMoving);
     }
 
     image.addEventListener("mousedown", initializeMoving);

@@ -109,7 +109,7 @@ body {
 }
 
 /* Image container */
-.image-wrapper {
+.image {
     position: relative;
     top: 0;
     left: 0;
@@ -135,5 +135,16 @@ body {
         &:hover {
             background-color: #ddd;
         }
+    }
+}
+
+.test{
+    background-color: red;
+
+    .test-content{
+        background-color: green;
+        width: 100px;
+        height: 50px;
+        transform: rotate(20deg);
     }
 }
