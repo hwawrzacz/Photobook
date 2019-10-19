@@ -58,27 +58,48 @@ body {
           flex-grow: 8; }
 
 /* End flex */
-.manipulator {
+/* Hooks */
+i.hook {
   position: absolute;
-  margin: 1px;
-  background-color: white; }
-
-.manipulator-rotate {
-  bottom: -14px;
-  right: 48%;
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  background-color: white;
   cursor: pointer; }
 
-.manipulator-move {
+.hook-rotate {
+  bottom: -21px;
+  right: 48%; }
+
+.hook-move {
   position: absolute;
   cursor: move; }
 
-.manipulator-resize {
-  bottom: 0;
-  right: 0;
-  cursor: pointer; }
+.hook-resize {
+  bottom: -21px;
+  right: -21px; }
 
+.hook-delete {
+  top: 0;
+  right: 0; }
+
+/* End hooks */
 .add-image-button-container {
   position: absolute; }
+
+button.circle-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #f0f0f0;
+  background-image: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: 200ms;
+  transition: 200ms; }
+  button.circle-button:hover {
+    background-color: #ddd; }
 
 /* Whole layout */
 #main-container {
@@ -102,34 +123,80 @@ body {
 
 /* Image container */
 .image {
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   width: 500px;
   height: 300px;
+  min-width: 50px;
+  min-height: 50px;
   background-image: url("../images/example.png");
   background-position: center;
   background-size: 100% 100%;
-  border: 1px solid black; }
-  .image button {
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
-    background-color: #f0f0f0;
-    background-image: none;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    -webkit-transition: 200ms;
-    transition: 200ms; }
-    .image button:hover {
-      background-color: #ddd; }
+  border: 1px solid black;
+  cursor: move; }
 
+/* Textbox */
+.textbox-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: move; }
+  .textbox-container input[type=text] {
+    width: auto;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px dashed #666;
+    outline: none;
+    background-color: transparent;
+    cursor: move;
+    -webkit-transition: 300ms;
+    transition: 300ms; }
+    .textbox-container input[type=text]:focus {
+      border: 2px solid skyblue; }
+  .textbox-container ul.textbox-tools {
+    margin: 0;
+    padding: 0;
+    max-height: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    background-color: white;
+    list-style: none;
+    opacity: 0;
+    -webkit-transition: 300ms;
+    transition: 300ms; }
+    .textbox-container ul.textbox-tools li {
+      margin: 0 3px;
+      cursor: pointer; }
+      .textbox-container ul.textbox-tools li i {
+        width: 20px;
+        height: 20px;
+        font-size: 20px; }
+      .textbox-container ul.textbox-tools li input[type=color] {
+        width: 20px;
+        height: 20px; }
+    .textbox-container ul.textbox-tools:hover {
+      opacity: 1 !important; }
+  .textbox-container:hover ul {
+    max-height: 30px;
+    opacity: .3; }
+
+/* End of textbox */
 .test {
-  background-color: red; }
+  background-color: red;
+  position: absolute;
+  top: 0;
+  right: 0; }
   .test .test-content {
     background-color: green;
     width: 100px;
-    height: 50px;
-    -webkit-transform: rotate(20deg);
-            transform: rotate(20deg); }
+    height: 50px; }
+
+.add-object-button {
+  position: absolute;
+  right: 10px;
+  bottom: 10px; }

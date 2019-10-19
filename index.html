@@ -14,17 +14,41 @@
     <body>       
         <div id="main-container" class="flex-container flex-h-center">
             <div class="page-container size-fill-parent">     
-                    <!-- <div class="test">
-                        <div class="test-content"></div>
-                    </div> -->
+                <div class="test">
+                    <div class="test-content"></div>
+                </div>
 
-                <div class="image">
+                <div class="image flex-container flex-v-h-center">
+                    <button class="circle-button material-icons">add</button>
+                    <button onClick="getData()">Get data</button>
                     
-                    <div class="manipulator-move flex-container size-fill-parent flex-v-h-center">
-                        <button class="add-image-button circle-button material-icons">add</button>
+                    <div class="hooks-container">
+                        <i class="hook hook-delete material-icons">close</i>
+                        <i class="hook hook-resize material-icons">code</i>
+                        <i class="hook hook-rotate material-icons">rotate_left</i>
                     </div>
-                    <div class="hook-resize manipulator manipulator-resize material-icons">code</div>
-                    <div class="hook-rotate manipulator manipulator-rotate material-icons">rotate_left</div>
+                </div>
+
+                <div class="textbox-container">
+                    <input type="text" />
+
+                    <ul class="textbox-tools size-fill-parent">
+                        <li><i class="material-icons">format_align_left</i></li>
+                        <li><i class="material-icons">format_align_justify</i></li>
+                        <li><i class="material-icons">format_align_right</i></li>
+                        <li><i class="material-icons">text_rotation_angleup</i></li>
+                        <li><i class="material-icons">text_rotation_angledown</i></li>
+                        <li><input type="color" /></li>
+                    </ul>
+                    
+                    <div class="hooks-container">
+                        <i class="hook hook-delete material-icons">close</i>
+                        <i class="hook hook-rotate material-icons">rotate_left</i>
+                    </div>
+                </div>
+                    
+                <div class="button-container">
+                    <button class="add-object-button circle-button material-icons">add</button>
                 </div>
             </div>
         </div>
@@ -32,6 +56,7 @@
         <script src="./scripts/move.js"></script>
         <script src="./scripts/resize.js"></script>
         <script src="./scripts/rotate.js"></script>
+        <script src="./scripts/createTextBox.js"></script>
         <script src="./scripts/script.js"></script>
     </body>
 </html>

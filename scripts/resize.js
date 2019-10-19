@@ -1,5 +1,5 @@
 //resize
-const resize = (image, handler) => {
+const resize = (element, handler) => {
     var resizeEvenly = false;
 
     const initializeResizing = (event) => {
@@ -7,7 +7,7 @@ const resize = (image, handler) => {
         event.preventDefault();
         getStartingMouseCoordinates(event);
 
-        getImageSize();
+        getElementSize(element);
         page.addEventListener("mousemove", resizeElement);
         page.addEventListener("mouseup", stopResize);
         handler.addEventListener("mouseup", stopResize);
@@ -17,14 +17,14 @@ const resize = (image, handler) => {
         getMouseCoordinates(event);
 
         if (event.shiftKey) {
-            const newWidth = mouseX - mouseX0 + imageWidth;
-            resizeRatio = newWidth/imageWidth;
-            image.style.setProperty("width",  imageWidth*resizeRatio + "px");
-            image.style.setProperty("height", imageHeight*resizeRatio + "px");
+            const newWidth = mouseX - mouseX0 + elementWidth;
+            resizeRatio = newWidth/elementWidth;
+            element.style.setProperty("width",  elementWidth*resizeRatio + "px");
+            element.style.setProperty("height", elementHeight*resizeRatio + "px");
         }
         else {
-            image.style.setProperty("width",  mouseX - mouseX0 + imageWidth + "px");
-            image.style.setProperty("height", mouseY - mouseY0 + imageHeight + "px");
+            element.style.setProperty("width",  mouseX - mouseX0 + elementWidth + "px");
+            element.style.setProperty("height", mouseY - mouseY0 + elementHeight + "px");
         }
     }
 

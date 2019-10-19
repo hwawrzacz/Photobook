@@ -9,6 +9,7 @@ body {
 
 /* Common classes */
 
+
 /* Flex */
 .flex-container {
     display: flex;
@@ -49,32 +50,56 @@ body {
 }
 /* End flex */
 
-.manipulator {
+/* Hooks */
+i.hook {
     position: absolute;
-    margin: 1px;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
     
-    background-color: white
-}
-
-.manipulator-rotate {
-    bottom: -14px;
-    right: 48%;
+    background-color: white;
     cursor: pointer;
 }
 
-.manipulator-move {
+.hook-rotate {
+    bottom: -21px;
+    right: 48%;
+}
+
+.hook-move {
     position: absolute;
     cursor: move;
 }
 
-.manipulator-resize {
-    bottom: 0;
-    right: 0;
-    cursor: pointer;
+.hook-resize {
+    bottom: -21px;
+    right: -21px;
 }
+
+.hook-delete {
+    top: 0;
+    right: 0;
+}
+/* End hooks */
 
 .add-image-button-container {
     position: absolute;
+}
+
+button.circle-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+    background-image: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 200ms;
+
+    &:hover {
+        background-color: #ddd;
+    }
 }
 
 
@@ -110,41 +135,101 @@ body {
 
 /* Image container */
 .image {
-    position: relative;
+    position: absolute;
     top: 0;
     left: 0;
     width: 500px;
     height: 300px;
+    min-width: 50px;
+    min-height: 50px;
     
     background-image: url("../images/example.png");
     background-position: center;
     background-size: 100% 100%;
     border: 1px solid black;
+    cursor: move;
+}
 
-    button {
-        width: 40px;
-        height: 40px;
-        border-radius: 20px;
-        background-color: #f0f0f0;
-        background-image: none;
-        border: none;
+/* Textbox */
+.textbox-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: move;
+
+    input[type=text] {
+        width: auto;
+        padding: 10px; 
+        
+        font-size: 16px;
+        border: 2px dashed #666;
         outline: none;
-        cursor: pointer;
-        transition: 200ms;
+        background-color: transparent;
+        cursor: move;
+        transition: 300ms;
+
+        &:focus {
+            border: 2px solid skyblue;
+        }
+    }
+
+    ul.textbox-tools {
+        margin: 0;
+        padding: 0;
+        max-height: 0;
+        display: flex;
+        align-items: center;
+        
+        background-color: white;
+        list-style: none;
+        opacity: 0;
+        transition: 300ms;
+        
+        li {
+            margin: 0 3px;
+            cursor: pointer;
+
+            i {  
+                width: 20px;
+                height: 20px;
+                font-size: 20px;
+            }
+
+            input[type=color] {
+                width: 20px;
+                height: 20px;
+            }
+        }
 
         &:hover {
-            background-color: #ddd;
+            opacity: 1!important;
+        }
+    }
+
+    &:hover {
+        ul {
+            max-height: 30px;
+            opacity: .3;
         }
     }
 }
+/* End of textbox */
 
-.test{
+.test {
     background-color: red;
+    position: absolute;
+    top: 0; 
+    right: 0;
 
-    .test-content{
+    .test-content {
         background-color: green;
         width: 100px;
         height: 50px;
-        transform: rotate(20deg);
     }
+}
+
+.add-object-button {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
 }
