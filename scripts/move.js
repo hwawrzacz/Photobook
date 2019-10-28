@@ -30,14 +30,6 @@ const move = (element) => {
         var newLeft = mouseX - mouseX0 + elementPositionLeft;
         var newTop = mouseY - mouseY0 + elementPositionTop;
         
-        // if (newLeft < 0) newLeft = 0;
-        // else if (newLeft > pageWidth - elementWidth) 
-        //     newLeft = pageWidth - elementWidth;
-
-        // if (newTop < 0) newTop = 0;
-        // else if (newTop > pageHeight - elementHeight) 
-        //     newTop = pageHeight - elementHeight;
-        
         element.style.setProperty("top", newTop + "px");
         element.style.setProperty("left", newLeft + "px");
     }

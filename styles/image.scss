@@ -1,0 +1,16 @@
+/* Image container */
+.image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 500px;
+    height: 300px;
+    min-width: 50px;
+    min-height: 50px;
+    
+    background-image: url("../images/example.png");
+    background-position: center;
+    background-size: 100% 100%;
+    border: 1px solid black;
+    cursor: move;
+}

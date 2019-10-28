@@ -17,9 +17,11 @@ const rotateElement = (element, hook) => {
         let mouseY = parseFloat(e.pageY);
         let radians = Math.atan2(mouseX - centerX, mouseY - centerY);
         let degree = (radians * (180 / Math.PI) * -1);
+
         if (e.shiftKey){
             degree = Math.round((degree/15))*15;
         }
+        
         element.style.setProperty('transform', `rotate(${degree}deg)`);
     };
 

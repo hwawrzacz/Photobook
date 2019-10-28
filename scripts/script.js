@@ -1,16 +1,15 @@
 const page = document.querySelector(".page-container");
-const image = document.querySelector(".image");
-const textBox = document.querySelector(".textbox-container");
-const hookResize = document.querySelector(".hook-resize");
-const hookRotate = document.querySelector(".hook-rotate");
-const creatorButton = document.querySelector(".add-object-button");
 
-resize(image, hookResize);
-move(image);
-move(textBox);
-rotateElement(image, hookRotate);
-rotateElement(textBox, hookRotate);
-addTextBox(creatorButton);
+const buttonAddTextBox = document.querySelector(".add-textbox");
+const buttonAddImage = document.querySelector(".add-image");
+
+// resize(image, hookResize);
+// move(image);
+// move(textBox);
+// rotateElement(image, hookRotate);
+
+manageTextBox(buttonAddTextBox);
+manageImage(buttonAddImage);
 
 function getData() {
     var object = "width: " + getElementWidth(image);

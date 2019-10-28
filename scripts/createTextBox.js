@@ -1,26 +1,31 @@
-const addTextBox = (button) => {
+const manageTextBox = (button) => {
 
     const createTextBox = () => {
-        var textBox = document.createElement("input");
-        textBox.setAttribute("type", "text");
+        const parser = new DOMParser();
+        var textBoxDoc = parser.parseFromString(textBoxPattern, "text/html"); 
+        const textBox = extractParsedTextbox(textBoxDoc);
 
         return textBox;
     }
 
-    const setDefaultCssAttributes = (textBox) => {
-        textBox.style.setProperty("position", "relative");
-        textBox.style.setProperty("width", "200px");
-        textBox.style.setProperty("height", "40px");
-
-        return textBox;
-    } 
-
     const addElement = () => {
-        console.log("textbox added")
-        var textBox = createTextBox();
-        textBox = setDefaultCssAttributes(textBox);
+        const textBox = createTextBox();
+        const hookRotate = textBox.querySelector(".hook-rotate");
+        const hookDelete = textBox.querySelector(".hook-delete");
+
+        move(textBox);
+        rotateElement(textBox, hookRotate);
+        hookDelete.addEventListener("click", (e) => {
+            textBox.remove();
+        });
+
         page.appendChild(textBox);
     }
 
+
     button.addEventListener("click", addElement);
+}
+
+function extractParsedTextbox(document){
+    return document.querySelector(".textbox-container");
 }

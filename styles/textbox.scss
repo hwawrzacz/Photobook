@@ -1,0 +1,68 @@
+/* Textbox */
+.textbox-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: move;
+
+    input[type=text] {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: auto;
+        padding: 10px; 
+        
+        font-size: 16px;
+        border: 2px dashed #666;
+        outline: none;
+        background-color: transparent;
+        cursor: move;
+        transition: 300ms;
+
+        &:focus {
+            border: 2px solid skyblue;
+        }
+    }
+
+    ul.textbox-tools {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        max-height: 0;
+        display: flex;
+        align-items: center;
+        
+        background-color: white;
+        list-style: none;
+        opacity: 0;
+        transition: 300ms;
+        
+        li {
+            margin: 0 3px;
+            cursor: pointer;
+
+            i {  
+                width: 20px;
+                height: 20px;
+                font-size: 20px;
+            }
+
+            input[type=color] {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    &:hover, &:active {
+        ul {
+            max-height: 30px;
+            opacity: .3;
+        }
+    }
+}
+/* End of textbox */
