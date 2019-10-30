@@ -38,7 +38,12 @@ function getElementPositionLeft(element) {
     return parseInt(getComputedStyle(element).getPropertyValue("left"));
 }
 
-function getData(element) {
+function showInfo(content) {
+    const infoBox = document.querySelector(".test");
+    infoBox.innerHTML = content;
+}
+
+function getElementProperties(element) {
     let elementProperties = "width: " + getElementWidth(element);
     elementProperties += "<br /> height: " + getElementHeight(element);
     elementProperties += "<br /> top: " + getElementPositionTop(element);
@@ -48,8 +53,7 @@ function getData(element) {
     const cosine = getRotationCos(element);
     elementProperties += "<br /> rotation (cos&alpha;): " + cosine;
 
-    const el = document.querySelector(".test");
-    el.innerHTML = elementProperties;
+    return elementProperties;
 }
 
 function getRotationCos(element){

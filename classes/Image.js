@@ -1,7 +1,9 @@
 class Image {
-    constructor(top = 0, left = 0, bottom = "auto", width = 500, height = 100, rotation = 0) {
+    constructor(base64Image) {
         const parser = new DOMParser().parseFromString(this.imagePattern,"text/html");
         this.element = parser.querySelector(".image-container");
+        this.element.style.setProperty("background-image", "url(" + base64Image +")");
+        this.element.classList.add("DUPA");
         this.initializeHooksMechanism();
     }
     
@@ -15,6 +17,7 @@ class Image {
         rotateElement(this.element, hookRotate);
         hookDelete.addEventListener("click", (e) => {
             this.element.remove();
+            showInfo("Element was removed");
         });
     }
     

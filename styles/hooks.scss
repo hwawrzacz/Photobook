@@ -9,22 +9,25 @@ i.hook {
     cursor: pointer;
 }
 
-.hook-rotate {
+i.hook-rotate {
     bottom: -21px;
+    width: 40px;
     right: 48%;
+    text-align: center; 
+    border-radius: 5px;
 }
 
-.hook-move {
+i.hook-move {
     position: absolute;
     cursor: move;
 }
 
-.hook-resize {
+i.hook-resize {
     bottom: -21px;
     right: -21px;
 }
 
-.hook-delete {
+i.hook-delete {
     top: 0;
     right: 0;
 }

@@ -28,7 +28,7 @@ const move = (element) => {
         element.style.setProperty("top", newTop + "px");
         element.style.setProperty("left", newLeft + "px");
         
-        getData(element);
+        showInfo(getElementProperties(element));
     }
 
     const stopMoving = () => {

@@ -13,6 +13,7 @@ class TextBox {
         rotateElement(this.element, hookRotate);
         hookDelete.addEventListener("click", (e) => {
             this.element.remove();
+            showInfo("Element was removed");
         });
     }
 

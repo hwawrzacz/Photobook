@@ -27,7 +27,7 @@ const resizeElement = (element, handler) => {
             element.style.setProperty("height", mouseY - mouseY0 + elementHeight + "px");
         }
         
-        getData(element);
+        showInfo(getElementProperties(element));
     }
 
     const stopResize = () => {

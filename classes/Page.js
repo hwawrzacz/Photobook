@@ -1,8 +1,4 @@
 class Page {
-    number
-    images = [];
-    textBoxes = [];
-
     //number is just for helping with identifying specific page
     constructor(images, textBoxes, number) {
         this.images = images;
@@ -22,8 +18,8 @@ class Page {
         this.textBoxes.push(newTextBox);
     }
 
-    addImage(top, left, bottom, width, height, rotation) {
-        let newImage = new Image(top, left, bottom, width, height, rotation);
+    addImage(base64Image) {
+        let newImage = new Image(base64Image);
         this.element.appendChild(newImage.element);
         this.images.push(newImage);
     }
