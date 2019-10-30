@@ -1,21 +1,35 @@
 .test {
-  background-color: green;
   position: absolute;
-  top: 0;
-  right: 0; }
-  .test .test-content {
-    width: 100px;
-    height: 50px; }
+  bottom: 0;
+  right: 0;
+  width: 250px;
+  height: 150px;
+  z-index: 100;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: white;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 5px 20px -5px black;
+          box-shadow: 0 5px 20px -5px black; }
 
 /* Whole layout */
-#main-container {
+#view {
+  position: relative;
   width: 90vw;
   height: 90vh; }
 
 /* Editable page */
-.page-container {
-  position: relative;
+.page {
+  position: absolute;
   overflow: hidden;
+  background: white;
   border: 1px solid black; }
 
 .button-container {
@@ -46,3 +60,5 @@ button.rounded-button {
     margin-right: 0; }
   button.rounded-button:hover {
     background-color: #ddd; }
+  button.rounded-button:active {
+    background-color: #ccc; }

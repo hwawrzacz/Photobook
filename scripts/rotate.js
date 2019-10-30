@@ -23,6 +23,8 @@ const rotateElement = (element, hook) => {
         }
         
         element.style.setProperty('transform', `rotate(${degree}deg)`);
+
+        getData(element);
     };
 
     const endRotate = () => {

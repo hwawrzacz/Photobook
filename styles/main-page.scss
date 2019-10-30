@@ -1,27 +1,34 @@
 
 .test {
-    background-color: green;
     position: absolute;
-    top: 0; 
+    bottom: 0; 
     right: 0;
+    width: 250px;
+    height: 150px;
+    z-index: 100;
 
-    .test-content {
-        width: 100px;
-        height: 50px;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 5px 20px -5px black;
 }
 
 /* Whole layout */
-#main-container {
+#view {
+    position: relative;
     width: 90vw;
     height: 90vh;
 }
 
 /* Editable page */
-.page-container {
-    position: relative;   
+.page {
+    position: absolute;   
     overflow: hidden; 
 
+    background: white;
     border: 1px solid black;
 }
 
@@ -56,5 +63,9 @@ button.rounded-button {
 
     &:hover {
         background-color: #ddd;
+    }
+    
+    &:active {
+        background-color: #ccc;
     }
 }

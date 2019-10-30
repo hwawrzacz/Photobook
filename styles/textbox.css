@@ -3,6 +3,8 @@
   position: absolute;
   top: 0;
   left: 0;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
   cursor: move; }
   .textbox-container input[type=text] {
     position: relative;
@@ -50,5 +52,3 @@
   .textbox-container:hover ul, .textbox-container:active ul {
     max-height: 30px;
     opacity: .3; }
-
-/* End of textbox */

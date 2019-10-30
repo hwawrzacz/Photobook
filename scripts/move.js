@@ -1,22 +1,17 @@
 //move
-var mouseX;
-var mouseY;
-var mouseX0;
-var mouseY0;
+let mouseX;
+let mouseY;
+let mouseX0;
+let mouseY0;
 
-var elementWidth;
-var elementHeight;
-var elementPositionTop;
-var elementPositionLeft;
+let elementWidth;
+let elementHeight;
+let elementPositionTop;
+let elementPositionLeft;
 
 const move = (element) => {
-    const pageWidth = parseInt(getComputedStyle(page).getPropertyValue("width")); 
-    const pageHeight = parseInt(getComputedStyle(page).getPropertyValue("height"));  
-    
+
    const initializeMoving = (event) => { 
-        // event.stopPropagation();
-        // event.preventDefault();
-        
         getElementPosition(element);
         getElementSize(element);
         getStartingMouseCoordinates(event);
@@ -27,11 +22,13 @@ const move = (element) => {
 
     const moveElement = (event) => {
         getMouseCoordinates(event);   
-        var newLeft = mouseX - mouseX0 + elementPositionLeft;
-        var newTop = mouseY - mouseY0 + elementPositionTop;
+        let newLeft = mouseX - mouseX0 + elementPositionLeft;
+        let newTop = mouseY - mouseY0 + elementPositionTop;
         
         element.style.setProperty("top", newTop + "px");
         element.style.setProperty("left", newLeft + "px");
+        
+        getData(element);
     }
 
     const stopMoving = () => {

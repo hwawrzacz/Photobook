@@ -1,5 +1,5 @@
 //resize
-const resize = (element, handler) => {
+const resizeElement = (element, handler) => {
     var resizeEvenly = false;
 
     const initializeResizing = (event) => {
@@ -8,12 +8,12 @@ const resize = (element, handler) => {
         getStartingMouseCoordinates(event);
 
         getElementSize(element);
-        page.addEventListener("mousemove", resizeElement);
+        page.addEventListener("mousemove", resize);
         page.addEventListener("mouseup", stopResize);
         handler.addEventListener("mouseup", stopResize);
     }
 
-    const resizeElement = (event) => {
+    const resize = (event) => {
         getMouseCoordinates(event);
 
         if (event.shiftKey) {
@@ -26,26 +26,14 @@ const resize = (element, handler) => {
             element.style.setProperty("width",  mouseX - mouseX0 + elementWidth + "px");
             element.style.setProperty("height", mouseY - mouseY0 + elementHeight + "px");
         }
+        
+        getData(element);
     }
 
     const stopResize = () => {
-        page.removeEventListener("mousemove", resizeElement);
+        page.removeEventListener("mousemove", resize);
         page.removeEventListener("mouseup", stopResize);
     }
 
-    const handleKeypress = (event) => {
-        console.log(event.shiftKey);
-    }
-
     handler.addEventListener("mousedown", initializeResizing);
-}
-
-function getMouseCoordinates(event) {
-    mouseX = event.pageX;
-    mouseY = event.pageY;
-}
-
-function getStartingMouseCoordinates(event) {
-    mouseX0 = event.pageX;
-    mouseY0 = event.pageY;
 }
