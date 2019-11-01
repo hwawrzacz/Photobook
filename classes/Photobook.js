@@ -1,9 +1,5 @@
 class Photobook {
     
-    element;
-    pages;
-    activePage;
-
     constructor() {
         this.pages = [];
         this.element = document.createElement("main");
@@ -24,11 +20,11 @@ class Photobook {
     }
 
     addTextBoxToPage(pageNumber){
-        this.pages[pageNumber - 1].addTextBox(0, 0, "auto", 0);
+        this.pages[pageNumber - 1].addTextBox(0, 0);
     }
 
     addTextBoxToActivePage(){
-        this.activePage.addTextBox(0, 0, "auto", 0);
+        this.activePage.addTextBox(0, 0);
     }
 
     addImageToPage(base64Image, pageNumber){

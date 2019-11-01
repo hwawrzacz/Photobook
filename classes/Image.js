@@ -1,9 +1,17 @@
-class Image {
-    constructor(base64Image) {
-        const parser = new DOMParser().parseFromString(this.imagePattern,"text/html");
-        this.element = parser.querySelector(".image-container");
+class Image extends Element2D {
+
+    constructor(base64Image, top = 0, left = 0, width = 500, height = 300, rotation = 0) {
+        super();
+        const imageDocument = new DOMParser().parseFromString(this.imagePattern,"text/html");
+        this.element = imageDocument.querySelector(".image-container");
         this.element.style.setProperty("background-image", "url(" + base64Image +")");
-        this.element.classList.add("DUPA");
+        
+        this.top = top;
+        this.left = left;
+        this.width = width;
+        this.height = height;
+        this.rotation = rotation;
+
         this.initializeHooksMechanism();
     }
     
@@ -12,10 +20,10 @@ class Image {
         const hookRotate = this.element.querySelector(".hook-rotate");
         const hookDelete = this.element.querySelector(".hook-delete");
 
-        move(this.element);
-        resizeElement(this.element, hookResize);
-        rotateElement(this.element, hookRotate);
-        hookDelete.addEventListener("click", (e) => {
+        move(this);
+        resizeElement(this, hookResize);
+        rotateElement(this, hookRotate);
+        hookDelete.addEventListener("click", () => {
             this.element.remove();
             showInfo("Element was removed");
         });

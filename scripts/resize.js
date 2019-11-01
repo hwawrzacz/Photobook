@@ -1,33 +1,38 @@
 //resize
-const resizeElement = (element, handler) => {
-    var resizeEvenly = false;
+const resizeElement = (target, hook) => {
+    let initialWidth;
+    let initialHeight;
 
     const initializeResizing = (event) => {
         event.stopPropagation();
         event.preventDefault();
-        getStartingMouseCoordinates(event);
 
-        getElementSize(element);
+        getStartingMouseCoordinates(event);
+        initialWidth = target.width;
+        initialHeight = target.height;
+
         page.addEventListener("mousemove", resize);
         page.addEventListener("mouseup", stopResize);
-        handler.addEventListener("mouseup", stopResize);
+        hook.addEventListener("mouseup", stopResize);
     }
 
     const resize = (event) => {
         getMouseCoordinates(event);
 
         if (event.shiftKey) {
-            const newWidth = mouseX - mouseX0 + elementWidth;
-            resizeRatio = newWidth/elementWidth;
-            element.style.setProperty("width",  elementWidth*resizeRatio + "px");
-            element.style.setProperty("height", elementHeight*resizeRatio + "px");
+            const newWidth = mouseX - mouseX0 + initialWidth;
+            const resizeRatio = newWidth/initialWidth;
+            target.width = initialWidth * resizeRatio;
+            target.height = initialHeight * resizeRatio;
         }
         else {
-            element.style.setProperty("width",  mouseX - mouseX0 + elementWidth + "px");
-            element.style.setProperty("height", mouseY - mouseY0 + elementHeight + "px");
+            const newWidth = mouseX - mouseX0 + initialWidth;
+            const newHeight = mouseY - mouseY0 + initialHeight;
+            target.width = newWidth;
+            target.height = newHeight;
         }
         
-        showInfo(getElementProperties(element));
+        showInfo(getElementProperties(target.element));
     }
 
     const stopResize = () => {
@@ -35,5 +40,5 @@ const resizeElement = (element, handler) => {
         page.removeEventListener("mouseup", stopResize);
     }
 
-    handler.addEventListener("mousedown", initializeResizing);
+    hook.addEventListener("mousedown", initializeResizing);
 }

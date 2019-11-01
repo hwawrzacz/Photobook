@@ -1,3 +1,13 @@
+let mouseX;
+let mouseY;
+let mouseX0;
+let mouseY0;
+
+let elementWidth;
+let elementHeight;
+let elementPositionTop;
+let elementPositionLeft;
+
 function getElementSize(element) {    
     elementWidth = getElementWidth(element);
     elementHeight = getElementHeight(element);
@@ -49,7 +59,6 @@ function getElementProperties(element) {
     elementProperties += "<br /> top: " + getElementPositionTop(element);
     elementProperties += "<br /> left: " + getElementPositionLeft(element);
     elementProperties += "<br /> bottom: " + getElementPositionBottom(element);
-    
     const cosine = getRotationCos(element);
     elementProperties += "<br /> rotation (cos&alpha;): " + cosine;
 

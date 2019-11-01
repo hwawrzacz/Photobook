@@ -12,14 +12,15 @@ class Page {
         this.element.innerHTML = "Page" + number;
      }
 
-    addTextBox(top, left, bottom, rotation) {
-        let newTextBox = new TextBox(top, left, bottom, rotation);
+    addTextBox(top, left, bottom, width, height, rotation) {
+        let newTextBox = new TextBox(top, left, bottom, width, height, rotation);
         this.element.appendChild(newTextBox.element);
         this.textBoxes.push(newTextBox);
     }
 
     addImage(base64Image) {
         let newImage = new Image(base64Image);
+        newImage.initializeHooksMechanism();
         this.element.appendChild(newImage.element);
         this.images.push(newImage);
     }

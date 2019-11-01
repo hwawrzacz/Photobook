@@ -1,30 +1,28 @@
 //rotate
-const rotateElement = (element, hook) => {
-    const initializeRotating = (e) => {
-        e.stopPropagation();
-        e.preventDefault();
+const rotateElement = (target, hook) => {
+
+    const initializeRotating = (event) => {
+        event.stopPropagation();
+        event.preventDefault();
         window.addEventListener('mousemove', rotate);
         window.addEventListener('mouseup', endRotate);
     };
 
-    const rotate = (e) => {
-        const elementStyles = window.getComputedStyle(element);
-        let width = parseFloat(elementStyles.getPropertyValue('width'));
-        let height = parseFloat(elementStyles.getPropertyValue('height'));
-        let centerX = element.offsetLeft + (width / 2);
-        let centerY = element.offsetTop + (height / 2);
-        let mouseX = parseFloat(e.pageX);
-        let mouseY = parseFloat(e.pageY);
+    const rotate = (event) => {
+        let centerX = target.left + (target.width / 2);
+        let centerY = target.top + (target.height / 2);
+        let mouseX = parseFloat(event.pageX);
+        let mouseY = parseFloat(event.pageY);
         let radians = Math.atan2(mouseX - centerX, mouseY - centerY);
+
         let degree = (radians * (180 / Math.PI) * -1);
 
-        if (e.shiftKey){
+        if (event.shiftKey){
             degree = Math.round((degree/15))*15;
         }
         
-        element.style.setProperty('transform', `rotate(${degree}deg)`);
-
-        showInfo(getElementProperties(element));
+        target.rotation = degree;
+        showInfo(getElementProperties(target.element));
     };
 
     const endRotate = () => {

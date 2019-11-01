@@ -1,20 +1,13 @@
 //move
-let mouseX;
-let mouseY;
-let mouseX0;
-let mouseY0;
-
-let elementWidth;
-let elementHeight;
-let elementPositionTop;
-let elementPositionLeft;
-
-const move = (element) => {
+const move = (target) => {
+    
+    let startingTop;
+    let startingLeft;
 
    const initializeMoving = (event) => { 
-        getElementPosition(element);
-        getElementSize(element);
         getStartingMouseCoordinates(event);
+        startingTop = target.top;
+        startingLeft = target.left;
 
         page.addEventListener("mousemove", moveElement);
         page.addEventListener("mouseup", stopMoving);
@@ -22,13 +15,13 @@ const move = (element) => {
 
     const moveElement = (event) => {
         getMouseCoordinates(event);   
-        let newLeft = mouseX - mouseX0 + elementPositionLeft;
-        let newTop = mouseY - mouseY0 + elementPositionTop;
+        let newLeft = mouseX - mouseX0 + startingLeft;
+        let newTop = mouseY - mouseY0 + startingTop;
         
-        element.style.setProperty("top", newTop + "px");
-        element.style.setProperty("left", newLeft + "px");
+        target.top = newTop;    
+        target.left = newLeft;
         
-        showInfo(getElementProperties(element));
+        showInfo(getElementProperties(target.element));
     }
 
     const stopMoving = () => {
@@ -36,5 +29,5 @@ const move = (element) => {
         page.removeEventListener("mouseup", stopMoving);
     }
 
-    element.addEventListener("mousedown", initializeMoving);
+    target.element.addEventListener("mousedown", initializeMoving);
 }
