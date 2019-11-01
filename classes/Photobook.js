@@ -1,4 +1,8 @@
 class Photobook {
+    
+    element;
+    pages;
+    activePage;
 
     constructor() {
         this.pages = [];
@@ -11,18 +15,26 @@ class Photobook {
         let page = new Page([], [], (this.pages.length + 1));
         this.pages.push(page);
         this.element.appendChild(page.element)
+        this.activePage = page;
+    }
+
+    getPage(pageNumber) {
+        if (pageNumber > 0)
+            return this.pages[pageNumber - 1];
     }
 
     addTextBoxToPage(pageNumber){
         this.pages[pageNumber - 1].addTextBox(0, 0, "auto", 0);
     }
 
+    addTextBoxToActivePage(){
+        this.activePage.addTextBox(0, 0, "auto", 0);
+    }
+
     addImageToPage(base64Image, pageNumber){
         this.pages[pageNumber - 1].addImage(base64Image);
     }
-
-    getElement(){
-        return this.element;
-    }
-    
+    addImageToActivePage(base64Image){
+        this.activePage.addImage(base64Image);
+    }    
 }
