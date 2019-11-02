@@ -18,7 +18,7 @@ class TextBox extends Element2D {
         this.initializeHooksMechanism();
     }
 
-    //region Getters and setters
+    //#region Getters and setters
     get textAlign() {
         return this.TextAlignment;
     }
@@ -38,7 +38,7 @@ class TextBox extends Element2D {
             this.element.style.setProperty("font-size", value + "px");
         }
     }
-    //endregion
+    //#endregion
 
     initializeHooksMechanism() {
         const hookResize = this.element.querySelector(".hook-resize");

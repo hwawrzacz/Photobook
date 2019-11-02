@@ -15,8 +15,9 @@ class Photobook {
     }
 
     getPage(pageNumber) {
-        if (pageNumber > 0)
+        if (pageNumber > 0){
             return this.pages[pageNumber - 1];
+        }
     }
 
     addTextBoxToPage(pageNumber){
@@ -30,6 +31,7 @@ class Photobook {
     addImageToPage(base64Image, pageNumber){
         this.pages[pageNumber - 1].addImage(base64Image);
     }
+
     addImageToActivePage(base64Image){
         this.activePage.addImage(base64Image);
     }    

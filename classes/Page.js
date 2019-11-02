@@ -7,10 +7,19 @@ class Page {
         this.element.classList.add("page");
         this.element.classList.add("size-fill-parent");
         this.element.classList.add("page");
-        this.element.innerHTML = "Textbox" + (textBoxes.length + 1);
-        this.element.innerHTML = "Page";
-        this.element.style.setProperty("background-image", "url(" + backgroundImage +")");
-     }
+        this.backgroundImage = backgroundImage;
+    }
+
+    //#region Getters and setters
+    get backgroundImage() {
+        return this.BackgroundImage;
+    } 
+
+    set backgroundImage(value) {
+        this.BackgroundImage = value;
+        this.element.style.setProperty("background-image", "url(" + value +")");
+    }
+    //#endregion
 
     addTextBox(top, left, bottom, width, height, rotation) {
         let newTextBox = new TextBox(top, left, bottom, width, height, rotation);
