@@ -7,8 +7,8 @@ class Photobook {
         document.querySelector("body").appendChild(this.element);
     }
 
-    addPage() {
-        let page = new Page([], [], (this.pages.length + 1));
+    addPage(backgroundImage = "") {
+        let page = new Page(backgroundImage);
         this.pages.push(page);
         this.element.appendChild(page.element)
         this.activePage = page;

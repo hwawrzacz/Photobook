@@ -1,6 +1,5 @@
 class Page {
-    //number is just for helping with identifying specific page
-    constructor(images, textBoxes, number) {
+    constructor(backgroundImage = "", images = [], textBoxes = []) {
         this.images = images;
         this.textBoxes = textBoxes;
 
@@ -9,7 +8,8 @@ class Page {
         this.element.classList.add("size-fill-parent");
         this.element.classList.add("page");
         this.element.innerHTML = "Textbox" + (textBoxes.length + 1);
-        this.element.innerHTML = "Page" + number;
+        this.element.innerHTML = "Page";
+        this.element.style.setProperty("background-image", "url(" + backgroundImage +")");
      }
 
     addTextBox(top, left, bottom, width, height, rotation) {

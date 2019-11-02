@@ -30,6 +30,8 @@
   position: absolute;
   overflow: hidden;
   background: white;
+  background-position: center;
+  background-size: cover;
   border: 1px solid black; }
 
 .button-container {

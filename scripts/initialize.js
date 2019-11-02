@@ -1,9 +1,9 @@
 let photobook = new Photobook();
 const page = photobook.element;
 
-photobook.addPage(1);
-photobook.addPage(2);
-photobook.addPage(3);
+photobook.addPage();
+photobook.addPage();
+photobook.addPage(fabric1Base64);
 
 console.log(photobook.activePage);
 

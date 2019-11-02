@@ -23,8 +23,10 @@ class Element2D {
     }
 
     set width(value) {
-        this.Width = value;
-        this.element.style.setProperty("width", value + "px");
+        if (value >= this.minWidth) {
+            this.Width = value;
+            this.element.style.setProperty("width", value + "px");
+        }
     }
 
     get height() {
@@ -32,8 +34,28 @@ class Element2D {
     }
     
     set height(value) {
-        this.Height = value;
-        this.element.style.setProperty("height", value + "px");
+        if (value >= this.minHeight) {
+            this.Height = value;
+            this.element.style.setProperty("height", value + "px");
+        }
+    }
+
+    get minWidth() {
+        return this.MinWidth;
+    }
+
+    set minWidth(value) {
+        this.MinWidth = value;
+        this.element.style.setProperty("min-width", value + "px");
+    }
+
+    get minHeight() {
+        return this.MinHeight;
+    }
+    
+    set minHeight(value) {
+        this.MinHeight = value;
+        this.element.style.setProperty("min-height", value + "px");
     }
 
     get rotation() {

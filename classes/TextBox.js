@@ -6,6 +6,8 @@ class TextBox extends Element2D {
         
         this.top = top;
         this.left = left;
+        this.minWidth = 300;
+        this.minHeight = 50;
         this.width = width;
         this.height = height;
         this.rotation = rotation;
