@@ -16,9 +16,10 @@
     height: 100%;
     padding: 10px;
     font-size: inherit;
+    text-align: inherit;
+    background-color: transparent;
     border: 2px dashed #666;
     outline: none;
-    background-color: transparent;
     cursor: move;
     -webkit-transition: 300ms;
     transition: 300ms; }
@@ -49,17 +50,17 @@
         width: 20px;
         height: 20px;
         font-size: 20px !important; }
+        .textbox-container ul.textbox-tools li i::-moz-selection {
+          background-color: none;
+          color: inherit; }
+        .textbox-container ul.textbox-tools li i::selection {
+          background-color: none;
+          color: inherit; }
       .textbox-container ul.textbox-tools li input[type=color] {
         width: 20px;
         height: 20px; }
     .textbox-container ul.textbox-tools:hover {
       opacity: 1; }
-    .textbox-container ul.textbox-tools::-moz-selection {
-      background-color: none;
-      color: inherit; }
-    .textbox-container ul.textbox-tools::selection {
-      background-color: none;
-      color: inherit; }
   .textbox-container:hover ul, .textbox-container:active ul {
     max-height: 30px;
     opacity: .3; }

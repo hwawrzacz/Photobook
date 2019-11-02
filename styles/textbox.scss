@@ -18,9 +18,10 @@
         padding: 10px; 
         
         font-size: inherit;
+        text-align: inherit;
+        background-color: transparent;
         border: 2px dashed #666;
         outline: none;
-        background-color: transparent;
         cursor: move;
         transition: 300ms;
 
@@ -52,6 +53,11 @@
                 width: 20px;
                 height: 20px;
                 font-size: 20px !important;
+                
+                &::selection {
+                    background-color: none;
+                    color: inherit;
+                }
             }
 
             input[type=color] {
@@ -62,11 +68,6 @@
 
         &:hover {
             opacity: 1;
-        }
-
-        &::selection {
-            background-color: none;
-            color: inherit;
         }
     }
 
