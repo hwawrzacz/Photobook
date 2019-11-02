@@ -10,5 +10,4 @@ console.log(photobook.activePage);
 photobook.addImageToPage(imageBase64, 3);
 photobook.addTextBoxToPage(3);
 
-console.log(photobook.activePage)
-;
+console.log(photobook.activePage);
