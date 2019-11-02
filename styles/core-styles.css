@@ -1,0 +1,132 @@
+body{
+    padding: 0px;
+    margin: 0px;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.options{
+    flex: 3;
+    display: flex;
+    flex-direction: row;
+}
+
+.options .menu{
+    background: darkorange;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.options .menu div{
+    background-color: dodgerblue;
+    width: 60px;
+    height: 20px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.options .actions{
+    background-color: darkviolet;
+    flex: 2;
+    overflow: auto;
+}
+
+.content{
+    flex: 7;
+    background: firebrick;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cards{
+    width: 75%;
+    height: 75%;
+    background-color: darkslategray;
+
+}
+
+.images {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.image-container{
+    cursor: pointer;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.image-container-delete{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    right: 0px;
+    top: 0px;
+}
+
+.images-importer {
+    display: none;
+}
+
+.import-images-button {
+    width: 60px;
+    height: 30px;
+    background-color: #271bd3;
+    cursor: pointer;
+}
+
+.file-create-button {
+    width: 50px;
+    height: 28px;
+    background-color: red;
+    cursor: pointer;
+}
+
+.content .cards {
+    position: relative;
+}
+
+.content .cards .cards-container{
+    width: 100%;
+    height: 100%;
+}
+
+.content .cards .cards-container .card{
+    width: 100%;
+    height: 100%;
+}
+
+/* .content .navigation .nav {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: blue;
+    top: 50%;
+    cursor: pointer;
+}
+
+.content .navigation .nav.left {
+    left: -50px;
+}
+
+.content .navigation .nav.right{
+    right: -50px;
+} */
+
+.content .cards .card-number{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #34d835;
+    bottom: -42px;
+    right: 0;
+}

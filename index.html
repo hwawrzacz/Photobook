@@ -4,6 +4,7 @@
         <title>Photobook</title>
         <meta name=description content="The only tool for creating awesome photobooks" />
         <meta name="viewport" content="width=device-width initial-scale=1 minimum-scale=1" />
+        <link rel="stylesheet" type="text/css" href="./styles/core-styles.css" /> 
         <link rel="stylesheet" type="text/css" href="./styles/styles.css" /> 
         <link rel="stylesheet" type="text/css" href="./styles/image.css" /> 
         <link rel="stylesheet" type="text/css" href="./styles/main-page.css" /> 
@@ -14,9 +15,28 @@
         rel="stylesheet">
     </head>
 
-    <body>       
+    <body> 
+        <div class="container">
+            <div class="options">
+                <div class="menu">
+                    <div class="menu-file">file</div>
+                    <div class="menu-images">images</div>
+                    <div class="menu-stickers">stickers</div>
+                    <div class="menu-text">text</div>
+                </div>
+                <div class="actions"></div>
+            </div>
+            <div class="content">
+                    <!-- <div class="navigation">
+                        <div class="nav right"></div>
+                        <div class="nav left"></div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
         <div class="test">Here go details</div>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/EventEmitter/5.2.8/EventEmitter.js"></script>
         <script src="./repo/imageBase64.js"></script>
         <script src="./scripts/common.js"></script> 
         <script src="./scripts/move.js"></script>
