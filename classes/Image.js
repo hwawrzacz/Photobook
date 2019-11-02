@@ -1,5 +1,4 @@
 class Image extends Element2D {
-
     constructor(base64Image, top = 0, left = 0, width = 500, height = 300, rotation = 0) {
         super();
         const imageDocument = new DOMParser().parseFromString(this.imagePattern,"text/html");
