@@ -6,7 +6,6 @@
 body {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; }
 
-/* Common classes */
 /* Flex */
 .flex-container {
   display: -webkit-box;
@@ -58,78 +57,3 @@ body {
           flex-grow: 8; }
 
 /* End flex */
-.manipulator {
-  position: absolute;
-  margin: 1px;
-  background-color: white; }
-
-.manipulator-rotate {
-  bottom: -14px;
-  right: 48%;
-  cursor: pointer; }
-
-.manipulator-move {
-  position: absolute;
-  cursor: move; }
-
-.manipulator-resize {
-  bottom: 0;
-  right: 0;
-  cursor: pointer; }
-
-.add-image-button-container {
-  position: absolute; }
-
-/* Whole layout */
-#main-container {
-  width: 90vw;
-  height: 90vh; }
-
-/* Photos list */
-.photos-list {
-  width: 20%; }
-  .photos-list #file-selection {
-    display: none; }
-  .photos-list #file-selection-label {
-    display: inline-block;
-    background-color: red; }
-
-/* Editable page */
-.page-container {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid black; }
-
-/* Image container */
-.image {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 500px;
-  height: 300px;
-  background-image: url("../images/example.png");
-  background-position: center;
-  background-size: 100% 100%;
-  border: 1px solid black; }
-  .image button {
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
-    background-color: #f0f0f0;
-    background-image: none;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    -webkit-transition: 200ms;
-    transition: 200ms; }
-    .image button:hover {
-      background-color: #ddd; }
-
-.test {
-  background-color: red; }
-  .test .test-content {
-    background-color: green;
-    width: 100px;
-    height: 50px;
-    -webkit-transform: rotate(20deg);
-            transform: rotate(20deg); }

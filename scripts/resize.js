@@ -1,51 +1,44 @@
 //resize
-const resize = (image, handler) => {
-    var resizeEvenly = false;
+const resizeElement = (target, hook) => {
+    let initialWidth;
+    let initialHeight;
 
     const initializeResizing = (event) => {
         event.stopPropagation();
         event.preventDefault();
-        getStartingMouseCoordinates(event);
 
-        getImageSize();
-        page.addEventListener("mousemove", resizeElement);
+        getStartingMouseCoordinates(event);
+        initialWidth = target.width;
+        initialHeight = target.height;
+
+        page.addEventListener("mousemove", resize);
         page.addEventListener("mouseup", stopResize);
-        handler.addEventListener("mouseup", stopResize);
+        hook.addEventListener("mouseup", stopResize);
     }
 
-    const resizeElement = (event) => {
+    const resize = (event) => {
         getMouseCoordinates(event);
 
         if (event.shiftKey) {
-            const newWidth = mouseX - mouseX0 + imageWidth;
-            resizeRatio = newWidth/imageWidth;
-            image.style.setProperty("width",  imageWidth*resizeRatio + "px");
-            image.style.setProperty("height", imageHeight*resizeRatio + "px");
+            const newWidth = mouseX - mouseX0 + initialWidth;
+            const resizeRatio = newWidth/initialWidth;
+            target.width = initialWidth * resizeRatio;
+            target.height = initialHeight * resizeRatio;
         }
         else {
-            image.style.setProperty("width",  mouseX - mouseX0 + imageWidth + "px");
-            image.style.setProperty("height", mouseY - mouseY0 + imageHeight + "px");
+            const newWidth = mouseX - mouseX0 + initialWidth;
+            const newHeight = mouseY - mouseY0 + initialHeight;
+            target.width = newWidth;
+            target.height = newHeight;
         }
+        
+        showInfo(getElementProperties(target.element));
     }
 
     const stopResize = () => {
-        page.removeEventListener("mousemove", resizeElement);
+        page.removeEventListener("mousemove", resize);
         page.removeEventListener("mouseup", stopResize);
     }
 
-    const handleKeypress = (event) => {
-        console.log(event.shiftKey);
-    }
-
-    handler.addEventListener("mousedown", initializeResizing);
-}
-
-function getMouseCoordinates(event) {
-    mouseX = event.pageX;
-    mouseY = event.pageY;
-}
-
-function getStartingMouseCoordinates(event) {
-    mouseX0 = event.pageX;
-    mouseY0 = event.pageY;
+    hook.addEventListener("mousedown", initializeResizing);
 }

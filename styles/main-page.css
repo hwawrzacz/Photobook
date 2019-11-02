@@ -1,0 +1,64 @@
+.test {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 250px;
+  height: 150px;
+  z-index: 100;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: white;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 5px 20px -5px black;
+          box-shadow: 0 5px 20px -5px black; }
+
+/* Whole layout */
+#view {
+  position: relative;
+  width: 90vw;
+  height: 90vh; }
+
+/* Editable page */
+.page {
+  position: absolute;
+  overflow: hidden;
+  background: white;
+  border: 1px solid black; }
+
+.button-container {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly; }
+
+button.rounded-button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  background-color: #f0f0f0;
+  background-image: none;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: 200ms;
+  transition: 200ms; }
+  button.rounded-button:first-child {
+    margin-left: 0; }
+  button.rounded-button:last-child {
+    margin-right: 0; }
+  button.rounded-button:hover {
+    background-color: #ddd; }
+  button.rounded-button:active {
+    background-color: #ccc; }

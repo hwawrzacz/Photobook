@@ -1,87 +1,33 @@
 //move
-var mouseX;
-var mouseY;
-var mouseX0;
-var mouseY0;
-
-var imageWidth;
-var imageHeight; 
-var imagePositionTop;
-var imagePositionLeft;
-
-const move = (image) => {
-    const pageWidth = parseInt(getComputedStyle(page).getPropertyValue("width")); 
-    const pageHeight = parseInt(getComputedStyle(page).getPropertyValue("height"));  
+const move = (target) => {
     
-   const initializeMoving = (event) => { 
-        event.stopPropagation();
-        event.preventDefault();
-        
-        getImagePosition();
-        getImageSize();
-        getStartingMouseCoordinates(event);
+    let startingTop;
+    let startingLeft;
 
-        image.addEventListener("mousemove", moveElement);
+   const initializeMoving = (event) => { 
+        getStartingMouseCoordinates(event);
+        startingTop = target.top;
+        startingLeft = target.left;
+
+        page.addEventListener("mousemove", moveElement);
         page.addEventListener("mouseup", stopMoving);
     }
 
     const moveElement = (event) => {
         getMouseCoordinates(event);   
-        var newLeft = mouseX - mouseX0 + imagePositionLeft;
-        var newTop = mouseY - mouseY0 + imagePositionTop;
+        let newLeft = mouseX - mouseX0 + startingLeft;
+        let newTop = mouseY - mouseY0 + startingTop;
         
-        if (newLeft < 0) newLeft = 0;
-        else if (newLeft > pageWidth - imageWidth) 
-            newLeft = pageWidth - imageWidth;
-
-        if (newTop < 0) newTop = 0;
-        else if (newTop > pageHeight - imageHeight) 
-            newTop = pageHeight - imageHeight;
+        target.top = newTop;    
+        target.left = newLeft;
         
-        image.style.setProperty("top", newTop + "px");
-        image.style.setProperty("left", newLeft + "px");
+        showInfo(getElementProperties(target.element));
     }
 
     const stopMoving = () => {
-        image.removeEventListener("mousemove", moveElement);
+        page.removeEventListener("mousemove", moveElement);
         page.removeEventListener("mouseup", stopMoving);
     }
 
-    image.addEventListener("mousedown", initializeMoving);
-}
-
-function getImageSize() {    
-    imageWidth = getImageWidth();
-    imageHeight = getImageHeight();
-}
-
-function getImagePosition() {    
-    imagePositionTop = getImagePositionTop();
-    imagePositionLeft = getImagePositionLeft();
-}
-
-function getMouseCoordinates(event) {
-    mouseX = event.pageX;
-    mouseY = event.pageY;
-}
-
-function getStartingMouseCoordinates(event) {
-    mouseX0 = event.pageX;
-    mouseY0 = event.pageY;
-}
-
-function getImageWidth() {
-    return parseInt(getComputedStyle(image).getPropertyValue("width"));
-}
-
-function getImageHeight() {
-    return parseInt(getComputedStyle(image).getPropertyValue("height"));
-}
-
-function getImagePositionTop() {
-    return parseInt(getComputedStyle(image).getPropertyValue("top"));
-}
-
-function getImagePositionLeft() {
-    return parseInt(getComputedStyle(image).getPropertyValue("left"));
+    target.element.addEventListener("mousedown", initializeMoving);
 }
