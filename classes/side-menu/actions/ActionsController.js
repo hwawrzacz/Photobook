@@ -4,6 +4,7 @@ class ActionsController extends EventEmitter {
     this.fileController = new FileController();
     this.imagesController = new ImagesController();
     this.stickersController = new StickersController();
+    this.textController = new TextController();
     this.init();
   }
 
@@ -38,6 +39,9 @@ class ActionsController extends EventEmitter {
         case 'stickers':
           this.stickersController.activate();
           break;
+        case 'text':
+          this.textController.activate();
+          break;
         default:
           console.log('o qurewaaa :======3');
       }
@@ -47,5 +51,6 @@ class ActionsController extends EventEmitter {
       this.fileController.disable();
       this.imagesController.disable();
       this.stickersController.disable();
+      this.textController.disable();
     }
 }
