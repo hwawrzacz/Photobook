@@ -3,7 +3,7 @@ class Image extends Element2D {
     constructor(base64Image, top = 0, left = 0, width = 500, height = 300, rotation = 0) {
         super();
         const imageDocument = new DOMParser().parseFromString(this.imagePattern,"text/html");
-        this.element = imageDocument.querySelector(".image-container");
+        this.element = imageDocument.querySelector(".action-image-container");
         this.element.style.setProperty("background-image", "url(" + base64Image +")");
         
         this.top = top;
@@ -30,7 +30,7 @@ class Image extends Element2D {
     }
     
     imagePattern = `
-        <div class="image-container flex-container flex-v-h-center">
+        <div class="action-image-container flex-container flex-v-h-center">
             <div class="hooks-container">
                 <i class="hook hook-delete material-icons">close</i>
                 <i class="hook hook-resize material-icons">code</i>

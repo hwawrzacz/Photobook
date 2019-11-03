@@ -30,5 +30,3 @@ class StickersController extends EventEmitter {
       }
     }
 }
-
-export default StickersController;

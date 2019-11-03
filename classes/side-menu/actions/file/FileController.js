@@ -30,5 +30,3 @@ class FileController extends EventEmitter {
     }
   }
 }
-
-export default FileController;

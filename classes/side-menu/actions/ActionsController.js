@@ -49,5 +49,3 @@ class ActionsController extends EventEmitter {
       this.stickersController.disable();
     }
 }
-
-export default ActionsController;

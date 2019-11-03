@@ -11,8 +11,8 @@ class FileView extends EventEmitter {
   }
 
   getStringElements = () => {
-    const stringDOM = `<div class="file-container">
-        <div class="file-create-button"></div>
+    const stringDOM = `<div class="action-file-container">
+        <div class="action-file-create-button"></div>
     </div>`;
     return stringDOM;
   }
@@ -20,11 +20,11 @@ class FileView extends EventEmitter {
   generateDOM = () => {
     const parser = new DOMParser();
     const stringDOM = parser.parseFromString(this.getStringElements(), 'text/html');
-    this.container = stringDOM.querySelector('.file-container');
+    this.container = stringDOM.querySelector('.action-file-container');
   }
 
   addFileButtonListener = () => {
-    const fileButton = this.container.querySelector('.file-create-button');
+    const fileButton = this.container.querySelector('.action-file-create-button');
     fileButton.addEventListener('click', this.fileButtonClicked);
   }
 
@@ -40,5 +40,3 @@ class FileView extends EventEmitter {
       this.container.remove();
     }
 }
-
-export default FileView;

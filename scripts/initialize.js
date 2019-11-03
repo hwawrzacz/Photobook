@@ -1,5 +1,7 @@
-let photobook = new Photobook();
+const photobook = new Photobook();
 const page = photobook.element;
+
+const sideMenuController = new SideMenuController();
 
 photobook.addPage(1);
 photobook.addPage(2);

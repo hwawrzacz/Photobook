@@ -2,16 +2,16 @@ class ImagesViewDOM {
     generateElements = () => {
       const parser = new DOMParser();
       const stringDOM = parser.parseFromString(this.getStringElements(), 'text/html');
-      const container = stringDOM.querySelector('.images-container');
+      const container = stringDOM.querySelector('.action-images-container');
       return container;
     }
 
     getStringElements = () => {
       const stringElements = `
-          <div class="images-container">
-              <label for="images-importer" class="import-images-button">Zaimportuj Obrazy</label>
-              <input type="file" id="images-importer" class="images-importer" name="images-importer" multiple>
-              <div class="images"></div>
+          <div class="action-images-container">
+              <label for="action-images-importer" class="action-import-images-button">Zaimportuj Obrazy</label>
+              <input type="file" id="action-images-importer" class="action-images-importer" name="action-images-importer" multiple>
+              <div class="action-images"></div>
           </div>
           `;
 
@@ -36,12 +36,10 @@ class ImagesViewDOM {
 
     createImageContainer = () => {
       const container = document.createElement('div');
-      container.classList.add('image-container');
+      container.classList.add('action-image-container');
       const destroyContainerButton = document.createElement('div');
-      destroyContainerButton.classList.add('image-container-delete');
+      destroyContainerButton.classList.add('action-image-container-delete');
       container.appendChild(destroyContainerButton);
       return container;
     }
 }
-
-export default ImagesViewDOM;

@@ -30,4 +30,3 @@ class ImagesController extends EventEmitter {
       }
     }
 }
-export default ImagesController;

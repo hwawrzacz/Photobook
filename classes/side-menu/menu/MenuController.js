@@ -15,5 +15,3 @@ class MenuController extends EventEmitter {
       });
     }
 }
-
-export default MenuController;

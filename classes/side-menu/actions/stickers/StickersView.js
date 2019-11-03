@@ -24,6 +24,4 @@ class StickersView extends EventEmitter {
     disable = () => {
       this.container.remove();
     }
-}
-
-export default StickersView;
+  }

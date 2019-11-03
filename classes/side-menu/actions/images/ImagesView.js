@@ -16,12 +16,12 @@ class ImagesView extends EventEmitter {
     }
 
     addInputFileListener = () => {
-      const input = this.container.querySelector('.images-importer');
+      const input = this.container.querySelector('.action-images-importer');
       input.addEventListener('change', this.createImages);
     }
 
     createImages = () => {
-      const input = this.container.querySelector('.images-importer');
+      const input = this.container.querySelector('.action-images-importer');
       Array.from(input.files).forEach(file => {
         const render = new FileReader();
         render.addEventListener('load', this.createImageDOMAndAddItToContainer);
@@ -31,8 +31,8 @@ class ImagesView extends EventEmitter {
 
     createImageDOMAndAddItToContainer = (e) => {
       const image = this.imagesViewDOM.createImageDOM(e.target.result);
-      const imagesContainer = this.container.querySelector('.images');
-      const imagesContainerDestroyButton = image.querySelector('.image-container-delete');
+      const imagesContainer = this.container.querySelector('.action-images');
+      const imagesContainerDestroyButton = image.querySelector('.action-image-container-delete');
       imagesContainer.addEventListener('click', this.userClickedOnImage);
       imagesContainerDestroyButton.addEventListener('click', (event) => {
         event.preventDefault();
@@ -54,5 +54,3 @@ class ImagesView extends EventEmitter {
       this.container.remove();
     }
 }
-
-export default ImagesView;

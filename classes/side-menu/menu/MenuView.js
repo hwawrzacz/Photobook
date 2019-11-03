@@ -47,5 +47,3 @@ class MenuView extends EventEmitter {
       this.emit('menuSelected', actionName);
     }
 }
-
-export default MenuView;

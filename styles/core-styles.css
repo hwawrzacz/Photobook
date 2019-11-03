@@ -9,20 +9,20 @@ body{
     height: 100vh;
 }
 
-.options{
+.side-menu{
     flex: 3;
     display: flex;
     flex-direction: row;
 }
 
-.options .menu{
+.side-menu .menu{
     background: darkorange;
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
-.options .menu div{
+.side-menu .menu div{
     background-color: dodgerblue;
     width: 60px;
     height: 20px;
@@ -30,7 +30,7 @@ body{
     cursor: pointer;
 }
 
-.options .actions{
+.side-menu .actions{
     background-color: darkviolet;
     flex: 2;
     overflow: auto;
@@ -39,32 +39,24 @@ body{
 .content{
     flex: 7;
     background: firebrick;
-
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.cards{
-    width: 75%;
-    height: 75%;
-    background-color: darkslategray;
-
-}
-
-.images {
+.action-images {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
 
-.image-container{
+.action-image-container{
     cursor: pointer;
     position: relative;
     padding-bottom: 10px;
 }
 
-.image-container-delete{
+.action-image-container-delete{
     position: absolute;
     width: 20px;
     height: 20px;
@@ -73,60 +65,20 @@ body{
     top: 0px;
 }
 
-.images-importer {
+.action-images-importer {
     display: none;
 }
 
-.import-images-button {
+.action-import-images-button {
     width: 60px;
     height: 30px;
     background-color: #271bd3;
     cursor: pointer;
 }
 
-.file-create-button {
+.action-file-create-button {
     width: 50px;
     height: 28px;
     background-color: red;
     cursor: pointer;
-}
-
-.content .cards {
-    position: relative;
-}
-
-.content .cards .cards-container{
-    width: 100%;
-    height: 100%;
-}
-
-.content .cards .cards-container .card{
-    width: 100%;
-    height: 100%;
-}
-
-/* .content .navigation .nav {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: blue;
-    top: 50%;
-    cursor: pointer;
-}
-
-.content .navigation .nav.left {
-    left: -50px;
-}
-
-.content .navigation .nav.right{
-    right: -50px;
-} */
-
-.content .cards .card-number{
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: #34d835;
-    bottom: -42px;
-    right: 0;
 }
