@@ -7,12 +7,13 @@ class TextView extends EventEmitter {
   
           init = () => {
             this.generateDOM();
+            this.addListeners();
           }
   
           getStringDOM = () => {
             const stringDOM = `
               <div class="action-text-container">
-                <div class="action-text">Text</div>
+                <div class="action-text-button">Text</div>
               </div>`;
             return stringDOM;
           }
@@ -22,6 +23,11 @@ class TextView extends EventEmitter {
             const stringDOM = parser.parseFromString(this.getStringDOM(), 'text/html');
             const container = stringDOM.querySelector('.action-text-container');
             this.container = container;
+          }
+
+          addListeners = () => {
+              const actionTextButton = this.container.querySelector('.action-text-button');
+              actionTextButton.addEventListener('click', this.userClickedOnText);
           }
   
           userClickedOnText = (e) => {
@@ -35,5 +41,6 @@ class TextView extends EventEmitter {
           disable = () => {
             this.container.remove();
           }
+          
   }
   
