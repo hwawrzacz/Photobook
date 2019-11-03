@@ -21,6 +21,14 @@ class ActionsController extends EventEmitter {
       this.imagesController.on('imageClicked', (img) => {
         this.emit('imageClicked', img);
       });
+
+      this.stickersController.on('stickerClicked', (sticker) => {
+        this.emit('stickerClicked', sticker);
+      });
+
+      this.textController.on('textClicked', () => {
+        this.emit('textClicked');
+      });
     }
 
     selectAction = (actionName) => {

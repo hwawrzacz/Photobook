@@ -19,6 +19,14 @@ class SideMenuController extends EventEmitter {
         this.emit('createImage', img);
       });
 
+      this.actionsController.on('stickerClicked', (sticker) => {
+        this.emit('createSticker', sticker);
+      });
+
+      this.actionsController.on('textClicked', () => {
+        this.emit('createText');
+      });
+
       this.menuController.on('menuSelected', (status) => {
         this.actionsController.selectAction(status);
       });
