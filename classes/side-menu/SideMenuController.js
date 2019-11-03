@@ -12,11 +12,11 @@ class SideMenuController extends EventEmitter {
 
     eventHandler = () => {
       this.actionsController.on('createFile', () => {
-        this.emit('createFile');
+        this.emit('exportToPDF');
       });
 
       this.actionsController.on('imageClicked', (img) => {
-        this.emit('imageClicked', img);
+        this.emit('createImage', img);
       });
 
       this.menuController.on('menuSelected', (status) => {
