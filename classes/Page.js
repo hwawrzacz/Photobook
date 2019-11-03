@@ -33,8 +33,4 @@ class Page {
         this.element.appendChild(newImage.element);
         this.images.push(newImage);
     }
-    
-    printTextBoxesNumber() {
-        console.log(this.textBoxes.size);
-    }
 }
