@@ -12,6 +12,7 @@ class FileView extends EventEmitter {
 
   getStringElements = () => {
     const stringDOM = `<div class="action-file-container">
+        <h3>Projekt</h3>
         <div class="action-file-create-button"></div>
     </div>`;
     return stringDOM;

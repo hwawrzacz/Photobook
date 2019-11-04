@@ -1,6 +1,8 @@
 const photobook = new Photobook();
 const page = photobook.element;
 
+console.log(photobook);
+
 // START Kamil
 const sideMenuController = new SideMenuController();
 

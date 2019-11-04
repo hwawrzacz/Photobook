@@ -11,6 +11,7 @@ class MenuView extends EventEmitter {
     init = () => {
       this.getMenuElementsFromDOM();
       this.appendListenersForElements();
+      this.activeMenuOptionByName('file');
     }
 
     getMenuElementsFromDOM = () => {
@@ -45,5 +46,42 @@ class MenuView extends EventEmitter {
 
     eventHandler = (actionName) => {
       this.emit('menuSelected', actionName);
+    }
+
+    switchActiveButton = (name) => {
+      this.disableAllMenuOptions();
+      this.activeMenuOptionByName(name);
+    } 
+
+    activeMenuOptionByName = (name) => {
+      switch(name){
+        case 'file' :
+          this.appendSelectStyleForElement(this.file);
+          break;
+        case 'images' :
+              this.appendSelectStyleForElement(this.images);
+              break;
+        case 'stickers' :
+          this.appendSelectStyleForElement(this.stickers);
+          break;
+        case 'text' :
+          this.appendSelectStyleForElement(this.text);
+          break;
+        default: 
+        console.log('o quuuwaa 8===3')
+      }
+    }
+
+    appendSelectStyleForElement = (element) => {
+      if(!element.classList.contains('active')){
+        element.classList.add('active');
+      }
+    }
+
+    disableAllMenuOptions = () => {
+      this.file.classList.remove('active');
+      this.images.classList.remove('active');
+      this.stickers.classList.remove('active');
+      this.text.classList.remove('active');
     }
 }

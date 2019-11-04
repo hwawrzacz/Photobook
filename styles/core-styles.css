@@ -16,24 +16,48 @@ body{
 }
 
 .side-menu .menu{
-    background: darkorange;
+    background: #797979;
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
 .side-menu .menu div{
-    background-color: dodgerblue;
-    width: 60px;
-    height: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     margin-top: 15px;
     cursor: pointer;
+    margin-left: 20%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.side-menu .menu div.active {
+    background-color: #515151;
+}
+
+.side-menu .menu div svg {
+    width: 40px;
+    height: 40px;
+    fill: #c9c9c9;
 }
 
 .side-menu .actions{
-    background-color: darkviolet;
+    background-color: #515151;
     flex: 2;
     overflow: auto;
+}
+
+.side-menu .action-file-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.side-menu .action-file-container h3{
+    color: #ebebeb;
 }
 
 .content{
@@ -87,4 +111,12 @@ body{
     width: 50px;
     height: 50px;
     background-color: green;
+}
+
+
+/* OVERRIDE HUBERT STYLES */
+
+.content #view {
+    height: 80%;
+    width: 80%;
 }

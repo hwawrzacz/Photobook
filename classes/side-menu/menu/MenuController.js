@@ -12,6 +12,7 @@ class MenuController extends EventEmitter {
     eventHandler = () => {
       this.menuView.on('menuSelected', (action) => {
         this.emit('menuSelected', action);
+        this.menuView.switchActiveButton(action);
       });
     }
 }

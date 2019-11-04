@@ -10,7 +10,7 @@ class ActionsController extends EventEmitter {
 
     init = () => {
       this.eventsHandler();
-      this.activateAction('images');
+      this.activateAction('file');
     }
 
     eventsHandler = () => {
