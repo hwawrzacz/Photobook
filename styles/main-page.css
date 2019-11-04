@@ -19,6 +19,12 @@
   -webkit-box-shadow: 0 5px 20px -5px black;
           box-shadow: 0 5px 20px -5px black; }
 
+#color {
+  border: none;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none; }
+
 /* Whole layout */
 #view {
   position: relative;

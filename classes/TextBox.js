@@ -3,6 +3,7 @@ class TextBox extends Element2D {
         super();
         const textBoxDocument = new DOMParser().parseFromString(this.textBoxPattern,"text/html");
         this.element = textBoxDocument.querySelector(".textbox-container");
+        this.textBox = textBoxDocument.querySelector(".textbox");
         
         this.top = top;
         this.left = left;
@@ -17,6 +18,8 @@ class TextBox extends Element2D {
         this.bold = false;
         this.italic = false;
         this.underline = false;
+        this.textColor = "black";
+        this.backgroundColor = "transparent";
         
         this.initializeMovementHooksMechanism();
         this.initializeContentEditHooksMechanism();
@@ -72,6 +75,24 @@ class TextBox extends Element2D {
         if (this.Underline) this.element.style.setProperty("text-decoration", "underline");
         else  this.element.style.setProperty("text-decoration", "none");
     }
+    
+    get textColor() {
+        return this.TextColor;
+    }
+    
+    set textColor(value) {
+        this.TextColor = value;
+        this.textBox.style.setProperty("color", value);
+    }
+    
+    get backgroundColor() {
+        return this.BackgroundColor;
+    }
+    
+    set backgroundColor(value) {
+        this.BackgroundColor = value;
+        this.textBox.style.setProperty("background-color", value);
+    }
     //#endregion
     
     //#region Hooks mechanisms
@@ -98,6 +119,31 @@ class TextBox extends Element2D {
         const hookTextAlignLeft = this.element.querySelector(".hook-text-align-left");
         const hookTextAlignCenter = this.element.querySelector(".hook-text-align-center");
         const hookTextAlignRight = this.element.querySelector(".hook-text-align-right");
+
+        const textColorPicker = this.element.querySelector(".text-color-picker");
+        const backgroundColorPicker = this.element.querySelector(".background-color-picker");
+        const hookTextColor = this.element.querySelector(".text-color");
+        const hookBackgroundColor = this.element.querySelector(".background-color");
+
+        backgroundColorPicker.addEventListener("change", (event) => {
+            const color = event.target.value; 
+            this.backgroundColor = color;
+            hookBackgroundColor.style.setProperty("color", color);
+        });
+
+        textColorPicker.addEventListener("change", (event) => {
+            const color = event.target.value; 
+            this.textColor = color;
+            hookTextColor.style.setProperty("color", color);
+        });
+
+        hookTextColor.addEventListener("click", () => {
+            textColorPicker.click();
+        });
+
+        hookBackgroundColor.addEventListener("click", () => {
+            backgroundColorPicker.click();
+        });
 
         hookBold.addEventListener("click", this.toggleBold);
         hookItalic.addEventListener("click", this.toggleItalic);
@@ -143,7 +189,7 @@ class TextBox extends Element2D {
 
     textBoxPattern = `
         <div class="textbox-container">
-            <input type="text" />
+            <input class="textbox" type="text" />
 
             <ul class="textbox-tools size-fill-parent">
                 <li><i class="material-icons hook-text-align-left">format_align_left</i></li>
@@ -154,8 +200,10 @@ class TextBox extends Element2D {
                 <li><i class="bold material-icons">format_bold</i></li>
                 <li><i class="italic material-icons">format_italic</i></li>
                 <li><i class="underline material-icons">format_underline</i></li>
-                <li><i class="backgroundColor material-icons">color_lens</i></li>
-                <li><input type="color" /></li>
+                <li><i class="text-color material-icons">text_format</i></li>
+                <li><i class="background-color material-icons">color_lens</i></li>
+                <li><input class="text-color-picker" type="color" /></li>
+                <li><input class="background-color-picker" type="color" /></li>
             </ul>
             
             <div class="hooks-container">

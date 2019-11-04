@@ -65,9 +65,12 @@
                 }
             }
 
+            i.text-color, i.background-color {
+                text-shadow: 1px 1px black;
+            }
+
             input[type=color] {
-                width: 20px;
-                height: 20px;
+                display: none;
             }
         }
 

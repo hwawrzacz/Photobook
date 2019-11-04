@@ -59,9 +59,10 @@
         .textbox-container ul.textbox-tools li i::selection {
           background-color: none;
           color: inherit; }
+      .textbox-container ul.textbox-tools li i.text-color, .textbox-container ul.textbox-tools li i.background-color {
+        text-shadow: 1px 1px black; }
       .textbox-container ul.textbox-tools li input[type=color] {
-        width: 20px;
-        height: 20px; }
+        display: none; }
     .textbox-container ul.textbox-tools:hover {
       opacity: 1; }
   .textbox-container:hover ul, .textbox-container:active ul {
