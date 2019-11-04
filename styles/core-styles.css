@@ -56,6 +56,24 @@ body{
     align-items: center;
 }
 
+.side-menu .action-file-container .option-container {
+    width: 80%;
+    border-radius: 10px;
+    height: 32px;
+    background-color: #363636;
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.side-menu .action-file-container .option-container .option-text-container p {
+    margin: 0px;
+    padding: 0px;
+    color: #b6b6b6;
+}
+
 .side-menu .action-file-container h3{
     color: #ebebeb;
 }

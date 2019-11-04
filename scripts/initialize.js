@@ -6,9 +6,8 @@ console.log(photobook);
 // START Kamil
 const sideMenuController = new SideMenuController();
 
-sideMenuController.on('exportToPDF', () => {
-  // User Want To Generate PDF
-  console.log('User Want PDF');
+sideMenuController.on('file', (action) => {
+  console.log(action);
 });
 
 sideMenuController.on('createImage', (imgBase64) => {

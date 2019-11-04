@@ -11,8 +11,8 @@ class FileController extends EventEmitter {
   }
 
   eventsHandler = () => {
-    this.fileView.on('createFile', () => {
-      this.emit('createFile');
+    this.fileView.on('file', (action) => {
+      this.emit('file', action);
     });
   }
 

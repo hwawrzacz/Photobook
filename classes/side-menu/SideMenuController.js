@@ -11,8 +11,8 @@ class SideMenuController extends EventEmitter {
     }
 
     eventHandler = () => {
-      this.actionsController.on('createFile', () => {
-        this.emit('exportToPDF');
+      this.actionsController.on('file', (action) => {
+        this.emit('file', action);
       });
 
       this.actionsController.on('imageClicked', (img) => {
