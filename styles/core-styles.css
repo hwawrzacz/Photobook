@@ -120,6 +120,36 @@ body{
     fill: white;
 }
 
+.side-menu .action-text-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.side-menu .action-text-button {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.side-menu .action-text-svg-container{
+    display: flex;
+}
+
+.side-menu .action-text-svg{
+    fill: #666666;
+    height: 72px;
+    width: 72px;
+}
+
+.side-menu .action-text-text-container p {
+    padding: 0px;
+    margin: 0px;
+    color: #ababab;
+}
+
 .content{
     flex: 7;
     background: firebrick;
