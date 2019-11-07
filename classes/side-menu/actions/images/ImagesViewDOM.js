@@ -37,17 +37,29 @@ class ImagesViewDOM {
       const image = document.createElement('img');
       image.setAttribute('alt', 'image');
       image.setAttribute('src', imageBASE);
-      image.style.width = '100px';
-      image.style.height = '200px';
+      // image.style.width = '100px';
+      // image.style.height = '200px';
       return image;
     }
 
     createImageContainer = () => {
       const container = document.createElement('div');
       container.classList.add('action-image-container');
-      const destroyContainerButton = document.createElement('div');
-      destroyContainerButton.classList.add('action-image-container-delete');
+      const destroyContainerButton = this.createDestropContainerButton();
       container.appendChild(destroyContainerButton);
+      return container;
+    }
+
+    createDestropContainerButton = () => {
+      const stringWithDomElements = `
+      <div class="action-image-container-delete">
+        <svg class="action-image-container-delete-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+      </div>
+      `;
+
+      const parser = new DOMParser();
+      const stringDOM = parser.parseFromString(stringWithDomElements, 'text/html');
+      const container = stringDOM.querySelector('.action-image-container-delete');
       return container;
     }
 }
