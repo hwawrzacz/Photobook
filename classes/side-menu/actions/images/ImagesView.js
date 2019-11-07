@@ -12,7 +12,9 @@ class ImagesView extends EventEmitter {
     }
 
     generateDOM = () => {
-      this.container = this.imagesViewDOM.generateElements();
+      const container = this.imagesViewDOM.generateElements();
+      container.querySelector('h3').innerHTML = 'Zdjecia';
+      this.container = container;
     }
 
     addInputFileListener = () => {

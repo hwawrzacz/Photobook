@@ -58,14 +58,15 @@ body{
 
 .side-menu .action-file-container .option-container {
     width: 80%;
-    border-radius: 10px;
-    height: 32px;
+    border-radius: 8px;
+    height: 37px;
     background-color: #363636;
     margin-bottom: 10px;
     cursor: pointer;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    align-items: center;
 }
 
 .side-menu .action-file-container .option-container .option-text-container p {
@@ -74,8 +75,49 @@ body{
     color: #b6b6b6;
 }
 
+.side-menu .action-file-container .option-svg-container {
+    display: flex;
+    align-items: center;
+}
+
+.side-menu .action-file-container .option-svg-container .option-svg {
+    fill: #c9c9c9;
+}
+
 .side-menu .action-file-container h3{
     color: #ebebeb;
+}
+
+.side-menu .action-images-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.side-menu h3 {
+    color: white;
+}
+
+.side-menu .action-images-container .action-import-images-button{
+    cursor: pointer;
+    display: flex;
+    width: 80%;
+    height: 37px;
+    border-radius: 8px;
+    background-color: #009900;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.side-menu .action-images-container .action-images-text-container p{
+    color: white;
+    padding: 0px;
+    margin: 0px;
+}
+
+.side-menu .action-images-container .action-images-svg-container svg {
+    display: flex;
+    fill: white;
 }
 
 .content{
@@ -109,13 +151,6 @@ body{
 
 .action-images-importer {
     display: none;
-}
-
-.action-import-images-button {
-    width: 60px;
-    height: 30px;
-    background-color: #271bd3;
-    cursor: pointer;
 }
 
 .action-file-create-button {
