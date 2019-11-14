@@ -1,6 +1,8 @@
 let photobook = new Photobook();
 const page = photobook.element;
 
+const button = document.querySelector("#getDataButton");
+
 photobook.addPage();
 photobook.addPage();
 photobook.addPage(imageBase64);
@@ -10,4 +12,6 @@ photobook.getPage(3).backgroundImage = "";
 photobook.addImageToPage(imageBase64, 3);
 photobook.addTextBoxToPage(3);
 
-console.log(JSON.stringify(photobook));
+button.addEventListener("click", () => {
+    photobook.exportToHTML()
+});
