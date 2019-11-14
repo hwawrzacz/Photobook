@@ -34,4 +34,16 @@ class Photobook {
   addImageToActivePage (base64Image) {
     this.activePage.addImage(base64Image);
   }
+
+  export() {
+    const manager = new HTMLExporter();
+    manager.export(this.element);
+  }
+
+  exportToHTML() {
+      let newDocument = document.createElement("html");
+      
+      newDocument.appendChild(this.element.cloneNode(true));
+      console.log(newDocument);
+  }
 }
