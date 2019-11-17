@@ -187,7 +187,7 @@ class TextBox extends Element2D {
             this.textAlign = "right";
         });        
 
-        this.textBox.addEventListener("keydown", () => {
+        this.textBox.addEventListener("keyup", () => {
             this.value = this.textBox.value;
         });
     }
