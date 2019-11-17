@@ -33,6 +33,11 @@
 .page {
     position: absolute;   
     overflow: hidden; 
+    
+    min-width: 595px;
+    max-width: 595px;
+    min-height: 842px;
+    max-height: 842px;
 
     background: white;
     background-position: center;

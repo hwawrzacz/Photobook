@@ -1,23 +1,23 @@
 class Page {
     constructor(backgroundImage = "", images = [], textBoxes = []) {
-        this.images = images;
-        this.textBoxes = textBoxes;
-
         this.element = document.createElement("div");
         this.element.classList.add("page");
         this.element.classList.add("size-fill-parent");
         this.element.classList.add("page");
+
+        this.images = images;
+        this.textBoxes = textBoxes;
         this.backgroundImage = backgroundImage;
     }
 
     //#region Getters and setters
     get backgroundImage() {
         return this.BackgroundImage;
-    } 
+    }
 
     set backgroundImage(value) {
         this.BackgroundImage = value;
-        this.element.style.setProperty("background-image", "url(" + value +")");
+        this.element.style.setProperty("background-image", "url(" + value + ")");
     }
     //#endregion
 

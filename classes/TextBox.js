@@ -13,7 +13,11 @@ class TextBox extends Element2D {
         this.height = height;
         this.rotation = rotation;
 
+<<<<<<< HEAD
         //this.value = "";
+=======
+        this.value = "";
+>>>>>>> master
         this.textAlign = "left";
         this.fontSize = 14;
         this.bold = false;
@@ -94,7 +98,11 @@ class TextBox extends Element2D {
         this.BackgroundColor = value;
         this.textBox.style.setProperty("background-color", value);
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> master
     get value() {
         return this.BackgroundColor;
     }
@@ -185,6 +193,10 @@ class TextBox extends Element2D {
         
         hookTextAlignRight.addEventListener("click", () => {
             this.textAlign = "right";
+        });        
+
+        this.textBox.addEventListener("keyup", () => {
+            this.value = this.textBox.value;
         });
 
         this.textBox.addEventListener("keydown", () => {

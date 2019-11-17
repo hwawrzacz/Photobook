@@ -4,6 +4,7 @@
         <title>Photobook</title>
         <meta name=description content="The only tool for creating awesome photobooks" />
         <meta name="viewport" content="width=device-width initial-scale=1 minimum-scale=1" />
+        <link rel="stylesheet" type="text/css" href="./styles/core-styles.css" /> 
         <link rel="stylesheet" type="text/css" href="./styles/styles.css" /> 
         <link rel="stylesheet" type="text/css" href="./styles/image.css" /> 
         <link rel="stylesheet" type="text/css" href="./styles/main-page.css" /> 
@@ -15,21 +16,64 @@
     </head>
 
     <body>       
+        <div class="container">
+            <div class="side-menu">
+                <div class="menu">
+                    <div class="menu-file"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/><path d="M0 0h24v24H0z" fill="none"/></svg></div>
+                    <div class="menu-images"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.04-6.71l-2.75 3.54-1.96-2.36L6.5 17h11l-3.54-4.71z"/></svg></div>
+                    <div class="menu-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 17v2h14v-2H5zm4.5-4.2h5l.9 2.2h2.1L12.75 4h-1.5L6.5 15h2.1l.9-2.2zM12 5.98L13.87 11h-3.74L12 5.98z"/><path d="M0 0h24v24H0z" fill="none"/></svg></div>
+                    <div class="menu-stickers"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg></div>
+
+                </div>
+                <div class="actions"></div>
+            </div>
+            <div class="content">
+                    <!-- <div class="navigation">
+                        <div class="nav right"></div>
+                        <div class="nav left"></div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
         <div class="test">Here go details</div>
 
+<<<<<<< HEAD
         <button id="getDataButton">Export</button>
 
         <script src='https://cdn.jsdelivr.net/g/lodash@4(lodash.min.js+lodash.fp.min.js)'></script>
+=======
+        <!-- Kamil -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/EventEmitter/5.2.8/EventEmitter.js"></script>
+        <script src="./classes//side-menu/SideMenuController.js"></script>
+        <script src="./classes//side-menu//menu/MenuView.js"></script>
+        <script src="./classes//side-menu//menu/MenuController.js"></script>
+        <script src="./classes/side-menu//actions//actionsContainer.js"></script>
+        <script src="./classes//side-menu//actions//file//FileView.js"></script>
+        <script src="./classes//side-menu//actions//file//FileController.js"></script>
+        <script src="./classes//side-menu//actions//images/ImagesViewDOM.js"></script>
+        <script src="./classes//side-menu//actions//images/ImagesView.js"></script>
+        <script src="./classes//side-menu//actions//images/ImagesController.js"></script>
+        <script src="./classes//side-menu//actions//stickers//StickersView.js"></script>
+        <script src="./classes//side-menu//actions//stickers//StickersController.js"></script>
+        <script src="./classes//side-menu//actions//text//TextView.js"></script>
+        <script src="./classes//side-menu//actions//text//TextController.js"></script>
+        <script src="./classes/side-menu//actions//ActionsController.js"></script>
+        <!-- Kamil end -->
+
+        <!-- Hubert begin -->
+>>>>>>> master
         <script src="./repo/imagesBase64.js"></script>
         <script src="./scripts/common.js"></script> 
         <script src="./scripts/move.js"></script>
         <script src="./scripts/resize.js"></script>
         <script src="./scripts/rotate.js"></script>
+        <script src="./classes/HTMLExporter.js"></script>
         <script src="./classes/Photobook.js"></script>
         <script src="./classes/Page.js"></script>
         <script src="./classes/Element2D.js"></script>
         <script src="./classes/TextBox.js"></script>
         <script src="./classes/Image.js"></script>
         <script src="./scripts/initialize.js"></script>
+        <!-- Hubert end -->
     </body>
 </html>
