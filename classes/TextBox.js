@@ -1,10 +1,10 @@
 class TextBox extends Element2D {
     constructor(top = 0, left = 0, width = 300, height = 50, rotation = 0) {
         super();
-        const textBoxDocument = new DOMParser().parseFromString(this.textBoxPattern,"text/html");
+        const textBoxDocument = new DOMParser().parseFromString(this.textBoxPattern, "text/html");
         this.element = textBoxDocument.querySelector(".textbox-container");
         this.textBox = textBoxDocument.querySelector(".textbox");
-        
+
         this.top = top;
         this.left = left;
         this.minWidth = 300;
@@ -13,11 +13,7 @@ class TextBox extends Element2D {
         this.height = height;
         this.rotation = rotation;
 
-<<<<<<< HEAD
-        //this.value = "";
-=======
         this.value = "";
->>>>>>> master
         this.textAlign = "left";
         this.fontSize = 14;
         this.bold = false;
@@ -25,7 +21,7 @@ class TextBox extends Element2D {
         this.underline = false;
         this.textColor = "black";
         this.backgroundColor = "transparent";
-        
+
         this.initializeMovementHooksMechanism();
         this.initializeContentEditHooksMechanism();
     }
@@ -45,7 +41,7 @@ class TextBox extends Element2D {
     }
 
     set fontSize(value) {
-        if (value > 0) {   
+        if (value > 0) {
             this.FontSize = value;
             this.element.style.setProperty("font-size", value + "px");
         }
@@ -58,7 +54,7 @@ class TextBox extends Element2D {
     set bold(value) {
         this.Bold = value;
         if (this.Bold) this.element.style.setProperty("font-weight", "bold");
-        else  this.element.style.setProperty("font-weight", "normal");
+        else this.element.style.setProperty("font-weight", "normal");
     }
 
     get italic() {
@@ -68,55 +64,50 @@ class TextBox extends Element2D {
     set italic(value) {
         this.Italic = value;
         if (this.Italic) this.element.style.setProperty("font-style", "italic");
-        else  this.element.style.setProperty("font-style", "normal");
+        else this.element.style.setProperty("font-style", "normal");
     }
-    
+
     get underline() {
         return this.Underline;
     }
-    
+
     set underline(value) {
         this.Underline = value;
         if (this.Underline) this.element.style.setProperty("text-decoration", "underline");
-        else  this.element.style.setProperty("text-decoration", "none");
+        else this.element.style.setProperty("text-decoration", "none");
     }
-    
+
     get textColor() {
         return this.TextColor;
     }
-    
+
     set textColor(value) {
         this.TextColor = value;
         this.textBox.style.setProperty("color", value);
     }
-    
+
     get backgroundColor() {
         return this.BackgroundColor;
     }
-    
+
     set backgroundColor(value) {
         this.BackgroundColor = value;
         this.textBox.style.setProperty("background-color", value);
     }
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> master
     get value() {
         return this.BackgroundColor;
     }
-    
+
     set value(value) {
         this.Value = value;
         this.textBox.value = value;
-        
+
         //TODO: check compatibility of setAttribute
         //may cause problems in the future
         this.textBox.setAttribute("value", value);
     }
     //#endregion
-    
+
     //#region Hooks mechanisms
     initializeMovementHooksMechanism() {
         const hookResize = this.element.querySelector(".hook-resize");
@@ -148,13 +139,13 @@ class TextBox extends Element2D {
         const hookBackgroundColor = this.element.querySelector(".background-color");
 
         backgroundColorPicker.addEventListener("change", (event) => {
-            const color = event.target.value; 
+            const color = event.target.value;
             this.backgroundColor = color;
             hookBackgroundColor.style.setProperty("color", color);
         });
 
         textColorPicker.addEventListener("change", (event) => {
-            const color = event.target.value; 
+            const color = event.target.value;
             this.textColor = color;
             hookTextColor.style.setProperty("color", color);
         });
@@ -186,14 +177,14 @@ class TextBox extends Element2D {
         hookTextAlignLeft.addEventListener("click", () => {
             this.textAlign = "left";
         });
-        
+
         hookTextAlignCenter.addEventListener("click", () => {
             this.textAlign = "center";
         });
-        
+
         hookTextAlignRight.addEventListener("click", () => {
             this.textAlign = "right";
-        });        
+        });
 
         this.textBox.addEventListener("keyup", () => {
             this.value = this.textBox.value;
