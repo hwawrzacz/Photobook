@@ -1,5 +1,5 @@
 class Element2D {
-    
+
     get top() {
         return this.Top;
     }
@@ -12,7 +12,7 @@ class Element2D {
     get left() {
         return this.Left;
     }
-    
+
     set left(value) {
         this.Left = value;
         this.element.style.setProperty("left", value + "px");
@@ -32,7 +32,7 @@ class Element2D {
     get height() {
         return this.Height;
     }
-    
+
     set height(value) {
         if (value >= this.minHeight) {
             this.Height = value;
@@ -52,7 +52,7 @@ class Element2D {
     get minHeight() {
         return this.MinHeight;
     }
-    
+
     set minHeight(value) {
         this.MinHeight = value;
         this.element.style.setProperty("min-height", value + "px");
@@ -61,7 +61,7 @@ class Element2D {
     get rotation() {
         return this.Rotation;
     }
-    
+
     set rotation(value) {
         this.Rotation = value;
         this.element.style.setProperty("transform", "rotate(" + value + "deg)");

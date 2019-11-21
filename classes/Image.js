@@ -1,10 +1,10 @@
 class Image extends Element2D {
     constructor(base64Image, top = 0, left = 0, width = 500, height = 300, rotation = 0) {
         super();
-        const imageDocument = new DOMParser().parseFromString(this.imagePattern,"text/html");
+        const imageDocument = new DOMParser().parseFromString(this.imagePattern, "text/html");
         this.element = imageDocument.querySelector(".image-container");
-        this.element.style.setProperty("background-image", "url(" + base64Image +")");
-        
+
+        this.backgroundImage = base64Image;
         this.top = top;
         this.left = left;
         this.minWidth = 50;
@@ -15,7 +15,16 @@ class Image extends Element2D {
 
         this.initializeHooksMechanism();
     }
-    
+
+    get backgroundImage() {
+        return this.BackgroundImage;
+    }
+
+    set backgroundImage(value) {
+        this.BackgroundImage = value;
+        this.element.style.setProperty("background-image", "url(" + value + ")");
+    }
+
     initializeHooksMechanism() {
         const hookResize = this.element.querySelector(".hook-resize");
         const hookRotate = this.element.querySelector(".hook-rotate");
@@ -29,7 +38,7 @@ class Image extends Element2D {
             showInfo("Element was removed");
         });
     }
-    
+
     imagePattern = `
         <div class="image-container flex-container flex-v-h-center">
             <div class="hooks-container">

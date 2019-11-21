@@ -118,7 +118,7 @@ class TextBox extends Element2D {
         resizeElement(this, hookResize);
         rotateElement(this, hookRotate);
         hookDelete.addEventListener("click", () => {
-            this.element.remove();
+            this.remove();
             showInfo("Element was removed");
         });
     }

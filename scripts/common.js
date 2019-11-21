@@ -8,12 +8,12 @@ let elementHeight;
 let elementPositionTop;
 let elementPositionLeft;
 
-function getElementSize(element) {    
+function getElementSize(element) {
     elementWidth = getElementWidth(element);
     elementHeight = getElementHeight(element);
 }
 
-function getElementPosition(element) {    
+function getElementPosition(element) {
     elementPositionTop = getElementPositionTop(element);
     elementPositionLeft = getElementPositionLeft(element);
 }
@@ -65,10 +65,10 @@ function getElementProperties(element) {
     return elementProperties;
 }
 
-function getRotationCos(element){
+function getRotationCos(element) {
     const rotationProperty = getComputedStyle(element).getPropertyValue("transform")
     const rotationMatrix = rotationProperty.replace("matrix(", "").replace(")", "").split(",");
     const cosine = rotationMatrix[0];
 
-    return cosine; 
+    return cosine;
 }

@@ -1,4 +1,7 @@
-const photobook = new Photobook();
+dimensions = getDimensions();
+// console.log(dimensions);
+
+const photobook = new Photobook(dimensions.width, dimensions.height);
 const page = photobook.element;
 
 // START Kamil
@@ -49,7 +52,28 @@ sideMenuController.on('createText', () => {
 // END Kamil
 
 photobook.addPage(fabric3);
-// possible background images: fabric(1-4) background(1-4)
+// possible background images: fabric(1-4), background(1-4)
 
 photobook.addImageToActivePage(imageBase64);
 photobook.addTextBoxToActivePage();
+
+function getDimensions() {
+  const proportions = 595 / 842;
+  const maxHeight = document.querySelector('.content').offsetHeight;
+  const maxWidth = document.querySelector('.content').offsetWidth;
+  const widthControl = maxWidth - 595;
+  const heightControl = maxHeight - 842;
+  let width;
+  let height;
+
+  if (widthControl < heightControl) {
+    width = maxWidth * 0.9;
+    height = width / proportions;
+  }
+  else {
+    height = maxHeight * 0.9;
+    width = height * proportions;
+  }
+
+  return { "width": width, "height": height }
+}
