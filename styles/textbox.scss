@@ -37,12 +37,13 @@
 
     ul.textbox-tools {
         position: absolute;
-        top: -30px;
+        bottom: 100%;
         margin: 0;
         padding: 0;
         max-height: 0;
         display: flex;
         align-items: center;
+        overflow: hidden;
         
         background-color: white;
         list-style: none;
@@ -50,9 +51,13 @@
         transition: 300ms;
         
         li {
+            position: relative;
+            top: 10px;
             margin: 0 3px;
             font-size: 10px !important;
             cursor: pointer;
+            transition: 400ms;
+            transition-delay: 100ms;
 
             i {  
                 width: 20px;
@@ -83,6 +88,11 @@
         ul {
             max-height: 30px;
             opacity: .3;
+            
+            li {
+                position: relative;
+                top: 0;
+            }
         }
     }
 }
