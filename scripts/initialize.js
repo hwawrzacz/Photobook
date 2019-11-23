@@ -1,5 +1,4 @@
 dimensions = getDimensions();
-// console.log(dimensions);
 
 const photobook = new Photobook(dimensions.width, dimensions.height);
 const page = photobook.element;
@@ -8,8 +7,6 @@ const page = photobook.element;
 const sideMenuController = new SideMenuController();
 
 sideMenuController.on('file', (action) => {
-  //pdf - export
-  //new - new project
   switch (action) {
     case "new": {
       console.log("New project");
@@ -57,6 +54,7 @@ photobook.addPage(fabric3);
 photobook.addImageToActivePage(imageBase64);
 photobook.addTextBoxToActivePage();
 
+//#region Functions definitions
 function getDimensions() {
   const proportions = 595 / 842;
   const maxHeight = document.querySelector('.content').offsetHeight;
@@ -77,3 +75,4 @@ function getDimensions() {
 
   return { "width": width, "height": height }
 }
+//#endregion

@@ -8,6 +8,7 @@ class Photobook {
     document.querySelector('.content').appendChild(this.element);
   }
 
+  //#region Getters and setters
   get width() {
     return this.Width
   }
@@ -25,6 +26,7 @@ class Photobook {
     this.Height = value;
     this.element.style.setProperty("height", value + "px");
   }
+  //#endregion
 
   addPage(backgroundImage) {
     let page = new Page(this.width, this.height, backgroundImage, [], []);
