@@ -1,6 +1,8 @@
 dimensions = getDimensions();
 
 const photobook = new Photobook(dimensions.width, dimensions.height);
+setInterval(() => { console.log(photobook); }, 5000);
+
 const page = photobook.element;
 
 // START Kamil
@@ -8,26 +10,26 @@ const sideMenuController = new SideMenuController();
 
 sideMenuController.on('file', (action) => {
   switch (action) {
-    case "new": {
-      console.log("New project");
+    case 'new': {
+      console.log('New project');
       photobook.exportToJSON();
       break;
     }
 
-    case "pdf": {
-      console.log("PDF");
+    case 'pdf': {
+      console.log('PDF');
       photobook.exportToJSON();
       break;
     }
 
-    case "html": {
-      console.log("HTML");
+    case 'html': {
+      console.log('HTML');
       photobook.exportToHTML();
       break;
     }
 
     default: {
-      console.log("Unknown command");
+      console.log('Unknown command');
     }
   }
 });
@@ -54,8 +56,8 @@ photobook.addPage(fabric3);
 photobook.addImageToActivePage(imageBase64);
 photobook.addTextBoxToActivePage();
 
-//#region Functions definitions
-function getDimensions() {
+// #region Functions definitions
+function getDimensions () {
   const proportions = 595 / 842;
   const maxHeight = document.querySelector('.content').offsetHeight;
   const maxWidth = document.querySelector('.content').offsetWidth;
@@ -67,12 +69,11 @@ function getDimensions() {
   if (widthControl < heightControl) {
     width = maxWidth * 0.9;
     height = width / proportions;
-  }
-  else {
+  } else {
     height = maxHeight * 0.9;
     width = height * proportions;
   }
 
-  return { "width": width, "height": height }
+  return { 'width': width, 'height': height };
 }
-//#endregion
+// #endregion

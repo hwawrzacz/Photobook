@@ -1,56 +1,78 @@
 class Page {
-    constructor(width, height, backgroundImage = "", images = [], textBoxes = []) {
-        this.element = document.createElement("div");
-        this.element.classList.add("page");
-        this.element.classList.add("size-fill-parent");
-        this.element.classList.add("page");
-        this.width = width;
-        this.height = height;
+  constructor (width, height, backgroundImage = '', images = [], textBoxes = []) {
+    this.element = document.createElement('div');
+    this.element.classList.add('page');
+    this.element.classList.add('size-fill-parent');
+    this.element.classList.add('page');
+    this.width = width;
+    this.height = height;
 
-        this.images = images;
-        this.textBoxes = textBoxes;
-        this.backgroundImage = backgroundImage;
-    }
+    this.images = images;
+    this.textBoxes = textBoxes;
+    this.backgroundImage = backgroundImage;
 
-    get width() {
-        return this.Width;
-    }
+    this.observeConfig = { childList: true, subtree: true };
+    this.mutationObserver = new MutationObserver(this.deleteRemovedTextOrImageFromStorage);
+    this.startPageObservation();
+  }
 
-    set width(value) {
-        this.Width = value;
-        this.element.style.setProperty("width", value);
-    }
+  startPageObservation = () => {
+      this.mutationObserver.observe(this.element, this.observeConfig);
+  }
 
-    get height() {
-        return this.Height
-    }
+  deleteRemovedTextOrImageFromStorage = () => {
+    this.images = this.images.filter((img) => {
+        if(this.element.contains(img.element)){
+            return img;
+        }
+    });
+    
+    this.textBoxes = this.textBoxes.filter((text) => {
+        if(this.element.contains(text.element)){
+            return text;
+        }
+    });
+  }
 
-    set height(value) {
-        this.Height = value;
-        this.element.style.setProperty("width", value);
-    }
+  get width () {
+    return this.Width;
+  }
 
-    //#region Getters and setters
-    get backgroundImage() {
-        return this.BackgroundImage;
-    }
+  set width (value) {
+    this.Width = value;
+    this.element.style.setProperty('width', value);
+  }
 
-    set backgroundImage(value) {
-        this.BackgroundImage = value;
-        this.element.style.setProperty("background-image", "url(" + value + ")");
-    }
-    //#endregion
+  get height () {
+    return this.Height;
+  }
 
-    addTextBox(top, left, bottom, width, height, rotation) {
-        let newTextBox = new TextBox(top, left, bottom, width, height, rotation);
-        this.element.appendChild(newTextBox.element);
-        this.textBoxes.push(newTextBox);
-    }
+  set height (value) {
+    this.Height = value;
+    this.element.style.setProperty('width', value);
+  }
 
-    addImage(base64Image) {
-        let newImage = new Image(base64Image);
-        newImage.initializeHooksMechanism();
-        this.element.appendChild(newImage.element);
-        this.images.push(newImage);
-    }
+  // #region Getters and setters
+  get backgroundImage () {
+    return this.BackgroundImage;
+  }
+
+  set backgroundImage (value) {
+    this.BackgroundImage = value;
+    this.element.style.setProperty('background-image', 'url(' + value + ')');
+  }
+  // #endregion
+
+  addTextBox (top, left, bottom, width, height, rotation) {
+    let newTextBox = new TextBox(top, left, bottom, width, height, rotation);
+    this.textBoxes.push(newTextBox);
+    this.element.appendChild(newTextBox.element);
+  }
+
+  addImage (base64Image) {
+    let newImage = new Image(base64Image);
+    newImage.initializeHooksMechanism();
+    this.images.push(newImage);
+    this.element.appendChild(newImage.element);
+  }
 }
