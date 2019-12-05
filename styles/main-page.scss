@@ -1,3 +1,60 @@
+/* HEADER */
+header {
+    position: relative;
+    height: 70px;
+    z-index: 1;
+    width: 100%;
+    background-color: #515151;
+    padding: 0 24px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    box-shadow: 0 2px 15px -2px black;
+    
+    button {
+        display: block;
+        margin: 0;
+        
+        display: flex;
+        align-items: center;
+
+        background-color: transparent;
+        color: white;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        transition: 200ms;
+
+        i.material-icons {
+            font-size: 32px;
+            color: #ddd;
+        }
+
+        &.rotate {
+            transform: rotate(-90deg);
+        }
+    }
+
+    input[type=text] {
+        width: 400px;
+        margin-left: 24px;
+        padding: 8px 16px;
+        
+        font-size: 16px;
+        color: #eee;
+        background-color: #777;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+
+        &::placeholder {
+            color: #bbb;
+        }
+    }
+}
+
 .test {
     position: absolute;
     bottom: 0; 
