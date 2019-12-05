@@ -1,15 +1,31 @@
 dimensions = getDimensions();
 
-const buttonMenuToggle = document.querySelector("#button-menu-toggle");
-const buttonMenuToggleIcon = buttonMenuToggle.querySelector("i");
-const menu = document.querySelector(".side-menu");
+const photobook = new Photobook(dimensions.width, dimensions.height);
+const page = photobook.element;
 
-const toggleMenu = (event) => {
+const buttonPrev = document.querySelector("#prev")
+const buttonNext = document.querySelector("#next")
+
+buttonPrev.addEventListener("click", () => {
+  photobook.showPreviousPage();
+});
+
+buttonNext.addEventListener("click", () => {
+  photobook.showNextPage();
+});
+
+
+const toggleMenu = () => {
   console.log("clicked");
   buttonMenuToggle.classList.toggle("rotate");
   buttonMenuToggleIcon.innerHTML = toggleIcon(buttonMenuToggleIcon.innerHTML)
   menu.classList.toggle("visible");
 }
+
+const buttonMenuToggle = document.querySelector("#button-menu-toggle");
+const buttonMenuToggleIcon = buttonMenuToggle.querySelector("i");
+const menu = document.querySelector(".side-menu");
+buttonMenuToggle.addEventListener("click", toggleMenu);
 
 const toggleIcon = (value) => {
   let result;
@@ -21,14 +37,6 @@ const toggleIcon = (value) => {
 
   return result;
 }
-
-buttonMenuToggle.addEventListener("click", toggleMenu);
-
-
-const photobook = new Photobook(dimensions.width, dimensions.height);
-setInterval(() => { console.log(photobook); }, 5000);
-
-const page = photobook.element;
 
 // START Kamil
 const sideMenuController = new SideMenuController();
@@ -75,14 +83,11 @@ sideMenuController.on('createText', () => {
 });
 // END Kamil
 
-photobook.addPage(fabric3);
-// possible background images: fabric(1-4), background(1-4)
-
 photobook.addImageToActivePage(imageBase64);
 photobook.addTextBoxToActivePage();
 
 // #region Functions definitions
-function getDimensions () {
+function getDimensions() {
   const proportions = 595 / 842;
   const headerHeight = document.querySelector('header').offsetHeight;
   const maxHeight = document.querySelector('.content').offsetHeight - headerHeight;

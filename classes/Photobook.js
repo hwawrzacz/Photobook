@@ -5,6 +5,13 @@ class Photobook {
     this.element.id = 'view';
     this.width = width;
     this.height = height;
+    this.addPage(fabric3);
+    this.addPage(fabric2);
+    this.addPage(fabric1);
+
+    this.activePageIndex = 0;
+    this.activePage = this.pages[this.activePageIndex];
+    this.activePage.visible = true;
     document.querySelector('.content').appendChild(this.element);
   }
 
@@ -28,15 +35,32 @@ class Photobook {
   }
   //#endregion
 
+  showPreviousPage() {
+    if (this.activePageIndex > 0) {
+      this.activePageIndex--;
+      this.activePage.visible = false;
+      this.activePage = this.pages[this.activePageIndex];
+      this.activePage.visible = true;
+    }
+  }
+
+  showNextPage() {
+    if (this.activePageIndex < this.pages.length - 1) {
+      this.activePageIndex++;
+      this.activePage.visible = false;
+      this.activePage = this.pages[this.activePageIndex];
+      this.activePage.visible = true;
+    }
+  }
+
   addPage(backgroundImage) {
     let page = new Page(this.width, this.height, backgroundImage, [], []);
     this.pages.push(page);
     this.element.appendChild(page.element);
-    this.activePage = page;
   }
 
   getPage(pageNumber) {
-    if (pageNumber > 0) {
+    if (pageNumber > 0 && pageNumber < this.pages.length - 1) {
       return this.pages[pageNumber - 1];
     }
   }
