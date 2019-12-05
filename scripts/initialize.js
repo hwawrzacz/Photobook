@@ -1,5 +1,30 @@
 dimensions = getDimensions();
 
+const buttonMenuToggle = document.querySelector("#button-menu-toggle");
+const buttonMenuToggleIcon = buttonMenuToggle.querySelector("i");
+const menu = document.querySelector(".side-menu");
+
+const toggleMenu = (event) => {
+  console.log("clicked");
+  buttonMenuToggle.classList.toggle("rotate");
+  buttonMenuToggleIcon.innerHTML = toggleIcon(buttonMenuToggleIcon.innerHTML)
+  menu.classList.toggle("visible");
+}
+
+const toggleIcon = (value) => {
+  let result;
+
+  if (value == "keyboard_arrow_up") {
+    result = "menu";
+  }
+  else result = "keyboard_arrow_up"
+
+  return result;
+}
+
+buttonMenuToggle.addEventListener("click", toggleMenu);
+
+
 const photobook = new Photobook(dimensions.width, dimensions.height);
 setInterval(() => { console.log(photobook); }, 5000);
 
@@ -59,14 +84,15 @@ photobook.addTextBoxToActivePage();
 // #region Functions definitions
 function getDimensions () {
   const proportions = 595 / 842;
-  const maxHeight = document.querySelector('.content').offsetHeight;
+  const headerHeight = document.querySelector('header').offsetHeight;
+  const maxHeight = document.querySelector('.content').offsetHeight - headerHeight;
   const maxWidth = document.querySelector('.content').offsetWidth;
-  const widthControl = maxWidth - 595;
-  const heightControl = maxHeight - 842;
+  const widthCheck = maxWidth - 595;
+  const heightCheck = maxHeight - 842;
   let width;
   let height;
 
-  if (widthControl < heightControl) {
+  if (widthCheck < heightCheck) {
     width = maxWidth * 0.9;
     height = width / proportions;
   } else {
