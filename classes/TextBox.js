@@ -27,6 +27,10 @@ class TextBox extends Element2D {
     }
 
     //#region Getters and setters
+    get text() {
+        return this.Value;
+    }
+    
     get textAlign() {
         return this.TextAlignment;
     }

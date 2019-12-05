@@ -18,7 +18,7 @@ sideMenuController.on('file', (action) => {
 
     case 'pdf': {
       console.log('PDF');
-      photobook.exportToJSON();
+      photobook.exportToPDF();
       break;
     }
 

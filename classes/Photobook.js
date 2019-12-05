@@ -73,4 +73,9 @@ class Photobook {
     download(url)
     console.log("Html donwload shoud happened");
   }
+
+  exportToPDF() {
+    const exporter = new PDFExporter();
+    exporter.exportToPDF(this);
+  }
 }
