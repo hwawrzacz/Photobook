@@ -1,6 +1,6 @@
 class PDFExporter {
     exportToPDF(photobook) {
-
+        console.log(photobook)
         var doc = new jsPDF({
             unit: 'px',
             format: 'a4'
