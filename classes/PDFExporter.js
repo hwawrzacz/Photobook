@@ -11,7 +11,10 @@ class PDFExporter {
 
         
         for (let page of photobook.pages) {
+            //loop with all pages of photobook
+
             for (let image of page.images){
+                //loop with all images of page
 
                 //TODO: put all the rotation logic in other method
                 if (-image.rotation >=0 ){
@@ -36,6 +39,8 @@ class PDFExporter {
                 newY-image.height*heightRatio, image.width*widthRatio, image.height*heightRatio, "XD", "NONE", angle);
             }
             for (let textBox of page.textBoxes){
+                //loop with all textBoxes of page
+
                 doc.setFontSize(textBox.fontSize);
                 
                 
