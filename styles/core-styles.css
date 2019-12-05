@@ -3,16 +3,21 @@ body{
     margin: 0px;
 }
 
-.container{
+.side-menu{
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    width: 300px;
+    height: calc(100vh - 70px);
+    z-index: 2;
     display: flex;
     flex-direction: row;
-    height: 100vh;
+    transition: 500ms;
 }
 
-.side-menu{
-    flex: 3;
-    display: flex;
-    flex-direction: row;
+.side-menu.visible {
+    left: 0;
 }
 
 .side-menu .menu{
@@ -45,7 +50,7 @@ body{
 
 .side-menu .actions{
     background-color: #515151;
-    flex: 2;
+    flex: 3 ;
     overflow: auto;
 }
 
@@ -153,6 +158,11 @@ body{
 .content{
     flex: 7;
     background: firebrick;
+    position: absolute;
+    top: 70px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
