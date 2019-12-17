@@ -29,6 +29,14 @@ class TextBox extends Element2D {
     }
 
     //#region Getters and setters
+    get hyperlinkMode() {
+        return this.HyperlinkMode;
+    }
+
+    set hyperlinkMode(value) {
+        this.HyperlinkMode = value;
+    }
+
     get text() {
         return this.Value;
     }
@@ -143,7 +151,7 @@ class TextBox extends Element2D {
         const backgroundColorPicker = this.element.querySelector(".background-color-picker");
         const hookTextColor = this.element.querySelector(".text-color");
         const hookBackgroundColor = this.element.querySelector(".background-color");
-        const hookToggleURL = this.element.querySelector(".toggle-url");
+        const hookToggleHyperlinkMode = this.element.querySelector(".toggle-hyperlink");
 
         backgroundColorPicker.addEventListener("change", (event) => {
             const color = event.target.value;
@@ -169,11 +177,22 @@ class TextBox extends Element2D {
         hookItalic.addEventListener("click", this.toggleItalic);
         hookUnderline.addEventListener("click", this.toggleUnderline);
 
-        hookFontUp.addEventListener("mousedown", () => {
+        hookToggleHyperlinkMode.addEventListener("click", () => {
+            if (hookToggleHyperlinkMode.innerHTML == "link") {
+                hookToggleHyperlinkMode.innerHTML = "link_off";
+            }
+            else {
+                hookToggleHyperlinkMode.innerHTML = "link";
+            }
+
+            this.toggleHyperlinkMode();
+        });
+
+        hookFontUp.addEventListener("click", () => {
             this.fontSize += 2;
         });
 
-        hookFontUp.addEventListener("mousedown", () => {
+        hookFontUp.addEventListener("click", () => {
             this.fontSize += 2;
         });
 
@@ -203,6 +222,10 @@ class TextBox extends Element2D {
     }
     //#endregion
 
+    toggleHyperlinkMode = () => {
+        this.hyperlinkMode = !this.hyperlinkMode;
+    }
+
     toggleBold = () => {
         this.bold = !this.bold;
     }
@@ -228,7 +251,7 @@ class TextBox extends Element2D {
                 <li><i class="underline material-icons">format_underline</i></li>
                 <li><i class="text-color material-icons">text_format</i></li>
                 <li><i class="background-color material-icons">color_lens</i></li>
-                <li><i class="toggle-url material-icons">link</i></li>
+                <li><i class="toggle-hyperlink material-icons">link</i></li>
                 <li><input class="text-color-picker" type="color" /></li>
                 <li><input class="background-color-picker" type="color" /></li>
             </ul>
