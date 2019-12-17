@@ -4,6 +4,8 @@ class TextBox extends Element2D {
         const textBoxDocument = new DOMParser().parseFromString(this.textBoxPattern, "text/html");
         this.element = textBoxDocument.querySelector(".textbox-container");
         this.textBox = textBoxDocument.querySelector(".textbox");
+        this.hyperlinkText = textBoxDocument.querySelector(".hyperlink-text");
+        this.hyperlinkURL = textBoxDocument.querySelector(".hyperlink-url");
 
         this.top = top;
         this.left = left;
@@ -30,7 +32,7 @@ class TextBox extends Element2D {
     get text() {
         return this.Value;
     }
-    
+
     get textAlign() {
         return this.TextAlignment;
     }
@@ -99,15 +101,15 @@ class TextBox extends Element2D {
         this.textBox.style.setProperty("background-color", value);
     }
     get value() {
-        return this.BackgroundColor;
+        return this.Value;
     }
 
     set value(value) {
         this.Value = value;
         this.textBox.value = value;
 
-        //TODO: check compatibility of setAttribute
-        //may cause problems in the future
+        // TODO: check compatibility of setAttribute
+        // may cause problems in the future
         this.textBox.setAttribute("value", value);
     }
     //#endregion
@@ -141,6 +143,7 @@ class TextBox extends Element2D {
         const backgroundColorPicker = this.element.querySelector(".background-color-picker");
         const hookTextColor = this.element.querySelector(".text-color");
         const hookBackgroundColor = this.element.querySelector(".background-color");
+        const hookToggleURL = this.element.querySelector(".toggle-url");
 
         backgroundColorPicker.addEventListener("change", (event) => {
             const color = event.target.value;
@@ -214,8 +217,6 @@ class TextBox extends Element2D {
 
     textBoxPattern = `
         <div class="textbox-container">
-            <input class="textbox" value="asd" type="text" />
-
             <ul class="textbox-tools size-fill-parent">
                 <li><i class="material-icons hook-text-align-left">format_align_left</i></li>
                 <li><i class="material-icons hook-text-align-center">format_align_justify</i></li>
@@ -227,9 +228,14 @@ class TextBox extends Element2D {
                 <li><i class="underline material-icons">format_underline</i></li>
                 <li><i class="text-color material-icons">text_format</i></li>
                 <li><i class="background-color material-icons">color_lens</i></li>
+                <li><i class="toggle-url material-icons">link</i></li>
                 <li><input class="text-color-picker" type="color" /></li>
                 <li><input class="background-color-picker" type="color" /></li>
             </ul>
+            
+            <input class="textbox" value="" type="text" />
+            <input class="hyperlink-text" value="" type="text" />
+            <input class="hyperlink-url" value="" type="text" />
             
             <div class="hooks-container">
                 <i class="hook hook-delete material-icons">close</i>
