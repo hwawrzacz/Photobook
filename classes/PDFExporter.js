@@ -6,7 +6,9 @@ class PDFExporter {
             format: 'a4'
           })
 
+        //width factor (used to set the correct width)
         var widthRatio = doc.internal.pageSize.getWidth()/photobook.width;
+        //height factor (used to set the correct height)
         var heightRatio = doc.internal.pageSize.getHeight()/photobook.height;
         
         var pageCount = 1;
@@ -27,6 +29,23 @@ class PDFExporter {
 
                 imgCount++;
             }
+            
+
+            //TODO: Move image implementation to separate function to also use for stickers #DRY
+            /*for (let sticker of page.stickers){
+                //loop with all stickers of page
+
+                var angle = this.getAngle(sticker.rotation)// angle in full 360 degree range
+
+                var rotatedOrigin = this.getRotatedOrigin(sticker.left, sicker.top, sticker.width, sticker.height,
+                    widthRatio, heightRatio, sticker.rotation)
+
+                doc.addImage(sticker.backgroundImage, "JPEG", rotatedOrigin.x, rotatedOrigin.y-image.height*heightRatio,
+                image.width*widthRatio, image.height*heightRatio,"img"+pageCount+"."+imgCount, "NONE", angle);
+
+                imgCount++;
+            }*/
+
             for (let textBox of page.textBoxes){
                 //loop with all textBoxes of page
 
