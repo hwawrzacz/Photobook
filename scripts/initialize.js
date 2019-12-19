@@ -50,6 +50,12 @@ sideMenuController.on('file', (action) => {
       break;
     }
 
+    case 'page': {
+      console.log('PAGE');
+      photobook.addPage();
+      break;
+    }
+
     default: {
       console.log('Unknown command');
     }

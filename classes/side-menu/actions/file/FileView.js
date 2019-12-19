@@ -10,6 +10,7 @@ class FileView extends EventEmitter {
     this.addNewProjectButtonListener();
     this.addExportPdfButtonListener();
     this.addExportHtmlButtonListener();
+    this.addPageButtonListener();
   }
 
   getStringElements = () => {
@@ -82,6 +83,15 @@ class FileView extends EventEmitter {
 
   exportHtmlClicked = () => {
     this.emit('file', 'html');
+  }
+
+  addPageButtonListener = () => {
+    const button = this.container.querySelector('.option-container.add-page');
+    button.addEventListener('click', this.addPageClicked);
+  }
+
+  addPageClicked = () => {
+    this.emit('file', 'page');
   }
 
   activate = () => {

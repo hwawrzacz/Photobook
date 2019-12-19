@@ -58,11 +58,11 @@ class Photobook extends EventEmitter {
     let page = new Page(this.width, this.height, backgroundImage, [], []);
     this.pages.push(page);
     this.element.appendChild(page.element);
+    this.emit('changed');
   }
 
   getPage (pageNumber) {
     if (pageNumber > 0 && pageNumber < this.pages.length - 1) {
-      this.emit('changed');
       return this.pages[pageNumber - 1];
     }
   }

@@ -8,7 +8,10 @@ class Nav extends EventEmitter {
   }
 
   init = () => {
-      this.photoBook.on('changed', this.disableOrActivateButton);
+      this.photoBook.on('changed', () => {
+        console.log("ELKO");
+        this.disableOrActivateButton();
+      });
       this.navLeft.addEventListener('click', this.leftClicked);
       this.navRight.addEventListener('click', this.rightClicked);
       this.disableOrActivateButton();
