@@ -13,7 +13,7 @@ class Photobook extends EventEmitter {
     this.activePageIndex = 0;
     this.activePage = this.pages[this.activePageIndex];
     this.activePage.visible = true;
-    document.querySelector('.content').appendChild(this.element);
+    document.querySelector('.core').appendChild(this.element);
   }
 
   // #region Getters and setters
