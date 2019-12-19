@@ -1,15 +1,16 @@
 class Page {
-  constructor(width, height, backgroundImage = '', images = [], textBoxes = []) {
-    this.element = document.createElement('div');
-    this.element.classList.add('page');
-    this.element.classList.add('size-fill-parent');
-    this.element.classList.add('page');
+  constructor(width, height, backgroundImage) {
+    this.element = document.createElement(`div`);
+    this.element.classList.add(`page`);
+    this.element.classList.add(`size-fill-parent`);
+    this.element.classList.add(`page`);
     this.width = width;
     this.height = height;
-
-    this.images = images;
-    this.textBoxes = textBoxes;
     this.backgroundImage = backgroundImage;
+    this.images = [];
+    this.textBoxes = [];
+
+    console.log(this.width + ` ` + this.height);
 
     this.visible = false;
 
@@ -41,10 +42,10 @@ class Page {
     this.Visible = value;
 
     if (this.Visible == true) {
-      this.element.style.setProperty("visibility", "visible");
+      this.element.style.setProperty(`visibility`, `visible`);
     }
     else if (this.Visible == false) {
-      this.element.style.setProperty("visibility", "hidden");
+      this.element.style.setProperty(`visibility`, `hidden`);
     }
   }
 
@@ -54,7 +55,8 @@ class Page {
 
   set width(value) {
     this.Width = value;
-    this.element.style.setProperty('width', value);
+    this.element.style.setProperty(`min-width`, `${value}px`);
+    console.log(this.element.style.getPropertyValue(`width`));
   }
 
   get height() {
@@ -63,7 +65,8 @@ class Page {
 
   set height(value) {
     this.Height = value;
-    this.element.style.setProperty('width', value);
+    this.element.style.setProperty(`min-height`, `${value}px`);
+    console.log(this.element.style.getPropertyValue(`height`));
   }
 
   get backgroundImage() {
@@ -72,7 +75,7 @@ class Page {
 
   set backgroundImage(value) {
     this.BackgroundImage = value;
-    this.element.style.setProperty('background-image', 'url(' + value + ')');
+    this.element.style.setProperty(`background-image`, `url(` + value + `)`);
   }
   // #endregion
 
@@ -117,6 +120,6 @@ class Page {
       width = height * proportions;
     }
 
-    return { 'width': width, 'height': height };
-  }
+    return { 'width': width, 'height': height }
+  };
 }

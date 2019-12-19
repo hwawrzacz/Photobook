@@ -1,5 +1,6 @@
 class Photobook {
   constructor(width, height) {
+    this.name = "Nowy projekt";
     this.pages = [];
     this.element = document.createElement('main');
     this.element.id = 'view';
@@ -17,7 +18,7 @@ class Photobook {
 
   //#region Getters and setters
   get name() {
-    return this.name;
+    return this.Name;
   }
 
   set name(value) {
@@ -62,7 +63,7 @@ class Photobook {
   }
 
   addPage(backgroundImage) {
-    let page = new Page(this.width, this.height, backgroundImage, [], []);
+    let page = new Page(this.width, this.height, backgroundImage);
     this.pages.push(page);
     this.element.appendChild(page.element);
   }
@@ -96,13 +97,11 @@ class Photobook {
 
   exportToHTML() {
     const exporter = new HTMLExporter();
-    exporter.exportToHTML(this.element);
-    let newDocument = document.createElement("html");
+    let documentString = exporter.getPhotobookDocumentAsString(this.element);
 
-    newDocument.appendChild(this.element.cloneNode(true));
-
-    const url = URL.createObjectURL(newDocument)
-    download(url)
+    console.log(documentString)
+    const url = URL.createObjectURL(new Blob([documentString], { type: "text/html" }));
+    download(url, `${this.name}.html`);
     console.log("Html donwload shoud happened");
   }
 
