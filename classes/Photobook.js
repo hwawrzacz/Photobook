@@ -1,6 +1,7 @@
 class Photobook extends EventEmitter {
-  constructor (width, height) {
+  constructor(width, height) {
     super();
+    this.name = "Nowy projekt";
     this.pages = [];
     this.element = document.createElement('main');
     this.element.id = 'view';
@@ -16,36 +17,44 @@ class Photobook extends EventEmitter {
     document.querySelector('.core').appendChild(this.element);
   }
 
-  // #region Getters and setters
-  get width () {
-    return this.Width;
+  //#region Getters and setters
+  get name() {
+    return this.Name;
   }
 
-  set width (value) {
+  set name(value) {
+    this.Name = value !== `` ? value : `Nowy projekt`;
+  }
+
+  get width() {
+    return this.Width
+  }
+
+  set width(value) {
     this.Width = value;
     this.element.style.setProperty('width', value + 'px');
   }
 
-  get height () {
+  get height() {
     return this.Height;
   }
 
-  set height (value) {
+  set height(value) {
     this.Height = value;
     this.element.style.setProperty('height', value + 'px');
   }
   // #endregion
 
-  showPreviousPage () {
+  showPreviousPage() {
     if (this.activePageIndex > 0) {
-      this.activePageIndex--;
+      this.activePageIndex--; // activePageIndex is saint, and it cannot be touched
       this.activePage.visible = false;
       this.activePage = this.pages[this.activePageIndex];
       this.activePage.visible = true;
     }
   }
 
-  showNextPage () {
+  showNextPage() {
     if (this.activePageIndex < this.pages.length - 1) {
       this.activePageIndex++;
       this.activePage.visible = false;
@@ -54,53 +63,51 @@ class Photobook extends EventEmitter {
     }
   }
 
-  addPage (backgroundImage) {
-    let page = new Page(this.width, this.height, backgroundImage, [], []);
+  addPage(backgroundImage) {
+    let page = new Page(this.width, this.height, backgroundImage);
     this.pages.push(page);
     this.element.appendChild(page.element);
     this.emit('changed');
   }
 
-  getPage (pageNumber) {
+  getPage(pageNumber) {
     if (pageNumber > 0 && pageNumber < this.pages.length - 1) {
       return this.pages[pageNumber - 1];
     }
   }
 
-  addTextBoxToPage (pageNumber) {
+  addTextBoxToPage(pageNumber) {
     this.pages[pageNumber - 1].addTextBox(0, 0);
   }
 
-  addTextBoxToActivePage () {
+  addTextBoxToActivePage() {
     this.activePage.addTextBox(0, 0);
   }
 
-  addImageToPage (base64Image, pageNumber) {
+  addImageToPage(base64Image, pageNumber) {
     this.pages[pageNumber - 1].addImage(base64Image);
   }
 
-  addImageToActivePage (base64Image) {
+  addImageToActivePage(base64Image) {
     this.activePage.addImage(base64Image);
   }
 
-  exportToJSON () {
+  exportToJSON() {
     const jsonPhotobook = JSON.stringify(this);
     console.log(this);
   }
 
-  exportToHTML () {
+  exportToHTML() {
     const exporter = new HTMLExporter();
-    exporter.exportToHTML(this.element);
-    let newDocument = document.createElement('html');
+    let documentString = exporter.getPhotobookDocumentAsString(this.element);
 
-    newDocument.appendChild(this.element.cloneNode(true));
-
-    const url = URL.createObjectURL(newDocument);
-    download(url);
-    console.log('Html donwload shoud happened');
+    console.log(documentString)
+    const url = URL.createObjectURL(new Blob([documentString], { type: "text/html" }));
+    download(url, `${this.name}.html`);
+    console.log("Html donwload shoud happened");
   }
 
-  exportToPDF () {
+  exportToPDF() {
     const exporter = new PDFExporter();
     exporter.exportToPDF(this);
   }

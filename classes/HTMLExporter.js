@@ -1,12 +1,19 @@
 class HTMLExporter {
-    exportToHTML(photobookElement) {
+    getPhotobookDocumentAsString(photobookElement) {
         let photobookDocument = this.createDocumentTemplate();
 
         photobookDocument = this.addStyles(photobookDocument);
         photobookDocument = this.addPhotobookElement(photobookElement, photobookDocument);
         photobookDocument = this.disableInputs(photobookDocument);
 
-        console.log(photobookDocument);
+        const documentString = `
+        <!DOCTYPE html>
+        <html>
+            <head>${photobookDocument.head.innerHTML}</head>
+            <body>${photobookDocument.body.innerHTML}</body>
+        </html>`;
+
+        return documentString;
     }
 
     createDocumentTemplate() {
@@ -61,15 +68,14 @@ class HTMLExporter {
         
         div.page {
             position: relative;
-            min-width: 595px;
-            min-height: 842px;
             margin: 20px;
             border: 1px solid black;
             overflow: hidden; 
+            visibility: visible !important;
         }
         
         div.page:first-child {
-            margin: 20px 100%; 
+            margin: 20px auto; 
         }
         
         /* Image */
