@@ -3,40 +3,29 @@ dimensions = getDimensions();
 const photobook = new Photobook(dimensions.width, dimensions.height);
 const page = photobook.element;
 
-const buttonPrev = document.querySelector("#prev")
-const buttonNext = document.querySelector("#next")
-
-buttonPrev.addEventListener("click", () => {
-  photobook.showPreviousPage();
-});
-
-buttonNext.addEventListener("click", () => {
-  photobook.showNextPage();
-});
-
+const nav = new Nav(photobook);
 
 const toggleMenu = () => {
-  console.log("clicked");
-  buttonMenuToggle.classList.toggle("rotate");
-  buttonMenuToggleIcon.innerHTML = toggleIcon(buttonMenuToggleIcon.innerHTML)
-  menu.classList.toggle("visible");
-}
+  console.log('clicked');
+  buttonMenuToggle.classList.toggle('rotate');
+  buttonMenuToggleIcon.innerHTML = toggleIcon(buttonMenuToggleIcon.innerHTML);
+  menu.classList.toggle('visible');
+};
 
-const buttonMenuToggle = document.querySelector("#button-menu-toggle");
-const buttonMenuToggleIcon = buttonMenuToggle.querySelector("i");
-const menu = document.querySelector(".side-menu");
-buttonMenuToggle.addEventListener("click", toggleMenu);
+const buttonMenuToggle = document.querySelector('#button-menu-toggle');
+const buttonMenuToggleIcon = buttonMenuToggle.querySelector('i');
+const menu = document.querySelector('.side-menu');
+buttonMenuToggle.addEventListener('click', toggleMenu);
 
 const toggleIcon = (value) => {
   let result;
 
-  if (value == "keyboard_arrow_up") {
-    result = "menu";
-  }
-  else result = "keyboard_arrow_up"
+  if (value == 'keyboard_arrow_up') {
+    result = 'menu';
+  } else result = 'keyboard_arrow_up';
 
   return result;
-}
+};
 
 // START Kamil
 const sideMenuController = new SideMenuController();
@@ -87,7 +76,7 @@ photobook.addImageToActivePage(imageBase64);
 photobook.addTextBoxToActivePage();
 
 // #region Functions definitions
-function getDimensions() {
+function getDimensions () {
   const proportions = 595 / 842;
   const headerHeight = document.querySelector('header').offsetHeight;
   const maxHeight = document.querySelector('.content').offsetHeight - headerHeight;
