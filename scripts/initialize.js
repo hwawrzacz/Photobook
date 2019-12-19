@@ -1,39 +1,49 @@
 dimensions = getDimensions();
 
+const projectNameInput = document.querySelector(`#project-name`);
 const photobook = new Photobook(dimensions.width, dimensions.height);
 const page = photobook.element;
 
-const buttonPrev = document.querySelector("#prev")
-const buttonNext = document.querySelector("#next")
+const buttonPrev = document.querySelector(`#prev`);
+const buttonNext = document.querySelector(`#next`);
 
-buttonPrev.addEventListener("click", () => {
+projectNameInput.addEventListener(`change`, () => {
+  if (projectNameInput.value === ``) {
+    projectNameInput.value = `Nowy projekt`;
+  }
+
+  photobook.name = projectNameInput.value;
+  console.log(photobook);
+});
+
+buttonPrev.addEventListener(`click`, () => {
   photobook.showPreviousPage();
 });
 
-buttonNext.addEventListener("click", () => {
+buttonNext.addEventListener(`click`, () => {
   photobook.showNextPage();
 });
 
 
 const toggleMenu = () => {
-  console.log("clicked");
-  buttonMenuToggle.classList.toggle("rotate");
+  console.log(`clicked`);
+  buttonMenuToggle.classList.toggle(`rotate`);
   buttonMenuToggleIcon.innerHTML = toggleIcon(buttonMenuToggleIcon.innerHTML)
-  menu.classList.toggle("visible");
+  menu.classList.toggle(`visible`);
 }
 
-const buttonMenuToggle = document.querySelector("#button-menu-toggle");
-const buttonMenuToggleIcon = buttonMenuToggle.querySelector("i");
-const menu = document.querySelector(".side-menu");
-buttonMenuToggle.addEventListener("click", toggleMenu);
+const buttonMenuToggle = document.querySelector(`#button-menu-toggle`);
+const buttonMenuToggleIcon = buttonMenuToggle.querySelector(`i`);
+const menu = document.querySelector(`.side-menu`);
+buttonMenuToggle.addEventListener(`click`, toggleMenu);
 
 const toggleIcon = (value) => {
   let result;
 
-  if (value == "keyboard_arrow_up") {
-    result = "menu";
+  if (value == `keyboard_arrow_up`) {
+    result = `menu`;
   }
-  else result = "keyboard_arrow_up"
+  else result = `keyboard_arrow_up`
 
   return result;
 }
