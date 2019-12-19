@@ -1,17 +1,17 @@
-class Image extends Element2D {
-    constructor(base64Image, top = 0, left = 0, width = 500, height = 300, rotation = 0) {
+class PhotobookImage extends Element2D {
+    constructor(base64Image, width, height) {
         super();
-        const imageDocument = new DOMParser().parseFromString(this.imagePattern, "text/html");
-        this.element = imageDocument.querySelector(".image-container");
+        const imageDocument = new DOMParser().parseFromString(this.imagePattern, `text/html`);
+        this.element = imageDocument.querySelector(`.image-container`);
 
         this.backgroundImage = base64Image;
-        this.top = top;
-        this.left = left;
+        this.top = 0;
+        this.left = 0;
         this.minWidth = 50;
         this.minHeight = 50;
         this.width = width;
         this.height = height;
-        this.rotation = rotation;
+        this.rotation = 0;
 
         this.initializeHooksMechanism();
     }
@@ -22,20 +22,20 @@ class Image extends Element2D {
 
     set backgroundImage(value) {
         this.BackgroundImage = value;
-        this.element.style.setProperty("background-image", "url(" + value + ")");
+        this.element.style.setProperty(`background-image`, `url(` + value + `)`);
     }
 
     initializeHooksMechanism() {
-        const hookResize = this.element.querySelector(".hook-resize");
-        const hookRotate = this.element.querySelector(".hook-rotate");
-        const hookDelete = this.element.querySelector(".hook-delete");
+        const hookResize = this.element.querySelector(`.hook-resize`);
+        const hookRotate = this.element.querySelector(`.hook-rotate`);
+        const hookDelete = this.element.querySelector(`.hook-delete`);
 
         move(this);
         resizeElement(this, hookResize);
         rotateElement(this, hookRotate);
-        hookDelete.addEventListener("click", () => {
+        hookDelete.addEventListener(`click`, () => {
             this.element.remove();
-            showInfo("Element was removed");
+            showInfo(`Element was removed`);
         });
     }
 

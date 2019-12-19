@@ -83,9 +83,40 @@ class Page {
   }
 
   addImage(base64Image) {
-    let newImage = new Image(base64Image);
-    newImage.initializeHooksMechanism();
-    this.images.push(newImage);
-    this.element.appendChild(newImage.element);
+    const image = new Image();
+
+    image.onload = () => {
+      const initialWidth = image.width;
+      const initialHeight = image.height;
+
+      const imageSize = this.getMaxDimensions(initialWidth, initialHeight);
+      const width = imageSize.width;
+      const height = imageSize.height;
+
+      let newImage = new PhotobookImage(base64Image, width, height);
+      newImage.initializeHooksMechanism();
+      this.images.push(newImage);
+      this.element.appendChild(newImage.element);
+    }
+
+    image.src = base64Image;
+  }
+
+  getMaxDimensions(initialWidth, initialHeight) {
+    const proportions = initialWidth / initialHeight;
+    const widthCheck = this.width - initialWidth;
+    const heightCheck = this.height - initialHeight;
+    let width;
+    let height;
+
+    if (widthCheck < heightCheck) {
+      width = this.width * 0.8;
+      height = width / proportions;
+    } else {
+      height = this.height * 0.8;
+      width = height * proportions;
+    }
+
+    return { 'width': width, 'height': height };
   }
 }
