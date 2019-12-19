@@ -85,6 +85,7 @@ sideMenuController.on('createText', () => {
 
 photobook.addImageToActivePage(imageBase64);
 photobook.addTextBoxToActivePage();
+photobook.addHyperlinkToActivePage();
 
 // #region Functions definitions
 function getDimensions() {

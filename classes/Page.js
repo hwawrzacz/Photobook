@@ -82,6 +82,12 @@ class Page {
     this.element.appendChild(newTextBox.element);
   }
 
+  addHyperlink(top, left, bottom, width, height, rotation) {
+    let newHyperlink = new Hyperlink(top, left, bottom, width, height, rotation);
+    this.textBoxes.push(newHyperlink);
+    this.element.appendChild(newHyperlink.element);
+  }
+
   addImage(base64Image) {
     let newImage = new Image(base64Image);
     newImage.initializeHooksMechanism();

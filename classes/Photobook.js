@@ -73,6 +73,14 @@ class Photobook {
     this.activePage.addTextBox(0, 0);
   }
 
+  addHyperlinkToPage(pageNumber) {
+    this.pages[pageNumber - 1].addHyperlink(0, 0);
+  }
+
+  addHyperlinkToActivePage() {
+    this.activePage.addHyperlink(0, 0);
+  }
+
   addImageToPage(base64Image, pageNumber) {
     this.pages[pageNumber - 1].addImage(base64Image);
   }
