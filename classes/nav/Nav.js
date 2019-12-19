@@ -61,10 +61,10 @@ class Nav extends EventEmitter {
   }
 
   disbaleButton = (btn) => {
-    btn.style.background = "grey";
+    btn.style.visibility = "hidden";
   }
 
   activateButton = (btn) => {
-    btn.style.background = "";
+    btn.style.visibility = "";
   }
 }

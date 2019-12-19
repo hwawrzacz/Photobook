@@ -157,7 +157,7 @@ body{
 
 .content{
     flex: 7;
-    background: firebrick;
+    background: #414141;
     position: absolute;
     top: 70px;
     bottom: 0;
@@ -227,15 +227,22 @@ body{
     height: 50px;
     box-sizing: border-box;
     cursor: pointer;
+    width: 70px;
+    height: 40px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
 }
 
 .content .nav.left {
-    background-color: red;
+    background-color: #999999;
     margin-right: 10px;
 }
 
 .content .nav.right {
-    background-color: green;
+    background-color: #999999;
     margin-left: 10px;
 }
 
