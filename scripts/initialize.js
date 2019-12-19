@@ -1,37 +1,37 @@
 dimensions = getDimensions();
 
-const buttonMenuToggle = document.querySelector("#button-menu-toggle");
-const buttonMenuToggleIcon = buttonMenuToggle.querySelector("i");
-const menu = document.querySelector(".side-menu");
+const buttonMenuToggle = document.querySelector('#button-menu-toggle');
+const buttonMenuToggleIcon = buttonMenuToggle.querySelector('i');
+const menu = document.querySelector('.side-menu');
 
 const toggleMenu = (event) => {
-  console.log("clicked");
-  buttonMenuToggle.classList.toggle("rotate");
-  buttonMenuToggleIcon.innerHTML = toggleIcon(buttonMenuToggleIcon.innerHTML)
-  menu.classList.toggle("visible");
-}
+  console.log('clicked');
+  buttonMenuToggle.classList.toggle('rotate');
+  buttonMenuToggleIcon.innerHTML = toggleIcon(buttonMenuToggleIcon.innerHTML);
+  menu.classList.toggle('visible');
+};
 
 const toggleIcon = (value) => {
   let result;
 
-  if (value == "keyboard_arrow_up") {
-    result = "menu";
-  }
-  else result = "keyboard_arrow_up"
+  if (value == 'keyboard_arrow_up') {
+    result = 'menu';
+  } else result = 'keyboard_arrow_up';
 
   return result;
-}
+};
 
-buttonMenuToggle.addEventListener("click", toggleMenu);
-
+buttonMenuToggle.addEventListener('click', toggleMenu);
 
 const photobook = new Photobook(dimensions.width, dimensions.height);
-setInterval(() => { console.log(photobook); }, 5000);
+photobook.addPage(fabric3);
+console.log(photobook);
 
 const page = photobook.element;
 
 // START Kamil
 const sideMenuController = new SideMenuController();
+const pagesNavigation = new Nav(photobook);
 
 sideMenuController.on('file', (action) => {
   switch (action) {
@@ -75,7 +75,6 @@ sideMenuController.on('createText', () => {
 });
 // END Kamil
 
-photobook.addPage(fabric3);
 // possible background images: fabric(1-4), background(1-4)
 
 photobook.addImageToActivePage(imageBase64);

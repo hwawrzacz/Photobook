@@ -5,7 +5,7 @@ class Photobook {
     this.element.id = 'view';
     this.width = width;
     this.height = height;
-    document.querySelector('.content').appendChild(this.element);
+    document.querySelector('.core').appendChild(this.element);
   }
 
   //#region Getters and setters
