@@ -16,6 +16,14 @@ class Photobook {
   }
 
   //#region Getters and setters
+  get name() {
+    return this.name;
+  }
+
+  set name(value) {
+    this.Name = value !== `` ? value : `Nowy projekt`;
+  }
+
   get width() {
     return this.Width
   }
@@ -37,7 +45,7 @@ class Photobook {
 
   showPreviousPage() {
     if (this.activePageIndex > 0) {
-      this.activePageIndex--;
+      this.activePageIndex--; // activePageIndex is saint, and it cannot be touched
       this.activePage.visible = false;
       this.activePage = this.pages[this.activePageIndex];
       this.activePage.visible = true;

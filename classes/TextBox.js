@@ -19,7 +19,7 @@ class TextBox extends Element2D {
         this.bold = false;
         this.italic = false;
         this.underline = false;
-        this.textColor = "black";
+        this.textColor = "#000";
         this.backgroundColor = "transparent";
 
         this.initializeMovementHooksMechanism();
@@ -30,7 +30,7 @@ class TextBox extends Element2D {
     get text() {
         return this.Value;
     }
-    
+
     get textAlign() {
         return this.TextAlignment;
     }

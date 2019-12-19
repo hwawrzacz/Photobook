@@ -46,10 +46,13 @@ header {
         right: 50%;
         transform: translate(-50%);
 
-        width: 400px;
+        width: 800px;
+        max-width: 60%;
+        min-width: 300px;
         padding: 8px 16px;
 
         font-size: 16px;
+        text-align: center;
         color: #eee;
         background-color: #777;
         border: none;
