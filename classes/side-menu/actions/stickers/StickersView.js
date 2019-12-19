@@ -12,7 +12,7 @@ class StickersView extends EventEmitter {
     getStringDOM = () => {
       const stringDOM = `
         <div class="action-stickers-container">
-          <div class="action-sticker">STICKER</div>
+          <h3>Zdjęcia</h3>
         </div>`;
         return stringDOM;
     }
