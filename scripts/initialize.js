@@ -6,16 +6,20 @@ const page = photobook.element;
 
 const nav = new Nav(photobook);
 
+const buttonMenuToggle = document.querySelector('#button-menu-toggle');
+
 const toggleMenu = () => {
   console.log('clicked');
+  const buttonMenuToggleIcon = buttonMenuToggle.querySelector('i');
+  const menu = document.querySelector('.side-menu');
+  const content = document.querySelector(`.content`);
+
+  content.classList.toggle(`padding-left`);
   buttonMenuToggle.classList.toggle('rotate');
   buttonMenuToggleIcon.innerHTML = toggleIcon(buttonMenuToggleIcon.innerHTML);
   menu.classList.toggle('visible');
 };
 
-const buttonMenuToggle = document.querySelector('#button-menu-toggle');
-const buttonMenuToggleIcon = buttonMenuToggle.querySelector('i');
-const menu = document.querySelector('.side-menu');
 buttonMenuToggle.addEventListener('click', toggleMenu);
 
 projectNameInput.addEventListener(`change`, () => {
