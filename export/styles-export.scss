@@ -1,6 +1,12 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
 main#view {
     display: flex;
-    width: 100%;
+    width: 100% !important;
+    height: auto !important;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -13,6 +19,7 @@ div.page {
     margin: 20px;
     border: 1px solid black;
     overflow: hidden;
+    visibility: visible !important;
 
     &:first-child {
         margin: 20px 100%;

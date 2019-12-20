@@ -31,14 +31,16 @@ header {
     border: none;
     outline: none;
     cursor: pointer;
-    -webkit-transition: 200ms;
-    transition: 200ms; }
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+    -webkit-transition: 300ms;
+    transition: 300ms; }
     header button i.material-icons {
       font-size: 32px;
       color: #ddd; }
     header button.rotate {
-      -webkit-transform: rotate(-90deg);
-              transform: rotate(-90deg); }
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg); }
   header input[type=text] {
     position: relative;
     left: 50%;
