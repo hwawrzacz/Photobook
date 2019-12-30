@@ -7,13 +7,14 @@ class TextBox extends Element2D {
 
         this.top = 0;
         this.left = 0;
-        this.minWidth = 300;
-        this.minHeight = 50;
+
+        this.minWidth = 40;
+        this.minHeight = 40;
         this.width = width || this.minWidth;
         this.height = height || this.minHeight;
         this.rotation = 0;
 
-        this.value = "";
+        this.text = "";
         this.textAlign = "left";
         this.fontSize = 14;
         this.bold = false;
@@ -27,10 +28,6 @@ class TextBox extends Element2D {
     }
 
     //#region Getters and setters
-    get text() {
-        return this.Value;
-    }
-
     get textAlign() {
         return this.TextAlignment;
     }
@@ -45,7 +42,7 @@ class TextBox extends Element2D {
     }
 
     set fontSize(value) {
-        if (value > 0) {
+        if (value > 0 && value <= this.height - 20) {
             this.FontSize = value;
             this.element.style.setProperty("font-size", value + "px");
         }
@@ -98,12 +95,12 @@ class TextBox extends Element2D {
         this.BackgroundColor = value;
         this.textBox.style.setProperty("background-color", value);
     }
-    get value() {
-        return this.BackgroundColor;
+    get text() {
+        return this.Text;
     }
 
-    set value(value) {
-        this.Value = value;
+    set text(value) {
+        this.Text = value;
         this.textBox.value = value;
 
         //TODO: check compatibility of setAttribute
@@ -191,11 +188,11 @@ class TextBox extends Element2D {
         });
 
         this.textBox.addEventListener("keyup", () => {
-            this.value = this.textBox.value;
+            this.text = this.textBox.value;
         });
 
         this.textBox.addEventListener("keydown", () => {
-            this.value = this.textBox.value;
+            this.text = this.textBox.value;
         });
     }
     //#endregion

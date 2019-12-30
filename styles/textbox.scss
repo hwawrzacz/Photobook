@@ -3,8 +3,6 @@
     position: absolute;
     top: 0;
     left: 0;
-    min-width: 300px;
-    min-height: 50px;
 
     transform: rotate(0deg);
     cursor: move;
@@ -38,6 +36,8 @@
     ul.textbox-tools {
         position: absolute;
         bottom: 100%;
+        left: 0;
+        width: 300px;
         margin: 0;
         padding: 0;
         max-height: 0;

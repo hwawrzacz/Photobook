@@ -7,10 +7,10 @@ class PhotobookImage extends Element2D {
         this.backgroundImage = base64Image;
         this.top = 0;
         this.left = 0;
-        this.minWidth = 50;
-        this.minHeight = 50;
-        this.width = width;
-        this.height = height;
+        this.minWidth = 40;
+        this.minHeight = 40;
+        this.width = width || this.minWidth;
+        this.height = height || this.minHeight;
         this.rotation = 0;
 
         this.initializeHooksMechanism();

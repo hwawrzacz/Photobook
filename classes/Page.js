@@ -9,9 +9,6 @@ class Page {
     this.backgroundImage = backgroundImage;
     this.images = [];
     this.textBoxes = [];
-
-    console.log(this.width + ` ` + this.height);
-
     this.visible = false;
 
     this.observeConfig = { childList: true, subtree: true };
@@ -79,8 +76,8 @@ class Page {
   }
   // #endregion
 
-  addTextBox(top, left, bottom, width, height, rotation) {
-    let newTextBox = new TextBox(top, left, bottom, width, height, rotation);
+  addTextBox(width, height) {
+    let newTextBox = new TextBox(width || 300, height || 50);
     this.textBoxes.push(newTextBox);
     this.element.appendChild(newTextBox.element);
   }

@@ -1,10 +1,9 @@
 //move
 const move = (target) => {
-    
     let startingTop;
     let startingLeft;
 
-   const initializeMoving = (event) => { 
+    const initializeMoving = (event) => {
         getStartingMouseCoordinates(event);
         startingTop = target.top;
         startingLeft = target.left;
@@ -14,13 +13,13 @@ const move = (target) => {
     }
 
     const moveElement = (event) => {
-        getMouseCoordinates(event);   
+        getMouseCoordinates(event);
         let newLeft = mouseX - mouseX0 + startingLeft;
         let newTop = mouseY - mouseY0 + startingTop;
-        
-        target.top = newTop;    
+
+        target.top = newTop;
         target.left = newLeft;
-        
+
         showInfo(getElementProperties(target.element));
     }
 

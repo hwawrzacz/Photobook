@@ -18,20 +18,40 @@ const resizeElement = (target, hook) => {
 
     const resize = (event) => {
         getMouseCoordinates(event);
+        let newWidth;
+        let newHeight;
 
         if (event.shiftKey) {
-            const newWidth = mouseX - mouseX0 + initialWidth;
-            const resizeRatio = newWidth/initialWidth;
+            const ratioWidth = mouseX - mouseX0 + initialWidth;
+            const resizeRatio = ratioWidth / initialWidth;
+            newWidth = initialWidth * resizeRatio;
+            newHeight = initialHeight * resizeRatio;
+
             target.width = initialWidth * resizeRatio;
-            target.height = initialHeight * resizeRatio;
+            if (target instanceof TextBox) {
+                if (newHeight >= target.fontSize + 20) {
+                    target.height = newHeight;
+                }
+            }
+            else {
+                target.height = newHeight;
+            }
         }
         else {
-            const newWidth = mouseX - mouseX0 + initialWidth;
-            const newHeight = mouseY - mouseY0 + initialHeight;
+            newWidth = mouseX - mouseX0 + initialWidth;
+            newHeight = mouseY - mouseY0 + initialHeight;
+
             target.width = newWidth;
-            target.height = newHeight;
+            if (target instanceof TextBox) {
+                if (newHeight >= target.fontSize + 20) {
+                    target.height = newHeight;
+                }
+            }
+            else {
+                target.height = newHeight;
+            }
         }
-        
+
         showInfo(getElementProperties(target.element));
     }
 
