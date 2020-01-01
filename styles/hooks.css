@@ -5,6 +5,7 @@ i.hook {
   height: 20px;
   font-size: 20px;
   background-color: white;
+  color: black;
   cursor: pointer; }
 
 i.hook-rotate {
