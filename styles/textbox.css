@@ -7,74 +7,87 @@
   min-height: 50px;
   -webkit-transform: rotate(0deg);
           transform: rotate(0deg);
-  cursor: move; }
-  .textbox-container input[type=text] {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    font-size: inherit;
-    font-weight: inherit;
-    font-style: inherit;
-    text-decoration: inherit;
-    text-align: inherit;
-    background-color: transparent;
-    border: 2px dashed #666;
-    outline: none;
-    cursor: move;
-    -webkit-transition: 300ms;
-    transition: 300ms; }
-    .textbox-container input[type=text]:focus {
-      border: 2px solid skyblue; }
-  .textbox-container ul.textbox-tools {
-    position: absolute;
-    bottom: 100%;
-    margin: 0;
-    padding: 0;
-    max-height: 0;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    overflow: hidden;
-    background-color: white;
-    list-style: none;
-    opacity: 0;
-    -webkit-transition: 300ms;
-    transition: 300ms; }
-    .textbox-container ul.textbox-tools li {
-      position: relative;
-      top: 10px;
-      margin: 0 3px;
-      font-size: 10px !important;
-      cursor: pointer;
-      -webkit-transition: 400ms;
-      transition: 400ms;
-      -webkit-transition-delay: 100ms;
-              transition-delay: 100ms; }
-      .textbox-container ul.textbox-tools li i {
-        width: 20px;
-        height: 20px;
-        font-size: 20px !important; }
-        .textbox-container ul.textbox-tools li i::-moz-selection {
-          background-color: none;
-          color: inherit; }
-        .textbox-container ul.textbox-tools li i::selection {
-          background-color: none;
-          color: inherit; }
-      .textbox-container ul.textbox-tools li i.text-color, .textbox-container ul.textbox-tools li i.background-color {
-        text-shadow: 1px 1px black; }
-      .textbox-container ul.textbox-tools li input[type=color] {
-        display: none; }
-    .textbox-container ul.textbox-tools:hover {
-      opacity: 1; }
-  .textbox-container:hover ul, .textbox-container:active ul {
-    max-height: 30px;
-    opacity: .3; }
-    .textbox-container:hover ul li, .textbox-container:active ul li {
-      position: relative;
-      top: 0; }
+  cursor: move;
+}
+.textbox-container input[type=text] {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  text-decoration: inherit;
+  text-align: inherit;
+  background-color: transparent;
+  border: 2px dashed #666;
+  outline: none;
+  cursor: move;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+.textbox-container input[type=text]:focus {
+  border: 2px solid skyblue;
+}
+.textbox-container ul.textbox-tools {
+  position: absolute;
+  bottom: 100%;
+  margin: 0;
+  padding: 0;
+  max-height: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+  background-color: white;
+  list-style: none;
+  opacity: 0;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+.textbox-container ul.textbox-tools li {
+  position: relative;
+  top: 10px;
+  margin: 0 3px;
+  font-size: 10px !important;
+  cursor: pointer;
+  -webkit-transition: 400ms;
+  transition: 400ms;
+  -webkit-transition-delay: 100ms;
+          transition-delay: 100ms;
+}
+.textbox-container ul.textbox-tools li i {
+  width: 20px;
+  height: 20px;
+  font-size: 20px !important;
+}
+.textbox-container ul.textbox-tools li i::-moz-selection {
+  background-color: none;
+  color: inherit;
+}
+.textbox-container ul.textbox-tools li i::selection {
+  background-color: none;
+  color: inherit;
+}
+.textbox-container ul.textbox-tools li i.text-color, .textbox-container ul.textbox-tools li i.background-color {
+  text-shadow: 1px 1px black;
+}
+.textbox-container ul.textbox-tools li input[type=color] {
+  display: none;
+}
+.textbox-container ul.textbox-tools:hover {
+  opacity: 1;
+}
+.textbox-container:hover ul, .textbox-container:active ul {
+  max-height: 30px;
+  opacity: .3;
+}
+.textbox-container:hover ul li, .textbox-container:active ul li {
+  position: relative;
+  top: 0;
+}
