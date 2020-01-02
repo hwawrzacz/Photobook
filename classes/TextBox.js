@@ -16,6 +16,8 @@ class TextBox extends Element2D {
         this.height = height || this.minHeight;
         this.rotation = 0;
 
+        this.previousMode = ``;
+        this.currentMode = `textbox-mode`;
         this.urlMode = false;
         this.text = ``;
         this.textAlign = `left`;
@@ -100,22 +102,38 @@ class TextBox extends Element2D {
         this.element.style.setProperty(`background-color`, value);
     }
 
-    get urlMode() {
-        return this.UrlMode;
+    get currentMode() {
+        return this.CurrentMode;
     }
 
-    set urlMode(value) {
-        this.UrlMode = value;
-        console.log(`url edit mode ${this.urlMode}`);
+    set currentMode(value) {
+        this.previousMode = this.currentMode;
+        this.CurrentMode = value;
+        this.element.classList.remove(this.previousMode);
+        this.element.classList.add(this.currentMode);
+
+        if (this.isTextboxMode()) {
+            this.urlMode = false;
+        }
+
+        if (this.isUrlMode()) {
+            this.urlMode = true;
+        }
+
+        if (this.currentMode === `url-mode` || (this.currentMode === `url-edit-mode` && this.previousMode === `url-mode`)) {
+            this.changeUrlIcon(`link_off`);
+        }
+        else {
+            this.changeUrlIcon('link');
+        }
     }
 
-    get urlEditMode() {
-        return this.UrlEditMode;
+    get previousMode() {
+        return this.PreviousMode;
     }
 
-    set urlEditMode(value) {
-        this.UrlEditMode = value;
-        console.log(`url edit mode ${this.urlEditMode}`);
+    set previousMode(value) {
+        this.PreviousMode = value;
     }
 
     get text() {
@@ -124,14 +142,11 @@ class TextBox extends Element2D {
 
     set text(value) {
         this.Text = value;
-        this.LinkText = value;
-        this.textBox.value = this.Text;
-        this.urlText.innerHTML = this.Text;
+        this.textBox.value = this.text;
 
         //TODO: check compatibility of setAttribute
         //may cause problems in the future
-        this.textBox.setAttribute(`value`, this.Text);
-        this.textBox.setAttribute(`value`, this.Text);
+        this.textBox.setAttribute(`value`, this.text);
     }
     //#endregion
 
@@ -152,8 +167,8 @@ class TextBox extends Element2D {
 
     initializeUrlHooks = () => {
         const hookToggleURL = this.element.querySelector(`.hook-toggle-url`);
-        const hookEnableUrlMode = this.element.querySelector(`.url-actions .enable-url-mode`);
-        const hookDisableUrlMode = this.element.querySelector(`.url-actions .disable-url-mode`);
+        const hookConfirmUrlMode = this.element.querySelector(`.url-actions .confirm-url-mode`);
+        const hookDismissUrlMode = this.element.querySelector(`.url-actions .dismiss-url-mode`);
 
         //prevent copy-move-paste action
         this.urlText.addEventListener(`mousedown`, (e) => {
@@ -163,31 +178,25 @@ class TextBox extends Element2D {
         this.urlText.addEventListener(`click`, (e) => {
             //prevent opening a link
             e.preventDefault();
-            this.enableUrlEditMode();
+            this.currentMode = 'url-edit-mode';
         });
 
         hookToggleURL.addEventListener(`click`, () => {
-            if (this.urlMode) {
-                this.disableUrlMode();
-                this.enableTextboxMode();
+            if (this.isUrlMode()) {
+                this.currentMode = `textbox-mode`;
             }
-            else {
-                this.enableUrlEditMode();
+            else if (!this.isUrlEditMode()) {
+                this.currentMode = `url-edit-mode`;
             }
         });
 
-        hookEnableUrlMode.addEventListener(`click`, () => {
-            this.urlMode = true;
-            console.log(`url enabled`);
-            this.enableUrlMode();
-            this.disableUrlEditMode();
+        hookConfirmUrlMode.addEventListener(`click`, () => {
+            this.currentMode = 'url-mode';
+            this.refreshUrlTarget();
         });
 
-        hookDisableUrlMode.addEventListener(`click`, () => {
-            this.urlMode = false;
-            console.log(`url disabled`);
-            this.enableTextboxMode();
-            this.disableUrlEditMode();
+        hookDismissUrlMode.addEventListener(`click`, () => {
+            this.enablePreviousMode();
         });
 
     }
@@ -269,43 +278,22 @@ class TextBox extends Element2D {
         this.underline = !this.underline;
     }
 
-    enableTextboxMode = () => {
-        this.disableUrlMode;
-        this.disableUrlEditMode;
-        this.element.classList.add(`textbox-mode`);
+    enablePreviousMode = () => {
+        const tmp = this.currentMode;
+        this.currentMode = this.previousMode;
+        this.previousMode = tmp;
     }
 
-    disableTextboxMode = () => {
-        this.element.classList.remove(`textbox-mode`);
+    isTextboxMode = () => {
+        return this.currentMode === `textbox-mode`;
     }
 
-    enableUrlMode = () => {
-        this.disableUrlEditMode();
-        this.disableTextboxMode();
-
-        this.urlMode = true;
-        this.element.classList.add(`url-mode`);
-        this.changeUrlIcon(`link_off`);
-        this.refreshUrlTarget();
+    isUrlEditMode = () => {
+        return this.currentMode === `url-edit-mode`;
     }
 
-    disableUrlMode = () => {
-        this.urlMode = false;
-        this.element.classList.remove(`url-mode`);
-        this.changeUrlIcon(`link`);
-    }
-
-    enableUrlEditMode = () => {
-        this.disableUrlMode();
-        this.disableTextboxMode();
-
-        this.urlEditMode = true
-        this.element.classList.add(`url-edit-mode`);
-    }
-
-    disableUrlEditMode = () => {
-        this.urlEditMode = false;
-        this.element.classList.remove(`url-edit-mode`);
+    isUrlMode = () => {
+        return this.currentMode === `url-mode`;
     }
 
     changeUrlIcon = (value) => {
@@ -316,6 +304,7 @@ class TextBox extends Element2D {
     refreshUrlTarget = () => {
         const urlTarget = this.urlTarget.value;
         this.urlText.setAttribute(`href`, urlTarget);
+        this.urlText.innerHTML = this.text;
     }
 
     textBoxPattern = `
@@ -323,14 +312,14 @@ class TextBox extends Element2D {
             <a href="#" target="_blank" class="url-text"></a>
             <input class="textbox" value="asd" type="text" />
             <input class="url-target" placeholder="np. http://google.com" value="" type="text" />
+
             <div class="url-actions">
-                <button class="disable-url-mode">
-                    Anuluj
+                <button class="dismiss-url-mode">
+                    <p>Anuluj</p>
                     <i class="material-icons">close</i>
                 </button>
-
-                <button class="enable-url-mode">
-                    Zatwierdź
+                <button class="confirm-url-mode">
+                    <p>Zatwierdź</p>
                     <i class="enable-url-mode material-icons">check</i>
                 </button>
             </div>

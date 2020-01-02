@@ -5,128 +5,175 @@
   left: 0;
   -webkit-transform: rotate(0deg);
           transform: rotate(0deg);
-  cursor: move; }
-  .textbox-container input[type=text], .textbox-container a {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    display: inline-block;
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%; }
-    .textbox-container input[type=text].textbox, .textbox-container input[type=text].url-text, .textbox-container a.textbox, .textbox-container a.url-text {
-      height: 100%;
-      padding: 10px;
-      background-color: inherit;
-      font-size: inherit;
-      font-weight: inherit;
-      font-style: inherit;
-      text-decoration: inherit;
-      text-align: inherit;
-      color: inherit;
-      border: 2px dashed #666;
-      outline: none;
-      cursor: move;
-      -webkit-transition: 300ms;
-      transition: 300ms; }
-      .textbox-container input[type=text].textbox:focus, .textbox-container input[type=text].url-text:focus, .textbox-container a.textbox:focus, .textbox-container a.url-text:focus {
-        border: 2px solid skyblue; }
-    .textbox-container input[type=text].url-target, .textbox-container a.url-target {
-      z-index: 1;
-      padding: 5px;
-      font-size: 16px; }
-  .textbox-container.textbox-mode a, .textbox-container.textbox-mode .url-actions, .textbox-container.textbox-mode .url-target {
-    display: none; }
-  .textbox-container.url-mode .textbox, .textbox-container.url-mode .url-actions, .textbox-container.url-mode .url-target {
-    display: none; }
-  .textbox-container.url-mode a {
-    display: block; }
-  .textbox-container.url-edit-mode a {
-    display: none; }
-  .textbox-container.url-edit-mode .url-actions, .textbox-container.url-edit-mode .url-target {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex; }
-  .textbox-container .url-actions {
-    padding: 5px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    background-color: white;
-    color: black; }
-    .textbox-container .url-actions button {
-      margin: 0;
-      width: 100px;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-preferred-size: 1;
-          flex-basis: 1;
-      -ms-flex-item-align: start;
-          align-self: flex-start;
-      -webkit-box-align: center;
-          -ms-flex-align: center;
-              align-items: center;
-      -webkit-box-pack: justify;
-          -ms-flex-pack: justify;
-              justify-content: space-between;
-      background-color: #eee;
-      border: none;
-      border-radius: 5px;
-      outline: none;
-      cursor: pointer; }
-  .textbox-container ul.textbox-tools {
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-    width: 300px;
-    margin: 0;
-    padding: 0;
-    max-height: 0;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    overflow: hidden;
-    background-color: white;
-    color: black;
-    list-style: none;
-    opacity: 0;
-    -webkit-transition: 300ms;
-    transition: 300ms; }
-    .textbox-container ul.textbox-tools li {
-      position: relative;
-      top: 10px;
-      margin: 0 3px;
-      font-size: 10px !important;
-      cursor: pointer;
-      -webkit-transition: 400ms;
-      transition: 400ms;
-      -webkit-transition-delay: 100ms;
-              transition-delay: 100ms; }
-      .textbox-container ul.textbox-tools li i {
-        width: 20px;
-        height: 20px;
-        font-size: 20px !important; }
-        .textbox-container ul.textbox-tools li i::-moz-selection {
-          background-color: none;
-          color: inherit; }
-        .textbox-container ul.textbox-tools li i::selection {
-          background-color: none;
-          color: inherit; }
-      .textbox-container ul.textbox-tools li i.text-color, .textbox-container ul.textbox-tools li i.background-color {
-        text-shadow: 1px 1px black; }
-      .textbox-container ul.textbox-tools li input[type=color] {
-        display: none; }
-    .textbox-container ul.textbox-tools:hover {
-      opacity: 1; }
-  .textbox-container:hover ul, .textbox-container:active ul {
-    max-height: 30px;
-    opacity: .3; }
-    .textbox-container:hover ul li, .textbox-container:active ul li {
-      position: relative;
-      top: 0; }
+  cursor: move;
+}
+.textbox-container .textbox, .textbox-container a.url-text {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  display: inline-block;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  background-color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  text-decoration: inherit;
+  text-align: inherit;
+  color: inherit;
+  border: 2px dashed #666;
+  outline: none;
+  cursor: move;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+.textbox-container .textbox:focus, .textbox-container a.url-text:focus {
+  border: 2px solid skyblue;
+}
+.textbox-container .url-target {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  padding: 5px;
+  background-color: white;
+  color: black;
+  border: none;
+  outline: none;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none !important;
+  font-size: 16px;
+  cursor: text;
+}
+.textbox-container.textbox-mode a, .textbox-container.textbox-mode .url-actions, .textbox-container.textbox-mode .url-target {
+  display: none;
+}
+.textbox-container.url-mode .textbox, .textbox-container.url-mode .url-actions, .textbox-container.url-mode .url-target {
+  display: none;
+}
+.textbox-container.url-mode a {
+  display: block;
+}
+.textbox-container.url-edit-mode a {
+  display: none;
+}
+.textbox-container.url-edit-mode .url-actions, .textbox-container.url-edit-mode .url-target {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.textbox-container .url-actions {
+  padding: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: white;
+  color: black;
+}
+.textbox-container .url-actions button {
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-preferred-size: 1;
+      flex-basis: 1;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #eee;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  font-weight: normal !important;
+  font-style: normal !important;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+.textbox-container .url-actions button p {
+  display: block;
+  margin: 0;
+  font-weight: normal !important;
+  font-style: normal !important;
+  text-decoration: none !important;
+}
+.textbox-container .url-actions button i {
+  display: block;
+  padding-left: 10px;
+  font-weight: normal !important;
+  font-style: normal !important;
+  text-decoration: none !important;
+}
+.textbox-container ul.textbox-tools {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: 300px;
+  margin: 0;
+  padding: 0;
+  max-height: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+  background-color: white;
+  color: black;
+  list-style: none;
+  opacity: 0;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+.textbox-container ul.textbox-tools li {
+  position: relative;
+  top: 10px;
+  margin: 0 3px;
+  font-size: 10px !important;
+  cursor: pointer;
+  -webkit-transition: 400ms;
+  transition: 400ms;
+  -webkit-transition-delay: 100ms;
+          transition-delay: 100ms;
+}
+.textbox-container ul.textbox-tools li i {
+  width: 20px;
+  height: 20px;
+  font-size: 20px !important;
+}
+.textbox-container ul.textbox-tools li i::-moz-selection {
+  background-color: none;
+  color: inherit;
+}
+.textbox-container ul.textbox-tools li i::selection {
+  background-color: none;
+  color: inherit;
+}
+.textbox-container ul.textbox-tools li i.text-color, .textbox-container ul.textbox-tools li i.background-color {
+  text-shadow: 1px 1px black;
+}
+.textbox-container ul.textbox-tools li input[type=color] {
+  display: none;
+}
+.textbox-container ul.textbox-tools:hover {
+  opacity: 1;
+}
+.textbox-container:hover ul, .textbox-container:active ul {
+  max-height: 30px;
+  opacity: .3;
+}
+.textbox-container:hover ul li, .textbox-container:active ul li {
+  position: relative;
+  top: 0;
+}
