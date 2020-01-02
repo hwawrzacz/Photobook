@@ -5,6 +5,7 @@ i.hook {
   height: 20px;
   font-size: 20px;
   background-color: white;
+  color: black;
   cursor: pointer; }
 
 i.hook-rotate {
@@ -19,8 +20,8 @@ i.hook-move {
   cursor: move; }
 
 i.hook-resize {
-  bottom: -21px;
-  right: -21px; }
+  bottom: 0;
+  right: 0; }
 
 i.hook-delete {
   top: 0;
