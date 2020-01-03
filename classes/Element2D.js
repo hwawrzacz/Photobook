@@ -67,6 +67,18 @@ class Element2D {
         this.element.style.setProperty("transform", "rotate(" + value + "deg)");
     }
 
+    get zIndex() {
+        return this.ZIndex;
+    }
+
+    set zIndex(value) {
+        if (value >= 0) {
+            this.ZIndex = value;
+            console.log(`z-index: ${this.zIndex}`);
+            this.element.style.setProperty(`z-index`, this.zIndex);
+        }
+    }
+
     // get bottom() {
     //     return this.bottom;
     // }

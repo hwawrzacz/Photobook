@@ -7,6 +7,12 @@ i.hook {
   background-color: white;
   color: black;
   cursor: pointer; }
+  i.hook::-moz-selection {
+    background-color: transparent;
+    color: inherit; }
+  i.hook::selection {
+    background-color: transparent;
+    color: inherit; }
 
 i.hook-rotate {
   bottom: -21px;
@@ -26,5 +32,13 @@ i.hook-resize {
 i.hook-delete {
   top: 0;
   right: 0; }
+
+i.hook-level-up {
+  top: 0;
+  left: 0; }
+
+i.hook-level-down {
+  top: 20px;
+  left: 0; }
 
 /* End hooks */

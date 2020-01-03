@@ -1,13 +1,19 @@
 /* Hooks */
+$hookSize: 20px;
 i.hook {
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: $hookSize;
+    height: $hookSize;
     font-size: 20px;
     
     background-color: white;
     color: black;
     cursor: pointer;
+
+    &::selection {
+        background-color: transparent;
+        color: inherit;
+    }
 }
 
 i.hook-rotate {
@@ -31,5 +37,15 @@ i.hook-resize {
 i.hook-delete {
     top: 0;
     right: 0;
+}
+
+i.hook-level-up {
+    top: 0;
+    left: 0;
+}
+
+i.hook-level-down {
+    top: $hookSize;
+    left: 0;
 }
 /* End hooks */

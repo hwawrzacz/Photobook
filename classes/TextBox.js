@@ -9,7 +9,7 @@ class TextBox extends Element2D {
 
         this.top = 0;
         this.left = 0;
-
+        this.zIndex = 0;
         this.minWidth = 40;
         this.minHeight = 40;
         this.width = width || this.minWidth;
@@ -155,13 +155,24 @@ class TextBox extends Element2D {
         const hookResize = this.element.querySelector(`.hook-resize`);
         const hookRotate = this.element.querySelector(`.hook-rotate`);
         const hookDelete = this.element.querySelector(`.hook-delete`);
+        const hookLevelUp = this.element.querySelector(`.hook-level-up`);
+        const hookLevelDown = this.element.querySelector(`.hook-level-down`);
 
         move(this);
         resizeElement(this, hookResize);
         rotateElement(this, hookRotate);
+
         hookDelete.addEventListener(`click`, () => {
             this.element.remove();
             showInfo(`Element was removed`);
+        });
+
+        hookLevelUp.addEventListener(`click`, () => {
+            this.zIndex++;
+        });
+
+        hookLevelDown.addEventListener(`click`, () => {
+            this.zIndex--;
         });
     }
 
@@ -316,34 +327,36 @@ class TextBox extends Element2D {
             <div class="url-actions">
                 <button class="dismiss-url-mode">
                     <p>Anuluj</p>
-                    <i class="material-icons">close</i>
+                    <i class="material-icons-round">close</i>
                 </button>
                 <button class="confirm-url-mode">
                     <p>Zatwierdź</p>
-                    <i class="enable-url-mode material-icons">check</i>
+                    <i class="enable-url-mode material-icons-round">check</i>
                 </button>
             </div>
 
             <ul class="textbox-tools size-fill-parent">
-                <li><i class="hook-text-align-left material-icons">format_align_left</i></li>
-                <li><i class="hook-text-align-center material-icons">format_align_justify</i></li>
-                <li><i class="hook-text-align-right material-icons">format_align_right</i></li>
-                <li><i class="font-down material-icons">text_rotation_angledown</i></li>
-                <li><i class="font-up material-icons">text_rotation_angleup</i></li>
-                <li><i class="bold material-icons">format_bold</i></li>
-                <li><i class="italic material-icons">format_italic</i></li>
-                <li><i class="underline material-icons">format_underline</i></li>
-                <li><i class="text-color material-icons">text_format</i></li>
-                <li><i class="background-color material-icons">color_lens</i></li>
+                <li><i class="hook-text-align-left material-icons-round">format_align_left</i></li>
+                <li><i class="hook-text-align-center material-icons-round">format_align_justify</i></li>
+                <li><i class="hook-text-align-right material-icons-round">format_align_right</i></li>
+                <li><i class="font-down material-icons-round">text_rotation_angledown</i></li>
+                <li><i class="font-up material-icons-round">text_rotation_angleup</i></li>
+                <li><i class="bold material-icons-round">format_bold</i></li>
+                <li><i class="italic material-icons-round">format_italic</i></li>
+                <li><i class="underline material-icons-round">format_underlined</i></li>
+                <li><i class="text-color material-icons-round">text_format</i></li>
+                <li><i class="background-color material-icons-round">color_lens</i></li>
                 <li><input class="text-color-picker" type="color" /></li>
                 <li><input class="background-color-picker" type="color" /></li>
-                <li><i class="hook-toggle-url material-icons">link</i></li>
+                <li><i class="hook-toggle-url material-icons-round">link</i></li>
             </ul>
             
             <div class="hooks-container">
-                <i class="hook hook-delete material-icons">close</i>
-                <i class="hook hook-rotate material-icons">rotate_left</i>
-                <i class="hook hook-resize material-icons">code</i>
+                <i class="hook hook-delete material-icons-round">close</i>
+                <i class="hook hook-rotate material-icons-round">rotate_left</i>
+                <i class="hook hook-resize material-icons-round">code</i>
+                <i class="hook hook-level-up material-icons-round">keyboard_arrow_up</i>
+                <i class="hook hook-level-down material-icons-round">keyboard_arrow_down</i>
             </div>
         </div>`;
 }
