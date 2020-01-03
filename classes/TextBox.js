@@ -8,9 +8,9 @@ class TextBox extends Element2D {
         this.urlTarget = textBoxDocument.querySelector(`.url-target`);
 
         //initialize hooks
-        const movementHooksManager = new MovementHooks(this);
+        this.movementHooksManager = new MovementHooks(this);
         this.textManipulatingHooksManager = new TextManipulatingHooks(this);
-        movementHooksManager.initializeHooksfunctionality();
+        this.movementHooksManager.initializeHooksfunctionality();
         this.textManipulatingHooksManager.initializeHooksfunctionality();
 
         this.top = 0;
@@ -36,6 +36,7 @@ class TextBox extends Element2D {
 
         this.initializeUrlHooks();
     }
+
     //#region Getters and setters
     get textAlign() {
         return this.TextAlignment;
@@ -127,7 +128,7 @@ class TextBox extends Element2D {
             this.textManipulatingHooksManager.changeUrlIcon(`link_off`);
         }
         else {
-            this.textManipulatingHooksManager.changeUrlIcon('link');
+            this.textManipulatingHooksManager.changeUrlIcon(`link`);
         }
     }
 
@@ -167,7 +168,7 @@ class TextBox extends Element2D {
         this.urlText.addEventListener(`click`, (e) => {
             //prevent opening a link
             e.preventDefault();
-            this.currentMode = 'url-edit-mode';
+            this.currentMode = `url-edit-mode`;
         });
 
         hookToggleURL.addEventListener(`click`, () => {
@@ -180,7 +181,7 @@ class TextBox extends Element2D {
         });
 
         hookConfirmUrlMode.addEventListener(`click`, () => {
-            this.currentMode = 'url-mode';
+            this.currentMode = `url-mode`;
             this.refreshUrlTarget();
         });
 

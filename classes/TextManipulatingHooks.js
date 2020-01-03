@@ -1,8 +1,8 @@
-class TextManipulatingHooks {
+class TextManipulatingHooks extends Hooks {
     constructor(parent) {
+        super(parent);
         this.hooksDocument = new DOMParser().parseFromString(this.hooksPattern, `text/html`);
         this.element = this.hooksDocument.querySelector(`.textbox-tools`);
-        this.parent = parent;
         this.parent.element.appendChild(this.element);
     }
 
@@ -41,9 +41,9 @@ class TextManipulatingHooks {
             backgroundColorPicker.click();
         });
 
-        hookBold.addEventListener(`click`, this.parent.toggleBold);
-        hookItalic.addEventListener(`click`, this.parent.toggleItalic);
-        hookUnderline.addEventListener(`click`, this.parent.toggleUnderline);
+        hookBold.addEventListener(`click`, this.toggleBold);
+        hookItalic.addEventListener(`click`, this.toggleItalic);
+        hookUnderline.addEventListener(`click`, this.toggleUnderline);
 
         hookFontUp.addEventListener(`mousedown`, () => {
             this.parent.fontSize += 2;

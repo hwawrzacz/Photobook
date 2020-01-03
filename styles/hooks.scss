@@ -1,9 +1,20 @@
 /* Hooks */
-$hookSize: 20px;
+$hookWidth: 22px;
+$hookHeight: 20px;
+
+.hooks-container{ 
+    opacity: 0;
+    transition: 300ms;
+
+    &.visible {
+        opacity: 1;
+    }
+}
+
 i.hook {
     position: absolute;
-    width: $hookSize;
-    height: $hookSize;
+    width: $hookWidth;
+    height: 20px;
     font-size: 20px;
     
     background-color: white;
@@ -17,11 +28,11 @@ i.hook {
 }
 
 i.hook-rotate {
-    bottom: -21px;
+    bottom: -$hookHeight;
     width: 40px;
     right: 48%;
     text-align: center; 
-    border-radius: 5px;
+    border-radius: 0 0 5px 5px;
 }
 
 i.hook-move {
@@ -31,21 +42,27 @@ i.hook-move {
 
 i.hook-resize {
     bottom: 0;
-    right: 0;
+    right: -22px;
+    width: 22px;
+
+    border-radius: 0 5px 5px 0;
 }
 
 i.hook-delete {
     top: 0;
-    right: 0;
+    right: -$hookWidth;
+    border-radius: 0 5px 5px 0;
 }
 
 i.hook-level-up {
     top: 0;
-    left: 0;
+    left: -$hookWidth;
+    border-radius: 5px 0 0 0;
 }
 
 i.hook-level-down {
-    top: $hookSize;
-    left: 0;
+    top: $hookHeight;
+    left: -$hookWidth;
+    border-radius: 0 0 0 5px;
 }
 /* End hooks */

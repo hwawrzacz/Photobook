@@ -1,8 +1,8 @@
-class MovementHooks {
+class MovementHooks extends Hooks {
     constructor(parent) {
+        super(parent);
         this.hooksDocument = new DOMParser().parseFromString(this.hooksPattern, `text/html`);
         this.element = this.hooksDocument.querySelector(`.hooks-container`);
-        this.parent = parent;
         this.parent.element.appendChild(this.element);
     }
 
