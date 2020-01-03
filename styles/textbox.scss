@@ -122,7 +122,7 @@
             }
         }
     }
-
+    
     ul.textbox-tools {
         position: absolute;
         bottom: 100%;
@@ -149,7 +149,7 @@
             cursor: pointer;
             transition: 400ms;
             transition-delay: 100ms;
-
+    
             i {  
                 width: 20px;
                 height: 20px;
@@ -160,21 +160,21 @@
                     color: inherit;
                 }
             }
-
+    
             i.text-color, i.background-color {
                 text-shadow: 1px 1px black;
             }
-
+    
             input[type=color] {
                 display: none;
             }
         }
-
+    
         &:hover {
             opacity: 1;
         }
     }
-
+    
     &:hover, &:active {
         ul {
             max-height: 30px;

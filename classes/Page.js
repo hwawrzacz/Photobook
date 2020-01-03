@@ -53,7 +53,6 @@ class Page {
   set width(value) {
     this.Width = value;
     this.element.style.setProperty(`min-width`, `${value}px`);
-    console.log(this.element.style.getPropertyValue(`width`));
   }
 
   get height() {
@@ -63,7 +62,6 @@ class Page {
   set height(value) {
     this.Height = value;
     this.element.style.setProperty(`min-height`, `${value}px`);
-    console.log(this.element.style.getPropertyValue(`height`));
   }
 
   get backgroundImage() {

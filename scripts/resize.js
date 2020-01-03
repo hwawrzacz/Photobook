@@ -52,7 +52,7 @@ const resizeElement = (target, hook) => {
             }
         }
 
-        showInfo(getElementProperties(target.element));
+        showInfo(getElementProperties(target));
     }
 
     const stopResize = () => {

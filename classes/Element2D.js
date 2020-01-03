@@ -74,28 +74,7 @@ class Element2D {
     set zIndex(value) {
         if (value >= 0) {
             this.ZIndex = value;
-            console.log(`z-index: ${this.zIndex}`);
             this.element.style.setProperty(`z-index`, this.zIndex);
         }
     }
-
-    // get bottom() {
-    //     return this.bottom;
-    // }
-    // set bottom(value);
-
-    // get width() {
-    //     return this.width;
-    // }
-    // set width(value);
-
-    // get height() {
-    //     return this.height;
-    // }
-    // set height(value);
-
-    // get rotation() {
-    //     return this.rotation;
-    // }
-    // set rotation(value);
 }

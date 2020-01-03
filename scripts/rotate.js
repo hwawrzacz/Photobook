@@ -22,7 +22,7 @@ const rotateElement = (target, hook) => {
     }
 
     target.rotation = degree;
-    showInfo(getElementProperties(target.element));
+    showInfo(getElementProperties(target));
   };
 
   const endRotate = () => {

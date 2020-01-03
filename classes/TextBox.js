@@ -7,6 +7,12 @@ class TextBox extends Element2D {
         this.urlText = textBoxDocument.querySelector(`.url-text`);
         this.urlTarget = textBoxDocument.querySelector(`.url-target`);
 
+        //initialize hooks
+        const movementHooksManager = new MovementHooks(this);
+        this.textManipulatingHooksManager = new TextManipulatingHooks(this);
+        movementHooksManager.initializeHooksfunctionality();
+        this.textManipulatingHooksManager.initializeHooksfunctionality();
+
         this.top = 0;
         this.left = 0;
         this.zIndex = 0;
@@ -28,11 +34,8 @@ class TextBox extends Element2D {
         this.textColor = `#000`;
         this.backgroundColor = `transparent`;
 
-        this.initializeMovementHooks();
-        this.initializeContentEditHooks();
         this.initializeUrlHooks();
     }
-
     //#region Getters and setters
     get textAlign() {
         return this.TextAlignment;
@@ -121,10 +124,10 @@ class TextBox extends Element2D {
         }
 
         if (this.currentMode === `url-mode` || (this.currentMode === `url-edit-mode` && this.previousMode === `url-mode`)) {
-            this.changeUrlIcon(`link_off`);
+            this.textManipulatingHooksManager.changeUrlIcon(`link_off`);
         }
         else {
-            this.changeUrlIcon('link');
+            this.textManipulatingHooksManager.changeUrlIcon('link');
         }
     }
 
@@ -151,31 +154,6 @@ class TextBox extends Element2D {
     //#endregion
 
     //#region Hooks mechanisms
-    initializeMovementHooks = () => {
-        const hookResize = this.element.querySelector(`.hook-resize`);
-        const hookRotate = this.element.querySelector(`.hook-rotate`);
-        const hookDelete = this.element.querySelector(`.hook-delete`);
-        const hookLevelUp = this.element.querySelector(`.hook-level-up`);
-        const hookLevelDown = this.element.querySelector(`.hook-level-down`);
-
-        move(this);
-        resizeElement(this, hookResize);
-        rotateElement(this, hookRotate);
-
-        hookDelete.addEventListener(`click`, () => {
-            this.element.remove();
-            showInfo(`Element was removed`);
-        });
-
-        hookLevelUp.addEventListener(`click`, () => {
-            this.zIndex++;
-        });
-
-        hookLevelDown.addEventListener(`click`, () => {
-            this.zIndex--;
-        });
-    }
-
     initializeUrlHooks = () => {
         const hookToggleURL = this.element.querySelector(`.hook-toggle-url`);
         const hookConfirmUrlMode = this.element.querySelector(`.url-actions .confirm-url-mode`);
@@ -209,85 +187,8 @@ class TextBox extends Element2D {
         hookDismissUrlMode.addEventListener(`click`, () => {
             this.enablePreviousMode();
         });
-
-    }
-
-    initializeContentEditHooks = () => {
-        const hookBold = this.element.querySelector(`.bold`);
-        const hookItalic = this.element.querySelector(`.italic`);
-        const hookUnderline = this.element.querySelector(`.underline`);
-        const hookFontUp = this.element.querySelector(`.font-up`);
-        const hookFontDown = this.element.querySelector(`.font-down`);
-        const hookTextAlignLeft = this.element.querySelector(`.hook-text-align-left`);
-        const hookTextAlignCenter = this.element.querySelector(`.hook-text-align-center`);
-        const hookTextAlignRight = this.element.querySelector(`.hook-text-align-right`);
-
-        const textColorPicker = this.element.querySelector(`.text-color-picker`);
-        const backgroundColorPicker = this.element.querySelector(`.background-color-picker`);
-        const hookTextColor = this.element.querySelector(`.text-color`);
-        const hookBackgroundColor = this.element.querySelector(`.background-color`);
-
-        backgroundColorPicker.addEventListener(`change`, (event) => {
-            const color = event.target.value;
-            this.backgroundColor = color;
-            hookBackgroundColor.style.setProperty(`color`, color);
-        });
-
-        textColorPicker.addEventListener(`change`, (event) => {
-            const color = event.target.value;
-            this.textColor = color;
-            hookTextColor.style.setProperty(`color`, color);
-        });
-
-        hookTextColor.addEventListener(`click`, () => {
-            textColorPicker.click();
-        });
-
-        hookBackgroundColor.addEventListener(`click`, () => {
-            backgroundColorPicker.click();
-        });
-
-        hookBold.addEventListener(`click`, this.toggleBold);
-        hookItalic.addEventListener(`click`, this.toggleItalic);
-        hookUnderline.addEventListener(`click`, this.toggleUnderline);
-
-        hookFontUp.addEventListener(`mousedown`, () => {
-            this.fontSize += 2;
-        });
-
-        hookFontDown.addEventListener(`click`, () => {
-            this.fontSize -= 2;
-        });
-
-        hookTextAlignLeft.addEventListener(`click`, () => {
-            this.textAlign = `left`;
-        });
-
-        hookTextAlignCenter.addEventListener(`click`, () => {
-            this.textAlign = `center`;
-        });
-
-        hookTextAlignRight.addEventListener(`click`, () => {
-            this.textAlign = `right`;
-        });
-
-        this.textBox.addEventListener(`keyup`, () => {
-            this.text = this.textBox.value;
-        });
     }
     //#endregion
-
-    toggleBold = () => {
-        this.bold = !this.bold;
-    }
-
-    toggleItalic = () => {
-        this.italic = !this.italic;
-    }
-
-    toggleUnderline = () => {
-        this.underline = !this.underline;
-    }
 
     enablePreviousMode = () => {
         const tmp = this.currentMode;
@@ -305,11 +206,6 @@ class TextBox extends Element2D {
 
     isUrlMode = () => {
         return this.currentMode === `url-mode`;
-    }
-
-    changeUrlIcon = (value) => {
-        const urlIcon = this.element.querySelector(`.hook-toggle-url`);
-        urlIcon.innerHTML = value;
     }
 
     refreshUrlTarget = () => {
@@ -333,30 +229,6 @@ class TextBox extends Element2D {
                     <p>Zatwierdź</p>
                     <i class="enable-url-mode material-icons-round">check</i>
                 </button>
-            </div>
-
-            <ul class="textbox-tools size-fill-parent">
-                <li><i class="hook-text-align-left material-icons-round">format_align_left</i></li>
-                <li><i class="hook-text-align-center material-icons-round">format_align_justify</i></li>
-                <li><i class="hook-text-align-right material-icons-round">format_align_right</i></li>
-                <li><i class="font-down material-icons-round">text_rotation_angledown</i></li>
-                <li><i class="font-up material-icons-round">text_rotation_angleup</i></li>
-                <li><i class="bold material-icons-round">format_bold</i></li>
-                <li><i class="italic material-icons-round">format_italic</i></li>
-                <li><i class="underline material-icons-round">format_underlined</i></li>
-                <li><i class="text-color material-icons-round">text_format</i></li>
-                <li><i class="background-color material-icons-round">color_lens</i></li>
-                <li><input class="text-color-picker" type="color" /></li>
-                <li><input class="background-color-picker" type="color" /></li>
-                <li><i class="hook-toggle-url material-icons-round">link</i></li>
-            </ul>
-            
-            <div class="hooks-container">
-                <i class="hook hook-delete material-icons-round">close</i>
-                <i class="hook hook-rotate material-icons-round">rotate_left</i>
-                <i class="hook hook-resize material-icons-round">code</i>
-                <i class="hook hook-level-up material-icons-round">keyboard_arrow_up</i>
-                <i class="hook hook-level-down material-icons-round">keyboard_arrow_down</i>
             </div>
         </div>`;
 }

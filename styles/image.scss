@@ -1,14 +1,25 @@
 /* Image container */
-.image-container {
+.element-2d-container {
     position: absolute;
     top: 0;
     left: 0;
     width: 500px;
     height: 300px;
     transform: rotate(0deg);
-    
-    background-position: center;
-    background-size: 100% 100%;
-    border: 1px solid black;
-    cursor: move;
+
+    .image-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: initial;
+        height: initial;
+        
+        background-position: center;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        border: 1px solid black;
+        cursor: move;
+    }
 }
