@@ -3,6 +3,17 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box; }
 
+::-webkit-scrollbar {
+  width: 10px; }
+
+::-webkit-scrollbar-track {
+  width: 10px;
+  background-color: #797979; }
+
+::-webkit-scrollbar-thumb {
+  background-color: #363636;
+  border-radius: 20px; }
+
 body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; }
 
