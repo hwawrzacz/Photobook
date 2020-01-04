@@ -14,12 +14,10 @@ class Hooks {
 
     initializeHooksShowingFunction = () => {
         this.parent.element.addEventListener(`mouseenter`, () => {
-            console.log(`mouseenter`);
             this.showHooks();
         });
 
         this.parent.element.addEventListener(`mouseleave`, () => {
-            console.log(`mouseleave`);
             this.hideHooks();
         });
     }

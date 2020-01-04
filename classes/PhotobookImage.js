@@ -1,5 +1,5 @@
 class PhotobookImage extends Element2D {
-    constructor(base64Image, width, height) {
+    constructor(base64Image, width, height, zIndex) {
         super();
         const imageDocument = new DOMParser().parseFromString(this.imagePattern, `text/html`);
         this.element = imageDocument.querySelector(`.element-2d-container`);
@@ -9,7 +9,6 @@ class PhotobookImage extends Element2D {
         const movementHooksManager = new MovementHooks(this);
         movementHooksManager.initializeHooksfunctionality();
 
-        this.zIndex = 0;
         this.backgroundImage = base64Image;
         this.top = 0;
         this.left = 0;
@@ -18,6 +17,7 @@ class PhotobookImage extends Element2D {
         this.width = width || this.minWidth;
         this.height = height || this.minHeight;
         this.rotation = 0;
+        this.zIndex = zIndex;
     }
 
     get backgroundImage() {

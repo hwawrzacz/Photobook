@@ -39,10 +39,10 @@ class Page {
     this.Visible = value;
 
     if (this.Visible == true) {
-      this.element.style.setProperty(`visibility`, `visible`);
+      this.element.style.setProperty(`display`, `block`);
     }
     else if (this.Visible == false) {
-      this.element.style.setProperty(`visibility`, `hidden`);
+      this.element.style.setProperty(`display`, `none`);
     }
   }
 
@@ -75,7 +75,8 @@ class Page {
   // #endregion
 
   addTextBox(width, height) {
-    let newTextBox = new TextBox(width || 300, height || 50);
+    const zIndex = parseInt(this.getMaxZIndex()) + 1;
+    let newTextBox = new TextBox(width || 300, height || 50, zIndex);
     this.textBoxes.push(newTextBox);
     this.element.appendChild(newTextBox.element);
   }
@@ -87,16 +88,37 @@ class Page {
       const initialWidth = image.width;
       const initialHeight = image.height;
 
+      const zIndex = parseInt(this.getMaxZIndex()) + 1;
       const imageSize = this.getMaxDimensions(initialWidth, initialHeight);
       const width = imageSize.width;
       const height = imageSize.height;
 
-      let newImage = new PhotobookImage(base64Image, width, height);
+      let newImage = new PhotobookImage(base64Image, width, height, zIndex);
       this.images.push(newImage);
       this.element.appendChild(newImage.element);
     }
 
     image.src = base64Image;
+  }
+
+  getMaxZIndex() {
+    let maxIndex = 0;
+
+    this.textBoxes.forEach(textbox => {
+      const zIndex = textbox.zIndex;
+      if (zIndex > maxIndex) {
+        maxIndex = zIndex;
+      }
+    });
+
+    this.images.forEach(textbox => {
+      const zIndex = textbox.zIndex;
+      if (zIndex > maxIndex) {
+        maxIndex = zIndex;
+      }
+    });
+
+    return maxIndex;
   }
 
   getMaxDimensions(initialWidth, initialHeight) {

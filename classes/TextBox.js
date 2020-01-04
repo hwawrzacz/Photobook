@@ -1,5 +1,5 @@
 class TextBox extends Element2D {
-    constructor(width, height) {
+    constructor(width, height, zIndex) {
         super();
         const textBoxDocument = new DOMParser().parseFromString(this.textBoxPattern, `text/html`);
         this.element = textBoxDocument.querySelector(`.textbox-container`);
@@ -15,12 +15,12 @@ class TextBox extends Element2D {
 
         this.top = 0;
         this.left = 0;
-        this.zIndex = 0;
         this.minWidth = 40;
         this.minHeight = 40;
         this.width = width || this.minWidth;
         this.height = height || this.minHeight;
         this.rotation = 0;
+        this.zIndex = zIndex;
 
         this.previousMode = ``;
         this.currentMode = `textbox-mode`;
