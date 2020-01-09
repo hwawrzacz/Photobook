@@ -19,8 +19,6 @@ const move = (target) => {
 
         target.top = newTop;
         target.left = newLeft;
-
-        showInfo(getElementProperties(target));
     }
 
     const stopMoving = () => {

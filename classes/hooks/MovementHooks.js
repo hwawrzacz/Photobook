@@ -19,7 +19,6 @@ class MovementHooks extends Hooks {
 
         hookDelete.addEventListener(`click`, () => {
             this.parent.element.remove();
-            showInfo(`Element was removed`);
         });
 
         hookLevelUp.addEventListener(`click`, () => {

@@ -51,8 +51,6 @@ const resizeElement = (target, hook) => {
                 target.height = newHeight;
             }
         }
-
-        showInfo(getElementProperties(target));
     }
 
     const stopResize = () => {
