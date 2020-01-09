@@ -5,6 +5,7 @@ class ActionsController extends EventEmitter {
     this.imagesController = new ImagesController();
     this.stickersController = new StickersController();
     this.textController = new TextController();
+    this.backgroundController = new BackgroundController();
     this.init();
   }
 
@@ -14,6 +15,10 @@ class ActionsController extends EventEmitter {
     }
 
     eventsHandler = () => {
+      this.fileController.on('background', (action) => {
+        this.emit('background', background);
+      })
+
       this.fileController.on('file', (action) => {
         this.emit('file', action);
       });
@@ -50,6 +55,9 @@ class ActionsController extends EventEmitter {
         case 'text':
           this.textController.activate();
           break;
+        case 'background':
+          this.backgroundController.activate();
+          break;
         default:
           console.log('o qurewaaa :======3');
       }
@@ -60,5 +68,6 @@ class ActionsController extends EventEmitter {
       this.imagesController.disable();
       this.stickersController.disable();
       this.textController.disable();
+      this.backgroundController.disable();
     }
 }
