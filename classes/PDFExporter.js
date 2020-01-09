@@ -1,85 +1,67 @@
 class PDFExporter {
-    exportToPDF(photobook) {
-        console.log(photobook)
-        var doc = new jsPDF({
+    constructor(photobook){
+        this.doc = new jsPDF({
             unit: 'px',
             format: 'a4'
-          })
-
-        //width factor (used to set the correct width)
-        var widthRatio = doc.internal.pageSize.getWidth()/photobook.width;
-        //height factor (used to set the correct height)
-        var heightRatio = doc.internal.pageSize.getHeight()/photobook.height;
-        
-        var pageCount = 1;
-        for (let page of photobook.pages) {
-            //loop with all pages of photobook
-            doc.addImage(page.backgroundImage, "JPEG", 0, 0, page.width, page.height, "background", "NONE");
-            var imgCount = 1;
-            for (let image of page.images){
-                //loop with all images of page
-
-                var angle = this.getAngle(image.rotation)// angle in full 360 degree range
-
-                var rotatedOrigin = this.getRotatedOrigin(image.left, image.top, image.width, image.height,
-                    widthRatio, heightRatio, image.rotation)
-
-                doc.addImage(image.backgroundImage, "JPEG", rotatedOrigin.x, rotatedOrigin.y-image.height*heightRatio,
-                image.width*widthRatio, image.height*heightRatio,"img"+pageCount+"."+imgCount, "NONE", angle);
-
-                imgCount++;
-            }
-            
-
-            //TODO: Move image implementation to separate function to also use for stickers #DRY
-            /*for (let sticker of page.stickers){
-                //loop with all stickers of page
-
-                var angle = this.getAngle(sticker.rotation)// angle in full 360 degree range
-
-                var rotatedOrigin = this.getRotatedOrigin(sticker.left, sicker.top, sticker.width, sticker.height,
-                    widthRatio, heightRatio, sticker.rotation)
-
-                doc.addImage(sticker.backgroundImage, "JPEG", rotatedOrigin.x, rotatedOrigin.y-image.height*heightRatio,
-                image.width*widthRatio, image.height*heightRatio,"img"+pageCount+"."+imgCount, "NONE", angle);
-
-                imgCount++;
-            }*/
-
-            for (let textBox of page.textBoxes){
-                //loop with all textBoxes of page
-
-                doc.setFontSize(textBox.fontSize);
-                
-                
-                var textX = (textBox.left+10)*widthRatio
-                var textY = (textBox.top+10+textBox.fontSize)*widthRatio
-
-                console.log(textBox.left);
-                console.log(textBox.top);
-                console.log(textBox.text);
-
-                doc.text(textX, textY, textBox.text);
-
-            }
-            doc.addPage();
-        }
-        doc.deletePage(2);
-        doc.save('elo.pdf');
+          });
+        this.docWidth = this.doc.internal.pageSize.getWidth();
+        this.docHeight = this.doc.internal.pageSize.getHeight();
+        this.widthRatio = this.docWidth / photobook.width;
+        this.heightRatio = this.docHeight / photobook.height;
+        this.photobook = photobook;
+        this.pageCount = 1;
     }
 
-    //TODO: Refactor it so that widthRatio and heightRatio are uniform for entire photobook and not passed as parameter
-    getRotatedOrigin(x, y, width, height, widthRatio, heightRatio, rotation) {
+    exportToPDF() {
+        for (let page of photobook.pages){
+            this.doc.addImage(page.backgroundImage, "JPEG", 0, 0, this.docWidth, this.docHeight, "background_"+this.pageCount.toString(), "NONE");
+            var imgCount = 1;
+
+            // combine textBoxes and images from page to one array
+            // and then sort them by z-index
+            var elements = page.textBoxes.concat(page.images);
+            elements.sort(this.compareElements);
+
+            for (let element of elements){
+                if (element.constructor.name == "TextBox"){
+                    console.log("textBox added");
+                    this.insertText(element);
+                }
+                else if(element.constructor.name == "PhotobookImage"){
+                    this.insertImage(element, imgCount);
+                    imgCount++;
+                }
+            }
+
+            this.doc.addPage();
+            this.pageCount++;
+        }
+        this.doc.deletePage(this.pageCount);
+        this.doc.save(this.photobook.name+'.pdf');
+    }
+
+    getRotatedOrigin(x, y, width, height, rotation) {
         var rot = rotation * (Math.PI/180); //rotation in radians
 
-        var centerX = x*widthRatio+(width*widthRatio)/2;
-        var centerY = y*heightRatio+(height*heightRatio)/2;
+        var centerX = x*this.widthRatio+(width*this.widthRatio)/2;
+        var centerY = y*this.heightRatio+(height*this.heightRatio)/2;
 
-        var bottomX = x*widthRatio;
-        var bottomY = y*heightRatio+height*heightRatio;
+        var bottomX = x*this.widthRatio;
+        var bottomY = y*this.heightRatio+height*this.heightRatio;
                 
         var newX = centerX + (bottomX-centerX)*Math.cos(rot) - (bottomY-centerY)*Math.sin(rot);
         var newY = centerY + (bottomX-centerX)*Math.sin(rot) + (bottomY-centerY)*Math.cos(rot);
+
+        return {x:newX, y:newY}
+    }
+    getRotatedTextOrigin(x, y, tx, ty, width, height, rotation) {
+        var rot = rotation * (Math.PI/180); //rotation in radians
+
+        var centerX = x*this.widthRatio+(width*this.widthRatio)/2;
+        var centerY = y*this.heightRatio+(height*this.heightRatio)/2;
+                
+        var newX = centerX + (tx*this.widthRatio-centerX)*Math.cos(rot) - (ty*this.heightRatio-centerY)*Math.sin(rot);
+        var newY = centerY + (tx*this.widthRatio-centerX)*Math.sin(rot) + (ty*this.heightRatio-centerY)*Math.cos(rot);
 
         return {x:newX, y:newY}
     }
@@ -87,5 +69,68 @@ class PDFExporter {
     getAngle(rotation){
         if (-rotation >=0 ) return -rotation;
         return 360-rotation;
+    }
+
+    compareElements(a, b){
+        if (a.zIndex < b.zIndex){
+            return -1;
+        }
+        if (a.zIndex > b.zIndex){
+            return 1;
+        }
+        return 0;
+    }
+
+    insertImage(img, imgCount){
+        var angle = this.getAngle(img.rotation)// angle in full 360 degree range
+
+        var rotatedOrigin = this.getRotatedOrigin(img.left, img.top, img.width, img.height, img.rotation)
+
+        this.doc.addImage(img.backgroundImage, "JPEG", rotatedOrigin.x, rotatedOrigin.y-img.height*this.heightRatio,
+            img.width*this.widthRatio, img.height*this.heightRatio,"img"+this.pageCount+"."+imgCount, "NONE", angle);
+    }
+
+    insertText(textBox){
+        var angle = this.getAngle(textBox.rotation)
+        var textDimensions = this.doc.getTextDimensions(textBox.text)
+
+        //draw background rectangle
+        var centerX = textBox.left*this.widthRatio+textBox.width*this.widthRatio/2;
+        var centerY = textBox.top*this.heightRatio+textBox.height*this.heightRatio/2;
+        var ctx = this.doc.context2d
+        ctx.save()
+        ctx.translate(centerX, centerY);
+        ctx.rotate((360-angle)*Math.PI/180);
+        ctx.fillStyle = textBox.backgroundColor;
+        ctx.translate(-centerX, -centerY);
+        ctx.fillRect(textBox.left*this.widthRatio, textBox.top*this.heightRatio, textBox.width*this.widthRatio, textBox.height*this.heightRatio);
+        ctx.restore()
+
+        //insert and format text
+        this.doc.setFontSize(textBox.fontSize*this.widthRatio);
+        this.doc.setTextColor(textBox.textColor);
+        this.doc.setTextColor(textBox.textColor);
+
+        if(textBox.bold && textBox.italic){
+            this.doc.setFontType("bolditalic");
+        }
+        else if(textBox.bold){
+            this.doc.setFontType("bold");
+        }
+        else if(textBox.italic){
+            this.doc.setFontType("italic");
+        }
+
+        var textX = textBox.left;
+        if(textBox.TextAlign == "left") textX += 5;
+        if(textBox.TextAlign == "center") textX = textX + textBox.width/2 - textDimensions.w/2;
+        if(textBox.TextAlign == "right") textX = textX + textBox.width - textDimensions.w - 5;
+        var textY = textBox.top+textBox.height/2+textDimensions.h/3
+        var rotatedOrigin = this.getRotatedTextOrigin(textBox.left, textBox.top, textX, textY, textBox.width, textBox.height, textBox.rotation)
+        this.doc.text(textBox.text, rotatedOrigin.x, rotatedOrigin.y, {angle:angle.toString(), rotationDirection: "1"});
+        if(textBox.urlMode){
+            var rotatedEndOrigin = this.getRotatedTextOrigin(textBox.left, textBox.top, textX + textDimensions.w, textY, textBox.width, textBox.height, textBox.rotation)
+            this.doc.link(rotatedOrigin.x, rotatedOrigin.y-textDimensions.h, Math.abs(rotatedOrigin.x - rotatedEndOrigin.x),  Math.abs(rotatedOrigin.y - rotatedEndOrigin.y)+textDimensions.h, {url:textBox.urlText.href});
+        } 
     }
 }
