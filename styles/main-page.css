@@ -1,24 +1,3 @@
-.test {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 250px;
-  height: 150px;
-  z-index: 100;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  background-color: white;
-  border-radius: 5px;
-  -webkit-box-shadow: 0 5px 20px -5px black;
-          box-shadow: 0 5px 20px -5px black; }
-
 #color {
   border: none;
   outline: none;
