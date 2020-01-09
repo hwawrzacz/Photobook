@@ -108,7 +108,7 @@ class Photobook extends EventEmitter {
   }
 
   exportToPDF() {
-    const exporter = new PDFExporter();
-    exporter.exportToPDF(this);
+    const exporter = new PDFExporter(this);
+    exporter.exportToPDF();
   }
 }

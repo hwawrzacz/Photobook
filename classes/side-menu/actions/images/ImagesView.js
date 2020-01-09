@@ -33,6 +33,7 @@ class ImagesView extends EventEmitter {
 
     createImageDOMAndAddItToContainer = (e) => {
       const image = this.imagesViewDOM.createImageDOM(e.target.result);
+      console.log("ELO"+e.target.result)
       const imagesContainer = this.container.querySelector('.action-images');
       const imagesContainerDestroyButton = image.querySelector('.action-image-container-delete');
       imagesContainer.addEventListener('click', this.userClickedOnImage);
