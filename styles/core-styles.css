@@ -116,7 +116,8 @@ body{
 .side-menu .action-stickers-container,
 .side-menu .action-text-container,
 .side-menu .action-file-container,
-.side-menu .action-images-container {
+.side-menu .action-images-container,
+.side-menu .action-background-container {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -164,7 +165,8 @@ body{
     padding-left: 300px;
 }
 
-.side-menu .action-images {
+.side-menu .action-images,
+.side-menu .action-background {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -173,7 +175,8 @@ body{
     margin-right: 5%;
 }
 
-.action-image-container{
+.action-image-container,
+.action-background-container{
     cursor: pointer;
     position: relative;
     padding-bottom: 10px;
@@ -196,7 +199,8 @@ body{
     fill: grey;
 }
 
-.side-menu .action-image-container img {
+.side-menu .action-image-container img,
+.side-menu .action-background-container img {
     width: 100%;
     object-fit: contain;
 }

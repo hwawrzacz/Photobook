@@ -90,13 +90,17 @@ sideMenuController.on('createText', () => {
   // User Want To Add Text To Active Page
   photobook.addTextBoxToActivePage();
 });
+
+sideMenuController.on('background', (background) => {
+  console.log(background);
+});
 // END Kamil
 
 photobook.addImageToActivePage(imageBase64);
 photobook.addTextBoxToActivePage();
 
 // #region Functions definitions
-function getMaxDimensions() {
+function getMaxDimensions () {
   const proportions = 595 / 842;
   const headerHeight = document.querySelector('header').offsetHeight;
   const maxHeight = document.querySelector('.content').offsetHeight - headerHeight;

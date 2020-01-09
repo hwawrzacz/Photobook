@@ -8,6 +8,14 @@ class BackgroundView extends EventEmitter {
   
       init = () => {
         this.generateDOM();
+        this.createBackgroundDOMAndAddItToContainer('./images/fabric-1-min.jpg');
+        this.createBackgroundDOMAndAddItToContainer('./images/fabric-2-min.jpg');
+        this.createBackgroundDOMAndAddItToContainer('./images/fabric-3-min.jpg');
+        this.createBackgroundDOMAndAddItToContainer('./images/fabric-4-min.jpg');
+        this.createBackgroundDOMAndAddItToContainer('./images/background-1-min.jpg');
+        this.createBackgroundDOMAndAddItToContainer('./images/background-2-min.jpg');
+        this.createBackgroundDOMAndAddItToContainer('./images/background-3-min.jpg');
+        this.createBackgroundDOMAndAddItToContainer('./images/background-4-min.jpg');
       }
   
       generateDOM = () => {
@@ -16,11 +24,11 @@ class BackgroundView extends EventEmitter {
         this.container = container;
       }
   
-      createBackgroundDOMAndAddItToContainer = (e) => {
-        const background = this.backgroundViewDOM.createBackgroundDOM(e.target.result);
+      createBackgroundDOMAndAddItToContainer = (myImg) => {
+        const background = this.backgroundViewDOM.createBackgroundDOM(myImg);
         const backgroundContainer = this.container.querySelector('.action-background');
         backgroundContainer.addEventListener('click', this.userClickedOnBackground);
-        backgroundContainer.appendChild(image);
+        backgroundContainer.appendChild(background);
       }
   
       userClickedOnBackground = (e) => {

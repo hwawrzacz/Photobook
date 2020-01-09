@@ -15,7 +15,7 @@ class ActionsController extends EventEmitter {
     }
 
     eventsHandler = () => {
-      this.fileController.on('background', (action) => {
+      this.backgroundController.on('background', (background) => {
         this.emit('background', background);
       })
 
