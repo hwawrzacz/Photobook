@@ -1,3 +1,5 @@
+dimensions = getMaxDimensions();
+
 const projectNameInput = document.querySelector(`#project-name`);
 const photobook = new Photobook(dimensions.width, dimensions.height);
 const page = photobook.element;

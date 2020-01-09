@@ -23,14 +23,15 @@
   text-decoration: inherit;
   text-align: inherit;
   color: inherit;
-  border: 2px dashed #666;
+  border: 1px dashed #666;
   outline: none;
   cursor: move;
   -webkit-transition: 300ms;
   transition: 300ms;
 }
 .textbox-container .textbox:focus, .textbox-container a.url-text:focus {
-  border: 2px solid skyblue;
+  border-style: solid;
+  border-color: skyblue;
 }
 .textbox-container .url-target {
   position: relative;

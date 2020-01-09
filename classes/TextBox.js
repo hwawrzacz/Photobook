@@ -32,7 +32,7 @@ class TextBox extends Element2D {
         this.italic = false;
         this.underline = false;
         this.textColor = `#000`;
-        this.backgroundColor = `transparent`;
+        this.backgroundColor = `white`;
 
         this.initializeUrlHooks();
     }

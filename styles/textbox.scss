@@ -25,13 +25,14 @@
         text-align: inherit;
         color: inherit;
 
-        border: 2px dashed #666;
+        border: 1px dashed #666;
         outline: none;
         cursor: move;
         transition: 300ms;
 
         &:focus {
-            border: 2px solid skyblue;
+            border-style: solid;
+            border-color: skyblue;
         }        
     }
 
