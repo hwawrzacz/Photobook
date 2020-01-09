@@ -92,6 +92,10 @@ class Photobook extends EventEmitter {
     this.activePage.addImage(base64Image);
   }
 
+  changeActivePageBackground(base64Image) {
+    this.activePage.backgroundImage = base64Image;
+  }
+
   exportToJSON() {
     const jsonPhotobook = JSON.stringify(this);
     console.log(this);
