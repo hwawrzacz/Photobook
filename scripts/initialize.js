@@ -92,6 +92,7 @@ sideMenuController.on('createText', () => {
 });
 
 sideMenuController.on('background', (background) => {
+  // @TO ADD BG
   console.log(background);
 });
 // END Kamil
