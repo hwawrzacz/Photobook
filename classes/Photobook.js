@@ -104,9 +104,7 @@ class Photobook extends EventEmitter {
   exportToHTML() {
     this.disableTextboxesUrlEditMode();
     const exporter = new HTMLExporter();
-    let documentString = exporter.getPhotobookDocumentAsString(this.element);
-
-    console.log(documentString)
+    const documentString = exporter.getPhotobookDocumentAsString(this.element);
     const url = URL.createObjectURL(new Blob([documentString], { type: `text/html` }));
     download(url, `${this.name}.html`);
   }
