@@ -69,6 +69,11 @@ sideMenuController.on('file', (action) => {
       break;
     }
 
+    case 'delete': {
+      console.log('wow delete');
+      break;
+    }
+
     default: {
       console.log('Unknown command');
     }
