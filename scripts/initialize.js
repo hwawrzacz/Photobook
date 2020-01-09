@@ -9,7 +9,6 @@ const nav = new Nav(photobook);
 const buttonMenuToggle = document.querySelector('#button-menu-toggle');
 
 const toggleMenu = () => {
-  console.log('clicked');
   const buttonMenuToggleIcon = buttonMenuToggle.querySelector('i');
   const menu = document.querySelector('.side-menu');
   const content = document.querySelector(`.content`);

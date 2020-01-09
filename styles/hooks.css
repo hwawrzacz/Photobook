@@ -2,7 +2,10 @@
 .hooks-container {
   opacity: 0;
   -webkit-transition: 300ms;
-  transition: 300ms; }
+  transition: 300ms;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
   .hooks-container.visible {
     opacity: 1; }
 

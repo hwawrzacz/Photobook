@@ -134,6 +134,7 @@
         max-height: 0;
         display: flex;
         align-items: center;
+        justify-content: space-evenly;
         overflow: hidden;
         
         background-color: white;
@@ -145,11 +146,15 @@
         li {
             position: relative;
             top: 10px;
-            margin: 0 3px;
+            margin: 0px;
             font-size: 10px !important;
             cursor: pointer;
             transition: 400ms;
             transition-delay: 100ms;
+
+            &:last-child {
+                justify-self: flex-end;
+            }
     
             i {  
                 width: 20px;

@@ -124,7 +124,7 @@ class TextBox extends Element2D {
             this.urlMode = true;
         }
 
-        if (this.currentMode === `url-mode` || (this.currentMode === `url-edit-mode` && this.previousMode === `url-mode`)) {
+        if (this.isUrlMode() || (this.currentMode === `url-edit-mode` && this.previousMode === `url-mode`)) {
             this.textManipulatingHooksManager.changeUrlIcon(`link_off`);
         }
         else {

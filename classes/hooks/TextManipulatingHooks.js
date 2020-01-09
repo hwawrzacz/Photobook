@@ -92,8 +92,8 @@ class TextManipulatingHooks extends Hooks {
             <li><i class="italic material-icons-round">format_italic</i></li>
             <li><i class="text-color material-icons-round">text_format</i></li>
             <li><i class="background-color material-icons-round">color_lens</i></li>
-            <li><input class="text-color-picker" type="color" /></li>
-            <li><input class="background-color-picker" type="color" /></li>
+            <li><input class="text-color-picker" type="color" value="000000" /></li>
+            <li><input class="background-color-picker" type="color" value="#ffffff" /></li>
             <li><i class="hook-toggle-url material-icons-round">link</i></li>
         </ul>`;
 }

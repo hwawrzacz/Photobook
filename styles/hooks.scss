@@ -2,9 +2,10 @@
 $hookWidth: 22px;
 $hookHeight: 20px;
 
-.hooks-container{ 
+.hooks-container { 
     opacity: 0;
     transition: 300ms;
+    display: flex;
 
     &.visible {
         opacity: 1;

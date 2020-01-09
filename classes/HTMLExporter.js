@@ -107,5 +107,9 @@ class HTMLExporter {
       }
       .textbox-container.url-edit-mode a, .textbox-container.url-edit-mode a {
         display: none;
-      }`;
+      }
+      
+      .url-target, .url-actions {
+          display: none;
+      } `;
 }
