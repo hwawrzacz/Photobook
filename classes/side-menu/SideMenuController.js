@@ -15,6 +15,10 @@ class SideMenuController extends EventEmitter {
         this.emit('file', action);
       });
 
+      this.actionsController.on('background', (image) => {
+        this.emit('background', image);
+      });
+
       this.actionsController.on('imageClicked', (img) => {
         this.emit('createImage', img);
       });

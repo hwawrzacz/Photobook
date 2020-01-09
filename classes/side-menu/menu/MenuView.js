@@ -5,6 +5,7 @@ class MenuView extends EventEmitter {
     this.images = null;
     this.stickers = null;
     this.text = null;
+    this.background = null;
     this.init();
   }
 
@@ -19,6 +20,7 @@ class MenuView extends EventEmitter {
       this.images = document.querySelector('.menu .menu-images');
       this.stickers = document.querySelector('.menu .menu-stickers');
       this.text = document.querySelector('.menu .menu-text');
+      this.background = document.querySelector('.menu .menu-background');
     }
 
     appendListenersForElements = () => {
@@ -26,6 +28,11 @@ class MenuView extends EventEmitter {
       this.images.addEventListener('click', this.imagesAction);
       this.stickers.addEventListener('click', this.stickersAction);
       this.text.addEventListener('click', this.textAction);
+      this.background.addEventListener('click', this.backgroundAction);
+    }
+
+    backgroundAction = () => {
+      this.eventHandler('background');
     }
 
     fileAction = () => {
@@ -55,6 +62,9 @@ class MenuView extends EventEmitter {
 
     activeMenuOptionByName = (name) => {
       switch(name){
+        case 'background':
+          this.appendSelectStyleForElement(this.background);
+          break;
         case 'file' :
           this.appendSelectStyleForElement(this.file);
           break;
@@ -83,5 +93,6 @@ class MenuView extends EventEmitter {
       this.images.classList.remove('active');
       this.stickers.classList.remove('active');
       this.text.classList.remove('active');
+      this.background.classList.remove('active');
     }
 }
