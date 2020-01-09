@@ -9,7 +9,6 @@ class TextManipulatingHooks extends Hooks {
     initializeHooksfunctionality = () => {
         const hookBold = this.element.querySelector(`.bold`);
         const hookItalic = this.element.querySelector(`.italic`);
-        const hookUnderline = this.element.querySelector(`.underline`);
         const hookFontUp = this.element.querySelector(`.font-up`);
         const hookFontDown = this.element.querySelector(`.font-down`);
         const hookTextAlignLeft = this.element.querySelector(`.hook-text-align-left`);
@@ -43,7 +42,6 @@ class TextManipulatingHooks extends Hooks {
 
         hookBold.addEventListener(`click`, this.toggleBold);
         hookItalic.addEventListener(`click`, this.toggleItalic);
-        hookUnderline.addEventListener(`click`, this.toggleUnderline);
 
         hookFontUp.addEventListener(`mousedown`, () => {
             this.parent.fontSize += 2;
@@ -78,10 +76,6 @@ class TextManipulatingHooks extends Hooks {
         this.parent.italic = !this.parent.italic;
     }
 
-    toggleUnderline = () => {
-        this.parent.underline = !this.parent.underline;
-    }
-
     changeUrlIcon = (value) => {
         const urlIcon = this.element.querySelector(`.hook-toggle-url`);
         urlIcon.innerHTML = value;
@@ -96,7 +90,6 @@ class TextManipulatingHooks extends Hooks {
             <li><i class="font-up material-icons-round">text_rotation_angleup</i></li>
             <li><i class="bold material-icons-round">format_bold</i></li>
             <li><i class="italic material-icons-round">format_italic</i></li>
-            <li><i class="underline material-icons-round">format_underlined</i></li>
             <li><i class="text-color material-icons-round">text_format</i></li>
             <li><i class="background-color material-icons-round">color_lens</i></li>
             <li><input class="text-color-picker" type="color" /></li>
