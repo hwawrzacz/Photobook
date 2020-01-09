@@ -1,27 +1,12 @@
 dimensions = getMaxDimensions();
 
-const projectNameInput = document.querySelector(`#project-name`);
+// Initialize Photobook
 const photobook = new Photobook(dimensions.width, dimensions.height);
-
 const page = photobook.element;
 
 const nav = new Nav(photobook);
 
-const buttonMenuToggle = document.querySelector('#button-menu-toggle');
-
-const toggleMenu = () => {
-  const buttonMenuToggleIcon = buttonMenuToggle.querySelector('i');
-  const menu = document.querySelector('.side-menu');
-  const content = document.querySelector(`.content`);
-
-  content.classList.toggle(`padding-left`);
-  buttonMenuToggle.classList.toggle('rotate');
-  buttonMenuToggleIcon.innerHTML = toggleIcon(buttonMenuToggleIcon.innerHTML);
-  menu.classList.toggle('visible');
-};
-
-buttonMenuToggle.addEventListener('click', toggleMenu);
-
+const projectNameInput = document.querySelector(`#project-name`);
 projectNameInput.addEventListener(`change`, () => {
   if (projectNameInput.value === ``) {
     projectNameInput.value = `Nowy projekt`;
@@ -31,15 +16,6 @@ projectNameInput.addEventListener(`change`, () => {
   console.log(photobook);
 });
 
-const toggleIcon = (value) => {
-  let result;
-
-  if (value == 'keyboard_arrow_up') {
-    result = 'menu';
-  } else result = 'keyboard_arrow_up';
-
-  return result;
-};
 
 // START Kamil
 const sideMenuController = new SideMenuController();
@@ -53,25 +29,23 @@ sideMenuController.on('file', (action) => {
     }
 
     case 'pdf': {
-      console.log('PDF');
       photobook.exportToPDF();
       break;
     }
 
     case 'html': {
-      console.log('HTML');
       photobook.exportToHTML();
       break;
     }
 
     case 'page': {
-      console.log('PAGE');
       photobook.addPage();
       break;
     }
 
     case 'delete': {
-      console.log('wow delete');
+      photobook.deleteActivePage();
+      nav.disableOrActivateButton();
       break;
     }
 
@@ -82,28 +56,22 @@ sideMenuController.on('file', (action) => {
 });
 
 sideMenuController.on('createImage', (imgBase64) => {
-  // User Want To Add Image To Active Page
   photobook.addImageToActivePage(imgBase64);
 });
 
 sideMenuController.on('createSticker', (stickerBase64) => {
-  // User Want To Add Sticker To Active Page
   photobook.addImageToActivePage(stickerBase64);
 });
 
 sideMenuController.on('createText', () => {
-  // User Want To Add Text To Active Page
   photobook.addTextBoxToActivePage();
 });
 
 sideMenuController.on('background', (background) => {
-  // @TO ADD BG
-  console.log(background);
+  photobook.changeActivePageBackground(background);
 });
 // END Kamil
 
-photobook.addImageToActivePage(imageBase64);
-photobook.addTextBoxToActivePage();
 
 // #region Functions definitions
 function getMaxDimensions() {
