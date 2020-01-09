@@ -63,7 +63,7 @@ class MenuView extends EventEmitter {
     activeMenuOptionByName = (name) => {
       switch(name){
         case 'background':
-          this.appendListenersForElements(this.background);
+          this.appendSelectStyleForElement(this.background);
           break;
         case 'file' :
           this.appendSelectStyleForElement(this.file);
