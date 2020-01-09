@@ -7,9 +7,7 @@ class Photobook extends EventEmitter {
     this.element.id = 'view';
     this.width = width;
     this.height = height;
-    this.addPage(fabric3);
-    this.addPage(fabric2);
-    this.addPage(fabric1);
+    this.addPage();
 
     this.activePageIndex = 0;
     this.activePage = this.pages[this.activePageIndex];
@@ -47,20 +45,27 @@ class Photobook extends EventEmitter {
 
   showPreviousPage() {
     if (this.activePageIndex > 0) {
-      this.activePageIndex--; // activePageIndex is saint, and it cannot be touched
-      this.activePage.visible = false;
-      this.activePage = this.pages[this.activePageIndex];
-      this.activePage.visible = true;
+
+      console.log(`index before: ${this.activePageIndex}`);
+      this.activePageIndex--; // activePageIndex is saint, and cannot be touched
+      this.showActivePage();
+      console.log(`index after: ${this.activePageIndex}`);
     }
   }
 
   showNextPage() {
     if (this.activePageIndex < this.pages.length - 1) {
+      console.log(`index before: ${this.activePageIndex}`);
       this.activePageIndex++;
-      this.activePage.visible = false;
-      this.activePage = this.pages[this.activePageIndex];
-      this.activePage.visible = true;
+      this.showActivePage();
+      console.log(`index after: ${this.activePageIndex}`);
     }
+  }
+
+  showActivePage() {
+    this.activePage.visible = false;
+    this.activePage = this.pages[this.activePageIndex];
+    this.activePage.visible = true;
   }
 
   addPage(backgroundImage) {
@@ -94,6 +99,37 @@ class Photobook extends EventEmitter {
 
   changeActivePageBackground(base64Image) {
     this.activePage.backgroundImage = base64Image;
+  }
+
+  deleteActivePage() {
+    if (this.pages.length > 1) {
+
+      console.log(this.pages);
+      const formerActivePageIndex = this.activePageIndex;
+
+      this.activePage.element.remove();
+
+      const pagesBeforeActive = this.pages.slice(0, formerActivePageIndex)
+      const pagesAfterActive = this.pages.slice(formerActivePageIndex + 1, this.pages.length)
+      this.pages = pagesBeforeActive.concat(pagesAfterActive);
+
+      if (this.isActivePageLastPage()) {
+        this.showPreviousPage();
+      }
+      else {
+        this.showActivePage();
+      }
+
+      console.log(this.pages);
+    }
+  }
+
+  isActivePageLastPage() {
+    return this.activePageIndex === this.pages.length;
+  }
+
+  isActivePageFirstPage() {
+    return this.activePageIndex === 0;
   }
 
   exportToJSON() {

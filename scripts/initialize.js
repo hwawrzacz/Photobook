@@ -2,6 +2,7 @@ dimensions = getMaxDimensions();
 
 const projectNameInput = document.querySelector(`#project-name`);
 const photobook = new Photobook(dimensions.width, dimensions.height);
+
 const page = photobook.element;
 
 const nav = new Nav(photobook);
@@ -100,7 +101,7 @@ photobook.addImageToActivePage(imageBase64);
 photobook.addTextBoxToActivePage();
 
 // #region Functions definitions
-function getMaxDimensions () {
+function getMaxDimensions() {
   const proportions = 595 / 842;
   const headerHeight = document.querySelector('header').offsetHeight;
   const maxHeight = document.querySelector('.content').offsetHeight - headerHeight;
