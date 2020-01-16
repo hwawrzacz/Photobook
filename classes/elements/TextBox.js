@@ -1,7 +1,7 @@
 class TextBox extends Element2D {
     constructor(width, height, zIndex) {
         super();
-        const textBoxDocument = new DOMParser().parseFromString(this.textBoxPattern, `text/html`);
+        const textBoxDocument = new DOMParser().parseFromString(this.textBoxTemplate, `text/html`);
         this.element = textBoxDocument.querySelector(`.textbox-container`);
         this.textBox = textBoxDocument.querySelector(`.textbox`);
         this.urlText = textBoxDocument.querySelector(`.url-text`);
@@ -215,7 +215,7 @@ class TextBox extends Element2D {
         this.urlText.innerHTML = this.text;
     }
 
-    textBoxPattern = `
+    textBoxTemplate = `
         <div class="textbox-container textbox-mode">
             <a href="#" target="_blank" class="url-text"></a>
             <input class="textbox" value="asd" type="text" />

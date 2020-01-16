@@ -1,5 +1,3 @@
-
-
 // #region Functions definitions
 const initializePhotobook = () => {
   photobook = new Photobook(dimensions.width, dimensions.height);
@@ -22,8 +20,7 @@ const initializePhotobook = () => {
   sideMenuController.on('file', (action) => {
     switch (action) {
       case 'new': {
-        console.log('New project');
-        photobook.exportToJSON();
+        showNewProjectDialog();
         break;
       }
 
@@ -91,6 +88,12 @@ function getMaxDimensions() {
   }
 
   return { 'width': width, 'height': height };
+}
+
+function showNewProjectDialog() {
+  const prompt = new NewProjectDialog();
+  const container = document.querySelector(`div.container`);
+  container.appendChild(prompt.element);
 }
 // #endregion
 
