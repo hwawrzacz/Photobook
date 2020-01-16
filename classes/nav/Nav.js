@@ -10,7 +10,6 @@ class Nav extends EventEmitter {
 
   init = () => {
     this.photoBook.on('changed', () => {
-      console.log("ELKO");
       this.disableOrActivateButton();
     });
     this.navLeft.addEventListener('click', this.leftClicked);
@@ -37,8 +36,6 @@ class Nav extends EventEmitter {
   }
 
   disableOrActivateButton = () => {
-    // console.log(this.photoBook.pages);
-    // console.log(this.photoBook.activePage);
     const pagesAmout = this.photoBook.pages.length;
     const pageIndex = this.photoBook.activePageIndex;
     if (pageIndex === 0) {

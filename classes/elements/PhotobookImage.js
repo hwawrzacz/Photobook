@@ -1,7 +1,7 @@
 class PhotobookImage extends Element2D {
     constructor(base64Image, width, height, zIndex) {
         super();
-        const imageDocument = new DOMParser().parseFromString(this.imagePattern, `text/html`);
+        const imageDocument = new DOMParser().parseFromString(this.imageTemplate, `text/html`);
         this.element = imageDocument.querySelector(`.element-2d-container`);
         this.image = imageDocument.querySelector(`.image-container`);
 
@@ -29,7 +29,7 @@ class PhotobookImage extends Element2D {
         this.image.style.setProperty(`background-image`, `url(` + value + `)`);
     }
 
-    imagePattern = `
+    imageTemplate = `
         <div class="element-2d-container flex-container flex-v-h-center">
             <div class="image-container size-fill-parent"></div>
         </div>`;
