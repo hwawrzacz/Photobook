@@ -8,14 +8,29 @@ class BackgroundView extends EventEmitter {
   
       init = () => {
         this.generateDOM();
-        this.createBackgroundDOMAndAddItToContainer('./images/fabric-1-min.jpg');
-        this.createBackgroundDOMAndAddItToContainer('./images/fabric-2-min.jpg');
-        this.createBackgroundDOMAndAddItToContainer('./images/fabric-3-min.jpg');
-        this.createBackgroundDOMAndAddItToContainer('./images/fabric-4-min.jpg');
-        this.createBackgroundDOMAndAddItToContainer('./images/background-1-min.jpg');
-        this.createBackgroundDOMAndAddItToContainer('./images/background-2-min.jpg');
-        this.createBackgroundDOMAndAddItToContainer('./images/background-3-min.jpg');
-        this.createBackgroundDOMAndAddItToContainer('./images/background-4-min.jpg');
+        blobImages.forEach((blobImage) => {
+          this.createBackgroundDOMAndAddItToContainer(blobImage);
+        })
+        // this.createBackgroundDOMAndAddItToContainer('./images/fabric-1-min.jpg');
+        // this.createBackgroundDOMAndAddItToContainer(blobImages[0]);
+        // this.createBackgroundDOMAndAddItToContainer('./images/fabric-2-min.jpg');
+        // this.createBackgroundDOMAndAddItToContainer('./images/fabric-3-min.jpg');
+        // this.createBackgroundDOMAndAddItToContainer('./images/fabric-4-min.jpg');
+        // this.createBackgroundDOMAndAddItToContainer('./images/background-1-min.jpg');
+        // this.createBackgroundDOMAndAddItToContainer('./images/background-2-min.jpg');
+        // this.createBackgroundDOMAndAddItToContainer('./images/background-3-min.jpg');
+        // this.createBackgroundDOMAndAddItToContainer('./images/background-4-min.jpg');
+        this.test();
+      }
+
+      test = () => {
+        // reader.readAsArrayBuffer('./images/background-4-min.jpg');
+        // reader.readAsArrayBuffer('./images/background-4-min.jpg');
+        // reader.readAsBinaryString('./images/background-4-min.jpg');
+      }
+
+      superTest = (e) => {
+        console.log(e.target.result);
       }
   
       generateDOM = () => {
