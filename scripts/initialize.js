@@ -1,79 +1,77 @@
-dimensions = getMaxDimensions();
-
-// Initialize Photobook
-const photobook = new Photobook(dimensions.width, dimensions.height);
-const page = photobook.element;
-
-const nav = new Nav(photobook);
-
-const projectNameInput = document.querySelector(`#project-name`);
-projectNameInput.addEventListener(`change`, () => {
-  if (projectNameInput.value === ``) {
-    projectNameInput.value = `Nowy projekt`;
-  }
-
-  photobook.name = projectNameInput.value;
-  console.log(photobook);
-});
-
-
-// START Kamil
-const sideMenuController = new SideMenuController();
-
-sideMenuController.on('file', (action) => {
-  switch (action) {
-    case 'new': {
-      console.log('New project');
-      photobook.exportToJSON();
-      break;
-    }
-
-    case 'pdf': {
-      photobook.exportToPDF();
-      break;
-    }
-
-    case 'html': {
-      photobook.exportToHTML();
-      break;
-    }
-
-    case 'page': {
-      photobook.addPage();
-      break;
-    }
-
-    case 'delete': {
-      photobook.deleteActivePage();
-      nav.disableOrActivateButton();
-      break;
-    }
-
-    default: {
-      console.log('Unknown command');
-    }
-  }
-});
-
-sideMenuController.on('createImage', (imgBase64) => {
-  photobook.addImageToActivePage(imgBase64);
-});
-
-sideMenuController.on('createSticker', (stickerBase64) => {
-  photobook.addImageToActivePage(stickerBase64);
-});
-
-sideMenuController.on('createText', () => {
-  photobook.addTextBoxToActivePage();
-});
-
-sideMenuController.on('background', (background) => {
-  photobook.changeActivePageBackground(background);
-});
-// END Kamil
 
 
 // #region Functions definitions
+const initializePhotobook = () => {
+  photobook = new Photobook(dimensions.width, dimensions.height);
+  const page = photobook.element;
+
+  const nav = new Nav(photobook);
+
+  projectNameInput.addEventListener(`change`, () => {
+    if (projectNameInput.value === ``) {
+      projectNameInput.value = `Nowy projekt`;
+    }
+
+    photobook.name = projectNameInput.value;
+    console.log(photobook);
+  });
+
+  // START Kamil
+  const sideMenuController = new SideMenuController();
+
+  sideMenuController.on('file', (action) => {
+    switch (action) {
+      case 'new': {
+        console.log('New project');
+        photobook.exportToJSON();
+        break;
+      }
+
+      case 'pdf': {
+        photobook.exportToPDF();
+        break;
+      }
+
+      case 'html': {
+        photobook.exportToHTML();
+        break;
+      }
+
+      case 'page': {
+        photobook.addPage();
+        break;
+      }
+
+      case 'delete': {
+        photobook.deleteActivePage();
+        nav.disableOrActivateButton();
+        break;
+      }
+
+      default: {
+        console.log('Unknown command');
+      }
+    }
+  });
+
+  sideMenuController.on('createImage', (imgBase64) => {
+    photobook.addImageToActivePage(imgBase64);
+  });
+
+  sideMenuController.on('createSticker', (stickerBase64) => {
+    photobook.addImageToActivePage(stickerBase64);
+  });
+
+  sideMenuController.on('createText', () => {
+    photobook.addTextBoxToActivePage();
+  });
+
+  sideMenuController.on('background', (background) => {
+    photobook.changeActivePageBackground(background);
+  });
+  // END Kamil
+}
+
 function getMaxDimensions() {
   const proportions = 595 / 842;
   const headerHeight = document.querySelector('header').offsetHeight;
@@ -95,3 +93,8 @@ function getMaxDimensions() {
   return { 'width': width, 'height': height };
 }
 // #endregion
+
+dimensions = getMaxDimensions();
+const projectNameInput = document.querySelector(`#project-name`);
+let photobook;
+initializePhotobook();

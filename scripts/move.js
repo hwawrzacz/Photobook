@@ -1,5 +1,6 @@
 //move
 const move = (target) => {
+    const page = document.querySelector(`main`);
     let startingTop;
     let startingLeft;
 
