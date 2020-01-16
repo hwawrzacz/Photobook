@@ -1,5 +1,6 @@
 //resize
 const resizeElement = (target, hook) => {
+    const page = document.querySelector(`main`);
     let initialWidth;
     let initialHeight;
 
