@@ -166,7 +166,8 @@ body{
 }
 
 .side-menu .action-images,
-.side-menu .action-background {
+.side-menu .action-background,
+.side-menu .action-stickers {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -176,7 +177,8 @@ body{
 }
 
 .action-image-container,
-.action-background-container{
+.action-background-container,
+.action-sticker-container{
     cursor: pointer;
     position: relative;
     padding-bottom: 10px;
@@ -200,7 +202,8 @@ body{
 }
 
 .side-menu .action-image-container img,
-.side-menu .action-background-container img {
+.side-menu .action-background-container img,
+.side-menu .action-sticker-container img {
     width: 100%;
     object-fit: contain;
 }
