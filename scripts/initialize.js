@@ -25,7 +25,7 @@ const initializePhotobook = () => {
       }
 
       case 'pdf': {
-        photobook.exportToPDF();
+        photobook.exportToPPTX();
         break;
       }
 

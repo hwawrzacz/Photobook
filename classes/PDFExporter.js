@@ -13,9 +13,13 @@ class PDFExporter {
     }
 
     exportToPDF() {
+        console.log("WIDTH :" + this.docWidth)
+        console.log("HEIGHT :" + this.docHeight)
         for (let page of photobook.pages){
-            this.doc.addImage(page.backgroundImage, "JPEG", 0, 0, this.docWidth, this.docHeight, "background_"+this.pageCount.toString(), "NONE");
-            var imgCount = 1;
+            if(page.backgroundImage != undefined){
+                this.doc.addImage(page.backgroundImage, "JPEG", 0, 0, this.docWidth, this.docHeight, "background_"+this.pageCount.toString(), "NONE");
+            }
+                var imgCount = 1;
 
             // combine textBoxes and images from page to one array
             // and then sort them by z-index
@@ -92,7 +96,6 @@ class PDFExporter {
 
     insertText(textBox){
         var angle = this.getAngle(textBox.rotation)
-        var textDimensions = this.doc.getTextDimensions(textBox.text)
 
         //draw background rectangle
         var centerX = textBox.left*this.widthRatio+textBox.width*this.widthRatio/2;
@@ -110,6 +113,8 @@ class PDFExporter {
         this.doc.setFontSize(textBox.fontSize*this.widthRatio);
         this.doc.setTextColor(textBox.textColor);
         this.doc.setTextColor(textBox.textColor);
+
+        var textDimensions = this.doc.getTextDimensions(textBox.text)
 
         if(textBox.bold && textBox.italic){
             this.doc.setFontType("bolditalic");
