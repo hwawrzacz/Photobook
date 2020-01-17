@@ -45,20 +45,15 @@ class Photobook extends EventEmitter {
 
   showPreviousPage() {
     if (this.activePageIndex > 0) {
-
-      console.log(`index before: ${this.activePageIndex}`);
       this.activePageIndex--; // activePageIndex is saint, and cannot be touched
       this.showActivePage();
-      console.log(`index after: ${this.activePageIndex}`);
     }
   }
 
   showNextPage() {
     if (this.activePageIndex < this.pages.length - 1) {
-      console.log(`index before: ${this.activePageIndex}`);
       this.activePageIndex++;
       this.showActivePage();
-      console.log(`index after: ${this.activePageIndex}`);
     }
   }
 
@@ -103,8 +98,6 @@ class Photobook extends EventEmitter {
 
   deleteActivePage() {
     if (this.pages.length > 1) {
-
-      console.log(this.pages);
       const formerActivePageIndex = this.activePageIndex;
 
       this.activePage.element.remove();
@@ -119,8 +112,6 @@ class Photobook extends EventEmitter {
       else {
         this.showActivePage();
       }
-
-      console.log(this.pages);
     }
   }
 
@@ -132,14 +123,9 @@ class Photobook extends EventEmitter {
     return this.activePageIndex === 0;
   }
 
-  exportToJSON() {
-    const jsonPhotobook = JSON.stringify(this);
-    console.log(this);
-  }
-
   exportToHTML() {
     this.disableTextboxesUrlEditMode();
-    const exporter = new HTMLExporter();
+    const exporter = new HTMLExporter(this);
     const documentString = exporter.getPhotobookDocumentAsString(this.element);
     const url = URL.createObjectURL(new Blob([documentString], { type: `text/html` }));
     download(url, `${this.name}.html`);

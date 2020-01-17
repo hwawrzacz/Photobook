@@ -1,0 +1,58 @@
+
+.new-project-prompt {
+    position: absolute;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    padding: 20px 30px;
+    transform: translate(-50%, -50%);
+    background-color: #515151;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px -5px black;
+
+    width: 500px;
+    color: white;
+}
+
+.new-project-title {
+    margin: 0;
+    color: inherit;
+}
+
+.new-project-message {
+    line-height: 1.4em;
+    width: 100%;
+    color: inherit;
+}
+
+.new-project-button-wrapper {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    button {
+        width: 90px;
+        height: 35px;
+        padding: 5px 10px;
+        border: none;
+        outline: none;
+        font-size: 0.9em;
+        border-radius: 5px;
+        margin: 0 5px;
+
+        background-color: #363636;
+        color: inherit;
+        cursor: pointer;
+
+        &:first-child {
+            background-color: #090;
+        }
+
+        &:last-child {
+            margin-right: 0;
+            color: inherit;
+        }
+    }
+}
