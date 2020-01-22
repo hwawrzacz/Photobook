@@ -25,12 +25,17 @@ const initializePhotobook = () => {
       }
 
       case 'pdf': {
-        photobook.exportToPPTX();
+        photobook.exportToPDF();
         break;
       }
 
       case 'html': {
         photobook.exportToHTML();
+        break;
+      }
+
+      case 'pptx': {
+        photobook.exportToPPTX();
         break;
       }
 

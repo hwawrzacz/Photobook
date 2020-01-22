@@ -1,7 +1,14 @@
 class HTMLExporter {
 
     constructor(photobook) {
-        this.documentName = photobook.name;
+        this.photobook = photobook
+        this.documentName = this.photobook.name;
+    }
+
+    exportToHTML() {
+        const documentString = this.getPhotobookDocumentAsString(this.photobook.element);
+        const url = URL.createObjectURL(new Blob([documentString], { type: `text/html` }));
+        download(url, `${this.documentName}.html`);
     }
 
     getPhotobookDocumentAsString(photobookElement) {

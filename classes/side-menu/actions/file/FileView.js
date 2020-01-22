@@ -10,6 +10,7 @@ class FileView extends EventEmitter {
     this.addNewProjectButtonListener();
     this.addExportPdfButtonListener();
     this.addExportHtmlButtonListener();
+    this.addExportPptxButtonListener();
     this.addPageButtonListener();
     this.deletePageButtonListener();
   }
@@ -39,6 +40,14 @@ class FileView extends EventEmitter {
           </div>
           <div class="option-text-container">
             <p>Exportuj do HTML</p>
+          </div>
+        </div>
+        <div class="option-container export-pptx">
+          <div class="option-svg-container">
+          <svg class="option-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M-74 29h48v48h-48V29zM0 0h24v24H0V0zm0 0h24v24H0V0z"/><path d="M13 12h7v1.5h-7zm0-2.5h7V11h-7zm0 5h7V16h-7zM21 4H3c-1.1 0-2 .9-2 2v13c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 15h-9V6h9v13z"/></svg>
+          </div>
+          <div class="option-text-container">
+            <p>Exportuj do PPTX</p>
           </div>
         </div>
         <div class="option-container add-page">
@@ -92,6 +101,14 @@ class FileView extends EventEmitter {
 
   exportHtmlClicked = () => {
     this.emit('file', 'html');
+  }
+  addExportPptxButtonListener = () => {
+    const button = this.container.querySelector('.option-container.export-pptx');
+    button.addEventListener('click', this.exportPptxClicked);
+  }
+
+  exportPptxClicked = () => {
+    this.emit('file', 'pptx');
   }
 
   addPageButtonListener = () => {

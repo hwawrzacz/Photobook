@@ -123,14 +123,6 @@ class Photobook extends EventEmitter {
     return this.activePageIndex === 0;
   }
 
-  exportToHTML() {
-    this.disableTextboxesUrlEditMode();
-    const exporter = new HTMLExporter(this);
-    const documentString = exporter.getPhotobookDocumentAsString(this.element);
-    const url = URL.createObjectURL(new Blob([documentString], { type: `text/html` }));
-    download(url, `${this.name}.html`);
-  }
-
   disableTextboxesUrlEditMode() {
     this.pages.forEach(page => {
       if (page.urlMode) {
@@ -145,6 +137,12 @@ class Photobook extends EventEmitter {
   exportToPDF() {
     const exporter = new PDFExporter(this);
     exporter.exportToPDF();
+  }
+
+  exportToHTML() {
+    this.disableTextboxesUrlEditMode();
+    const exporter = new HTMLExporter(this);
+    exporter.exportToHTML();
   }
 
   exportToPPTX() {
