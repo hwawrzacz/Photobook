@@ -49,11 +49,11 @@ class PPTXExporter {
 
     insertImage(img){
         this.currentSlide.addImage({ data:img.backgroundImage, x:this.xToInch(img.left), y:this.yToInch(img.top), 
-           w:this.xToInch(img.width), h:this.yToInch(img.height), rotate:img.rotation });
+           w:this.xToInch(img.width), h:this.yToInch(img.height), rotate:Math.round(img.rotation) });
     }
 
     insertText(textBox){
-        if(textBox.urlMode){ 
+        if(!textBox.urlMode){ 
             this.currentSlide.addText(textBox.text, {shape:this.pptx.shapes.RECTANGLE, x:this.xToInch(textBox.left), y:this.yToInch(textBox.top),
             w:this.xToInch(textBox.width), h:this.yToInch(textBox.height), fill: textBox.backgroundColor.substr(1), align:textBox.TextAlign,
             fontSize:textBox.fontSize*this.widthRatio, rotate:textBox.rotation, color:textBox.textColor.substr(1), bold:textBox.bold,
