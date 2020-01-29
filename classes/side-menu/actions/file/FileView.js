@@ -31,7 +31,7 @@ class FileView extends EventEmitter {
             <svg class="option-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
           </div>
           <div class="option-text-container">
-            <p>Exportuj do PDF</p>
+            <p>Eksportuj do PDF</p>
           </div>
         </div>
         <div class="option-container export-html">
@@ -39,7 +39,7 @@ class FileView extends EventEmitter {
             <svg class="option-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
           </div>
           <div class="option-text-container">
-            <p>Exportuj do HTML</p>
+            <p>Eksportuj do HTML</p>
           </div>
         </div>
         <div class="option-container export-pptx">
@@ -47,7 +47,7 @@ class FileView extends EventEmitter {
           <svg class="option-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M-74 29h48v48h-48V29zM0 0h24v24H0V0zm0 0h24v24H0V0z"/><path d="M13 12h7v1.5h-7zm0-2.5h7V11h-7zm0 5h7V16h-7zM21 4H3c-1.1 0-2 .9-2 2v13c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 15h-9V6h9v13z"/></svg>
           </div>
           <div class="option-text-container">
-            <p>Exportuj do PPTX</p>
+            <p>Eksportuj do PPTX</p>
           </div>
         </div>
         <div class="option-container add-page">
