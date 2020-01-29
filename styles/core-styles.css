@@ -5,6 +5,7 @@ body{
 
 .side-menu{
     position: relative;
+    font-size: 0.85em;
     top: 0;
     bottom: 0;
     left: -300px;
