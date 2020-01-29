@@ -25,6 +25,7 @@ class PPTXExporter {
             var elements = page.textBoxes.concat(page.images);
             elements.sort(this.compareElements);
 
+            // insert all of the elements on a current slide
             for (let element of elements){
                 if (element.constructor.name == "TextBox"){
                     this.insertText(element);
@@ -34,6 +35,7 @@ class PPTXExporter {
                 }
             }
         }
+
         this.pptx.writeFile(this.photobook.name+'.pptx');
     }
 
@@ -53,18 +55,30 @@ class PPTXExporter {
     }
 
     insertText(textBox){
-        if(!textBox.urlMode){ 
-            this.currentSlide.addText(textBox.text, {shape:this.pptx.shapes.RECTANGLE, x:this.xToInch(textBox.left), y:this.yToInch(textBox.top),
-            w:this.xToInch(textBox.width), h:this.yToInch(textBox.height), fill: textBox.backgroundColor.substr(1), align:textBox.TextAlign,
-            fontSize:textBox.fontSize*this.widthRatio, rotate:textBox.rotation, color:textBox.textColor.substr(1), bold:textBox.bold,
-            italic: textBox.italic});
+        if(textBox.backgroundColor == "white"){ 
+            textBox.backgroundColor="#FFFFFF"
         }
-        else{
-            this.currentSlide.addText(textBox.text, {shape:this.pptx.shapes.RECTANGLE, x:this.xToInch(textBox.left), y:this.yToInch(textBox.top),
-                w:this.xToInch(textBox.width), h:this.yToInch(textBox.height), fill: textBox.backgroundColor.substr(1), align:textBox.TextAlign,
-                fontSize:textBox.fontSize*this.widthRatio, rotate:textBox.rotation, color:textBox.textColor.substr(1), bold:textBox.bold,
-                italic: textBox.italic, hyperlink: {url: textBox.urlText.href}});
+        
+        var textColor = textBox.textColor;
+        if(textBox.textColor.toString() == "#000"){ 
+            textColor="#000000";
         }
+
+        var options = {align:textBox.TextAlign, fontSize:textBox.fontSize*this.widthRatio, color:textColor.substr(1), bold:textBox.bold,
+            italic: textBox.italic}
+
+        if(textBox.urlMode){ 
+                options.hyperlink = {url: textBox.urlText}
+        }
+
+        this.currentSlide.addText(
+            [{
+                text: textBox.text, 
+                options: options
+                }],
+                {x:this.xToInch(textBox.left), y:this.yToInch(textBox.top), w:this.xToInch(textBox.width), h:this.yToInch(textBox.height),
+                rotate:Math.round(textBox.rotation), shape:this.pptx.shapes.RECTANGLE, fill: textBox.backgroundColor.substr(1)}
+            );
     }
 
     xToInch(value){
