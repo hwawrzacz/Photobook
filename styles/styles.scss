@@ -59,4 +59,25 @@ body {
 .flex-grow-8 { 
     flex-grow: 8;
 }
+
+@media screen and (max-width: 980px) {
+    .mobile-banned {
+        position: absolute;
+        z-index: 100;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        
+        background-image: url('../pics/zbigniew.jpg');
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-color: #414141;
+    }
+
+    .container, .header {
+        display: none;
+    }
+}
 /* End flex */

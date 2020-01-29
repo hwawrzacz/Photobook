@@ -5,9 +5,12 @@
   transition: 300ms;
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex; }
-  .hooks-container.visible {
-    opacity: 1; }
+  display: flex;
+}
+
+.hooks-container.visible {
+  opacity: 1;
+}
 
 i.hook {
   position: absolute;
@@ -16,44 +19,56 @@ i.hook {
   font-size: 20px;
   background-color: white;
   color: black;
-  cursor: pointer; }
-  i.hook::-moz-selection {
-    background-color: transparent;
-    color: inherit; }
-  i.hook::selection {
-    background-color: transparent;
-    color: inherit; }
+  cursor: pointer;
+}
+
+i.hook::-moz-selection {
+  background-color: transparent;
+  color: inherit;
+}
+
+i.hook::selection {
+  background-color: transparent;
+  color: inherit;
+}
 
 i.hook-rotate {
   bottom: -20px;
   width: 40px;
   right: 48%;
   text-align: center;
-  border-radius: 0 0 5px 5px; }
+  border-radius: 0 0 5px 5px;
+}
 
 i.hook-move {
   position: absolute;
-  cursor: move; }
+  cursor: move;
+}
 
 i.hook-resize {
   bottom: 0;
   right: -22px;
   width: 22px;
-  border-radius: 0 5px 5px 0; }
+  border-radius: 0 5px 5px 0;
+}
 
 i.hook-delete {
   top: 0;
   right: -22px;
-  border-radius: 0 5px 5px 0; }
+  border-radius: 0 5px 5px 0;
+}
 
 i.hook-level-up {
   top: 0;
   left: -22px;
-  border-radius: 5px 0 0 0; }
+  border-radius: 5px 0 0 0;
+}
 
 i.hook-level-down {
   top: 20px;
   left: -22px;
-  border-radius: 0 0 0 5px; }
+  border-radius: 0 0 0 5px;
+}
 
 /* End hooks */
+/*# sourceMappingURL=hooks.css.map */

@@ -2,11 +2,13 @@
   border: none;
   outline: none;
   -webkit-box-shadow: none;
-          box-shadow: none; }
+          box-shadow: none;
+}
 
 /* Whole layout */
 #view {
-  position: relative; }
+  position: relative;
+}
 
 /* Editable page */
 .page {
@@ -15,7 +17,8 @@
   background: white;
   background-position: center;
   background-size: cover;
-  border: 1px solid black; }
+  border: 1px solid black;
+}
 
 .button-container {
   position: absolute;
@@ -26,7 +29,8 @@
   display: flex;
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
-          justify-content: space-evenly; }
+          justify-content: space-evenly;
+}
 
 button.rounded-button {
   padding: 10px 20px;
@@ -38,12 +42,22 @@ button.rounded-button {
   outline: none;
   cursor: pointer;
   -webkit-transition: 200ms;
-  transition: 200ms; }
-  button.rounded-button:first-child {
-    margin-left: 0; }
-  button.rounded-button:last-child {
-    margin-right: 0; }
-  button.rounded-button:hover {
-    background-color: #ddd; }
-  button.rounded-button:active {
-    background-color: #ccc; }
+  transition: 200ms;
+}
+
+button.rounded-button:first-child {
+  margin-left: 0;
+}
+
+button.rounded-button:last-child {
+  margin-right: 0;
+}
+
+button.rounded-button:hover {
+  background-color: #ddd;
+}
+
+button.rounded-button:active {
+  background-color: #ccc;
+}
+/*# sourceMappingURL=main-page.css.map */

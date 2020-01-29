@@ -7,6 +7,7 @@
           transform: rotate(0deg);
   cursor: move;
 }
+
 .textbox-container .textbox, .textbox-container a.url-text {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   display: inline-block;
@@ -29,10 +30,12 @@
   -webkit-transition: 300ms;
   transition: 300ms;
 }
+
 .textbox-container .textbox:focus, .textbox-container a.url-text:focus {
   border-style: solid;
   border-color: skyblue;
 }
+
 .textbox-container .url-target {
   position: relative;
   z-index: 1;
@@ -49,23 +52,29 @@
   font-size: 16px;
   cursor: text;
 }
+
 .textbox-container.textbox-mode a, .textbox-container.textbox-mode .url-actions, .textbox-container.textbox-mode .url-target {
   display: none;
 }
+
 .textbox-container.url-mode .textbox, .textbox-container.url-mode .url-actions, .textbox-container.url-mode .url-target {
   display: none;
 }
+
 .textbox-container.url-mode a {
   display: block;
 }
+
 .textbox-container.url-edit-mode a {
   display: none;
 }
+
 .textbox-container.url-edit-mode .url-actions, .textbox-container.url-edit-mode .url-target {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
+
 .textbox-container .url-actions {
   padding: 5px;
   display: -webkit-box;
@@ -77,6 +86,7 @@
   background-color: white;
   color: black;
 }
+
 .textbox-container .url-actions button {
   margin: 0;
   display: -webkit-box;
@@ -101,6 +111,7 @@
   text-decoration: none !important;
   cursor: pointer;
 }
+
 .textbox-container .url-actions button p {
   display: block;
   margin: 0;
@@ -108,6 +119,7 @@
   font-style: normal !important;
   text-decoration: none !important;
 }
+
 .textbox-container .url-actions button i {
   display: block;
   padding-left: 10px;
@@ -115,6 +127,7 @@
   font-style: normal !important;
   text-decoration: none !important;
 }
+
 .textbox-container ul.textbox-tools {
   position: absolute;
   bottom: 100%;
@@ -140,6 +153,7 @@
   -webkit-transition: 300ms;
   transition: 300ms;
 }
+
 .textbox-container ul.textbox-tools li {
   position: relative;
   top: 10px;
@@ -151,36 +165,46 @@
   -webkit-transition-delay: 100ms;
           transition-delay: 100ms;
 }
+
 .textbox-container ul.textbox-tools li:last-child {
   justify-self: flex-end;
 }
+
 .textbox-container ul.textbox-tools li i {
   width: 20px;
   height: 20px;
   font-size: 20px !important;
 }
+
 .textbox-container ul.textbox-tools li i::-moz-selection {
   background-color: none;
   color: inherit;
 }
+
 .textbox-container ul.textbox-tools li i::selection {
   background-color: none;
   color: inherit;
 }
+
 .textbox-container ul.textbox-tools li i.text-color, .textbox-container ul.textbox-tools li i.background-color {
   text-shadow: 1px 1px black;
 }
+
 .textbox-container ul.textbox-tools li input[type=color] {
   display: none;
 }
+
 .textbox-container ul.textbox-tools:hover {
   opacity: 1;
 }
+
 .textbox-container:hover ul, .textbox-container:active ul {
   max-height: 30px;
   opacity: .3;
 }
+
 .textbox-container:hover ul li, .textbox-container:active ul li {
   position: relative;
   top: 0;
 }
+/*# sourceMappingURL=textbox.css.map */

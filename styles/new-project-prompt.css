@@ -11,16 +11,19 @@
   -webkit-box-shadow: 0 5px 15px -5px black;
           box-shadow: 0 5px 15px -5px black;
   width: 500px;
-  color: white; }
+  color: white;
+}
 
 .new-project-title {
   margin: 0;
-  color: inherit; }
+  color: inherit;
+}
 
 .new-project-message {
   line-height: 1.4em;
   width: 100%;
-  color: inherit; }
+  color: inherit;
+}
 
 .new-project-button-wrapper {
   margin-top: 30px;
@@ -33,21 +36,29 @@
           justify-content: flex-end;
   -webkit-box-align: center;
       -ms-flex-align: center;
-          align-items: center; }
-  .new-project-button-wrapper button {
-    width: 90px;
-    height: 35px;
-    padding: 5px 10px;
-    border: none;
-    outline: none;
-    font-size: 0.9em;
-    border-radius: 5px;
-    margin: 0 5px;
-    background-color: #363636;
-    color: inherit;
-    cursor: pointer; }
-    .new-project-button-wrapper button:first-child {
-      background-color: #090; }
-    .new-project-button-wrapper button:last-child {
-      margin-right: 0;
-      color: inherit; }
+          align-items: center;
+}
+
+.new-project-button-wrapper button {
+  width: 90px;
+  height: 35px;
+  padding: 5px 10px;
+  border: none;
+  outline: none;
+  font-size: 0.9em;
+  border-radius: 5px;
+  margin: 0 5px;
+  background-color: #363636;
+  color: inherit;
+  cursor: pointer;
+}
+
+.new-project-button-wrapper button:first-child {
+  background-color: #090;
+}
+
+.new-project-button-wrapper button:last-child {
+  margin-right: 0;
+  color: inherit;
+}
+/*# sourceMappingURL=new-project-prompt.css.map */
