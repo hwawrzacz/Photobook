@@ -101,7 +101,7 @@ class HTMLExporter {
         width: 100%;
         height: 100%;
         padding: 10px;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-family: 'Arial', sans-serif;
         background-color: inherit;
         font-size: inherit;
         font-weight: inherit;
