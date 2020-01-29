@@ -128,10 +128,11 @@ class PDFExporter {
         }
 
         var textDimensions = this.doc.getTextDimensions(textBox.text)
+        var textWidth = this.doc.getTextWidth(textBox.text)
         var textX = textBox.left;
         if(textBox.TextAlign == "left") textX += 10;
-        if(textBox.TextAlign == "center") textX = textX + textBox.width/2 - textDimensions.w/2 + 10;
-        if(textBox.TextAlign == "right") textX = textX + textBox.width - textDimensions.w;
+        if(textBox.TextAlign == "center") textX = textX + textBox.width/2 - textDimensions.w/this.widthRatio/2 + 10;
+        if(textBox.TextAlign == "right") textX = textX + textBox.width - textDimensions.w/this.widthRatio - 10;
         var textY = textBox.top+textBox.height/2+textDimensions.h/3
         var rotatedOrigin = this.getRotatedTextOrigin(textBox.left, textBox.top, textX, textY, textBox.width, textBox.height, textBox.rotation)
         this.doc.text(textBox.text, rotatedOrigin.x, rotatedOrigin.y, {angle:angle.toString(), rotationDirection: "1"});
