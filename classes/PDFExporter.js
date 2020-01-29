@@ -13,8 +13,6 @@ class PDFExporter {
     }
 
     exportToPDF() {
-        console.log("WIDTH :" + this.docWidth)
-        console.log("HEIGHT :" + this.docHeight)
         for (let page of photobook.pages){
             if(page.backgroundImage != undefined){
                 this.doc.addImage(page.backgroundImage, "JPEG", 0, 0, this.docWidth, this.docHeight, "background_"+this.pageCount.toString(), "NONE");
@@ -28,13 +26,13 @@ class PDFExporter {
 
             for (let element of elements){
                 if (element.constructor.name == "TextBox"){
-                    console.log("textBox added");
-                    this.insertText(element);
+                    this.insertText(element, imgCount);
                 }
                 else if(element.constructor.name == "PhotobookImage"){
                     this.insertImage(element, imgCount);
-                    imgCount++;
+                    //imgCount++;
                 }
+                imgCount++;
             }
 
             this.doc.addPage();
@@ -94,27 +92,29 @@ class PDFExporter {
             img.width*this.widthRatio, img.height*this.heightRatio,"img"+this.pageCount+"."+imgCount, "NONE", angle);
     }
 
-    insertText(textBox){
+    insertText(textBox, imgCount){
         var angle = this.getAngle(textBox.rotation)
 
         //draw background rectangle
-        var centerX = textBox.left*this.widthRatio+textBox.width*this.widthRatio/2;
-        var centerY = textBox.top*this.heightRatio+textBox.height*this.heightRatio/2;
-        var ctx = this.doc.context2d
-        ctx.save()
-        ctx.translate(centerX, centerY);
-        ctx.rotate((360-angle)*Math.PI/180);
+        var canvas = document.createElement('canvas');
+        canvas.width = textBox.width;
+        canvas.height= textBox.height;
+        var ctx = canvas.getContext('2d');
+        console.log(textBox.backgroundColor);
         ctx.fillStyle = textBox.backgroundColor;
-        ctx.translate(-centerX, -centerY);
-        ctx.fillRect(textBox.left*this.widthRatio, textBox.top*this.heightRatio, textBox.width*this.widthRatio, textBox.height*this.heightRatio);
-        ctx.restore()
+        ctx.fillRect(0,0,textBox.width, textBox.height);
+        var background = canvas.toDataURL();
+
+        var rotatedBackground = this.getRotatedOrigin(textBox.left, textBox.top, textBox.width, textBox.height, textBox.rotation)
+
+        this.doc.addImage(background, "JPEG", rotatedBackground.x, rotatedBackground.y-textBox.height*this.heightRatio,
+            textBox.width*this.widthRatio, textBox.height*this.heightRatio,"img"+this.pageCount+"."+imgCount, "NONE", angle);
 
         //insert and format text
+        this.doc.setFont('Arial');
         this.doc.setFontSize(textBox.fontSize*this.widthRatio);
         this.doc.setTextColor(textBox.textColor);
         this.doc.setTextColor(textBox.textColor);
-
-        var textDimensions = this.doc.getTextDimensions(textBox.text)
 
         if(textBox.bold && textBox.italic){
             this.doc.setFontType("bolditalic");
@@ -126,16 +126,17 @@ class PDFExporter {
             this.doc.setFontType("italic");
         }
 
+        var textDimensions = this.doc.getTextDimensions(textBox.text)
         var textX = textBox.left;
         if(textBox.TextAlign == "left") textX += 5;
-        if(textBox.TextAlign == "center") textX = textX + textBox.width/2 - textDimensions.w/2;
-        if(textBox.TextAlign == "right") textX = textX + textBox.width - textDimensions.w - 5;
+        if(textBox.TextAlign == "center") textX = textX + textBox.width/2 - textDimensions.w/2 + 5;
+        if(textBox.TextAlign == "right") textX = textX + textBox.width - textDimensions.w;
         var textY = textBox.top+textBox.height/2+textDimensions.h/3
         var rotatedOrigin = this.getRotatedTextOrigin(textBox.left, textBox.top, textX, textY, textBox.width, textBox.height, textBox.rotation)
         this.doc.text(textBox.text, rotatedOrigin.x, rotatedOrigin.y, {angle:angle.toString(), rotationDirection: "1"});
         if(textBox.urlMode){
             var rotatedEndOrigin = this.getRotatedTextOrigin(textBox.left, textBox.top, textX + textDimensions.w, textY, textBox.width, textBox.height, textBox.rotation)
-            this.doc.link(rotatedOrigin.x, rotatedOrigin.y-textDimensions.h, Math.abs(rotatedOrigin.x - rotatedEndOrigin.x),  Math.abs(rotatedOrigin.y - rotatedEndOrigin.y)+textDimensions.h, {url:textBox.urlText.href});
+            this.doc.link(rotatedOrigin.x, rotatedOrigin.y-textDimensions.h, Math.abs(rotatedOrigin.x - rotatedEndOrigin.x),  Math.abs(rotatedOrigin.y - rotatedEndOrigin.y)+textDimensions.h, {url:textBox.urlText});
         } 
     }
 }
