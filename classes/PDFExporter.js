@@ -10,6 +10,7 @@ class PDFExporter {
         this.heightRatio = this.docHeight / photobook.height;
         this.photobook = photobook;
         this.pageCount = 1;
+        this.fontRatio = 595/photobook.width;
     }
 
     exportToPDF() {
@@ -112,7 +113,7 @@ class PDFExporter {
 
         //insert and format text
         this.doc.setFont('Arial');
-        this.doc.setFontSize(textBox.fontSize*this.widthRatio);
+        this.doc.setFontSize(textBox.fontSize*this.fontRatio);
         this.doc.setTextColor(textBox.textColor);
         this.doc.setTextColor(textBox.textColor);
 
@@ -128,8 +129,8 @@ class PDFExporter {
 
         var textDimensions = this.doc.getTextDimensions(textBox.text)
         var textX = textBox.left;
-        if(textBox.TextAlign == "left") textX += 5;
-        if(textBox.TextAlign == "center") textX = textX + textBox.width/2 - textDimensions.w/2 + 5;
+        if(textBox.TextAlign == "left") textX += 10;
+        if(textBox.TextAlign == "center") textX = textX + textBox.width/2 - textDimensions.w/2 + 10;
         if(textBox.TextAlign == "right") textX = textX + textBox.width - textDimensions.w;
         var textY = textBox.top+textBox.height/2+textDimensions.h/3
         var rotatedOrigin = this.getRotatedTextOrigin(textBox.left, textBox.top, textX, textY, textBox.width, textBox.height, textBox.rotation)

@@ -5,6 +5,7 @@ class PPTXExporter {
         this.docHeight = 11.7;
         this.widthRatio = 446.46 / photobook.width;
         this.heightRatio = 631.417 / photobook.height;
+        this.fontRatio = 595 / photobook.width;
         this.pptx.defineLayout({ name:'A4', width:this.docWidth, height:this.docHeight });
         this.pptx.layout = 'A4'
 
@@ -64,7 +65,7 @@ class PPTXExporter {
             textColor="#000000";
         }
 
-        var options = {align:textBox.TextAlign, fontSize:textBox.fontSize*this.widthRatio, color:textColor.substr(1), bold:textBox.bold,
+        var options = {align:textBox.TextAlign, fontSize:textBox.fontSize*this.fontRatio, color:textColor.substr(1), bold:textBox.bold,
             italic: textBox.italic}
 
         if(textBox.urlMode){ 
